@@ -23,6 +23,19 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    isHost:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false,
+    },
+    about:{
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    profilePic:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
@@ -47,7 +60,25 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   User.associate = function(models) {
-    // associations can be defined here
+
+    const columnMappingBooker = { // User -> User, through Follow as follower
+      through: 'Bookings',
+      otherKey: 'hostId',
+      foreignKey: 'bookerId',
+      as: 'booker' //
+    }
+    const columnMappingHost = { // User -> User, through Follow as following
+      through: 'Bookings',
+      otherKey: 'hostId',
+      foreignKey: 'bookerId',
+      as: 'host'
+    }
+
+    User.hasMany(models.Review, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: 'true' });
+    User.hasMany(models.Spot, { foreignKey: 'ownerId', onDelete: 'CASCADE', hooks: 'true' });
+    User.belongsToMany(models.User, columnMappingBooker);
+    User.belongsToMany(models.User, columnMappingHost);
+
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function

@@ -22,6 +22,19 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      isHost: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        default: false,
+      },
+      about: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      profilePic: {
+        type: Sequelize.STRING(256),
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
