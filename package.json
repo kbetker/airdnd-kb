@@ -5,7 +5,7 @@
     "node": "12.21.0"
   },
   "description": "",
-  "main": "frontend/public/index.js",
+  "main": "frontend/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "sequelize",
