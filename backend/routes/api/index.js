@@ -11,12 +11,20 @@ router.get('/', (req, res) => {
         res.send('What is updog?')
     });
 
-    router.get('/test', function(req, res) {
-            res.json({ requestBody: req.body });
-          });
+router.post('/test', function(req, res) {
+        res.json({ requestBody: req.body });
+        });
 
 
-        module.exports = router;
+module.exports = router;
+
+
+
+
+
+
+
+
 
 // // Token test
 // const asyncHandler = require('express-async-handler');
