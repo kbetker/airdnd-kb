@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignupFormPage'
 import Navigation from './components/Navigation'
+import FetchTests from './components/FetchTests'
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 
     <Navigation />
     <Switch>
+      <FetchTests/>
       <Route exact path="/">
         <h1>Hello from App</h1>
       </Route>

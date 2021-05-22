@@ -2,6 +2,22 @@ const express = require('express');
 const router = express();
 const apiRouter = require('./api')
 router.use('/api', apiRouter)
+const { User } = require('../db/models')
+
+
+
+
+
+router.get('/testing', async(req, res) => {
+  const getInfo = await User.findAll()
+  // const data = await getInfo.json()
+   res.json(getInfo)
+  // res.send("Hi from the backend")
+
+});
+
+
+
 
 
 if (process.env.NODE_ENV === 'production') {
