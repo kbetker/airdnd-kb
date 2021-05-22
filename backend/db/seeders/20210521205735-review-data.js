@@ -1,26 +1,41 @@
 'use strict';
+const faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    return queryInterface.bulkInsert('Reviews', [
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
+    {	userId:	faker.datatype.number({'min': 1, 'max': 14})	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	body:	faker.lorem.paragraphs()	,	cleanReview:	faker.datatype.number({'min': 1, 'max': 5})	,	locationReview:	faker.datatype.number({'min': 1, 'max': 5})	,	valueReview:	faker.datatype.number({'min': 1, 'max': 5})	},
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
+
+
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+   return queryInterface.bulkDelete('Reviews', null, {});
   }
 };

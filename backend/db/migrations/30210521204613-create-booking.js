@@ -1,47 +1,39 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Bookings', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING(50),
+      hostId: {
         allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Users'}
       },
-      username: {
-        type: Sequelize.STRING(30),
+      bookerId: {
         allowNull: false,
-        unique: true,
+        type: Sequelize.INTEGER,
+        references: {model: 'Users'}
       },
-      email: {
-        type: Sequelize.STRING(256),
+      startDate: {
         allowNull: false,
-        unique: true,
+        type: Sequelize.DATEONLY
       },
-      hashedPassword: {
-        type: Sequelize.STRING.BINARY,
+      endDate: {
         allowNull: false,
+        type: Sequelize.DATEONLY
       },
-      isHost: {
-        type: Sequelize.BOOLEAN,
+      spotId: {
         allowNull: false,
-        default: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Spots'}
       },
-      about: {
-        type: Sequelize.TEXT,
+      numGuests: {
         allowNull: false,
-      },
-      profilePic: {
-        type: Sequelize.STRING(256),
-        allowNull: false,
-      },
-      profilePicColor: {
-        type: Sequelize.STRING,
-        default: 'white',
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -56,6 +48,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Bookings');
   }
 };

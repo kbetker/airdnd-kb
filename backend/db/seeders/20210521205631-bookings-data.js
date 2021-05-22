@@ -1,26 +1,41 @@
 'use strict';
+const faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    return queryInterface.bulkInsert('Bookings', [
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+  {	hostId:	faker.datatype.number({'min': 1, 'max': 14})	,	bookerId:	faker.datatype.number({'min': 1, 'max': 14})	,	startDate:	'12-01-01'	,	endDate:	'12-02-01'	,	spotId:	faker.datatype.number({'min': 1, 'max': 14})	,	numGuests:	faker.datatype.number({'min': 1, 'max': 14})	},
+
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
-  }
-};
+    return queryInterface.bulkDelete('Bookings', null, {});
+   }
+ };

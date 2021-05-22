@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     region: DataTypes.STRING,
     ownerId: DataTypes.INTEGER,
     pics: DataTypes.STRING,
+    mainPic: DataTypes.STRING,
     allowsFamiliar: DataTypes.BOOLEAN
   }, {});
   Spot.associate = function(models) {

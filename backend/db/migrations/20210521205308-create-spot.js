@@ -42,9 +42,14 @@ module.exports = {
       },
       ownerId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Users'}
       },
       pics: {
+        allowNull: false,
+        type: Sequelize.STRING(999)
+      },
+      mainPic: {
         allowNull: false,
         type: Sequelize.STRING
       },
@@ -54,11 +59,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       }
     });
   },
