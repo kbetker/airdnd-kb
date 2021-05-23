@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignupFormPage'
 import Navigation from './components/Navigation'
-import FetchTests from './components/FetchTests'
+// import FetchUserTests from './components/FetchUserTests'
+import FetchAllTest from './components/FetchAllTest'
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -16,12 +17,27 @@ function App() {
   }, [dispatch]);
 
 
+  const all = useSelector(state => state.session.user);
+    // if(all){console.log("WTFWTFWTFWTFW: ", all.profileBackgroundColor)}
+let bg = '';
+
+    if(all){
+      bg = `${all.profileBackgroundColor}`
+    } else {
+      bg = 'white'
+    }
+
+    // console.log("WTFWTFWTFWTFW: ", all.profileBackgroundColor)
+
   return isLoaded && (
     <>
-
+    <div style={{backgroundColor: bg}} id="woot">
     <Navigation />
     <Switch>
-      <FetchTests/>
+      {/* <FetchUserTests/> */}
+      <Route path='/all'>
+      <FetchAllTest/>
+      </Route>
       <Route exact path="/">
         <h1>Hello from App</h1>
       </Route>
@@ -35,6 +51,7 @@ function App() {
         <LoginFormPage />
        </Route>
     </Switch>
+    </div>
     </>
   );
 }

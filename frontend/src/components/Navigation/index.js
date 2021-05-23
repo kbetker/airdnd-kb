@@ -14,9 +14,10 @@ function Navigation(){
 
     return(
         <>
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink exact to="/signup">Sign Up</NavLink>
-        <NavLink exact to="/login">Log In</NavLink>
+        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink exact to="/"> Home</NavLink></div>
+        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/signup">Sign Up</NavLink></div>
+        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/login">Log In</NavLink></div>
+        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/all">Gotta Fetch em All</NavLink></div>
         {sessionUser && <ProfileButton exact to="/logout" />}
         </>
     )
