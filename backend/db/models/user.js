@@ -42,7 +42,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    profilePicColor:{
+    profileBackgroundColor:{
+      type: DataTypes.STRING,
+      default: 'black',
+    },
+    profileForegroundColor:{
       type: DataTypes.STRING,
       default: 'white',
     },
@@ -92,8 +96,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, profileBackgroundColor } = this; // context will be the User instance
+    return { id, username, email, profileBackgroundColor };
   };
 
   User.prototype.validatePassword = function (password) {

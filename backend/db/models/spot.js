@@ -7,10 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     coordinateY: DataTypes.INTEGER,
     price: DataTypes.DECIMAL(10, 2),
     description: DataTypes.TEXT,
-    tags: DataTypes.STRING,
     region: DataTypes.STRING,
     ownerId: DataTypes.INTEGER,
-    pics: DataTypes.STRING,
     mainPic: DataTypes.STRING,
     allowsFamiliar: DataTypes.BOOLEAN
   }, {});
@@ -18,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     Spot.belongsTo(models.User, { foreignKey: "ownerId" });
     Spot.hasMany(models.Review, { foreignKey: 'spotId', onDelete: 'CASCADE', hooks: 'true' });
     Spot.hasMany(models.Booking, { foreignKey: 'spotId', onDelete: 'CASCADE', hooks: 'true' });
+    Spot.hasMany(models.Tag, {foreignKey: "spotId"});
+    Spot.hasMany(models.Pic, {foreignKey: "spotId"});
+
   };
   return Spot;
 };

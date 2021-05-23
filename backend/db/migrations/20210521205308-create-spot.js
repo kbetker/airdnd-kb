@@ -32,10 +32,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      tags: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
       region: {
         allowNull: false,
         type: Sequelize.STRING
@@ -44,10 +40,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Users'}
-      },
-      pics: {
-        allowNull: false,
-        type: Sequelize.STRING(999)
       },
       mainPic: {
         allowNull: false,

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express();
 const apiRouter = require('./api')
 router.use('/api', apiRouter)
-const { User } = require('../db/models')
+const { User, Spot, Review, Booking, Tag, Pic } = require('../db/models')
 
 
 
@@ -10,10 +10,16 @@ const { User } = require('../db/models')
 
 router.get('/testing', async(req, res) => {
   const getInfo = await User.findAll()
-  // const data = await getInfo.json()
    res.json(getInfo)
-  // res.send("Hi from the backend")
+});
 
+
+router.get('/all', async(req, res) => {
+  const getInfo = await Spot.findAll({
+  include: [{model: Tag}, {model: Pic}, {model: Booking}, {model: User}, {model: Review, include: User}, {model: Review, include: {model: User}}]
+
+  })
+   res.json(getInfo)
 });
 
 
