@@ -14,11 +14,11 @@ function Navigation(){
 
     return(
         <>
-        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink exact to="/"> Home</NavLink></div>
-        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/signup">Sign Up</NavLink></div>
-        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/login">Log In</NavLink></div>
-        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/all">Gotta Fetch em All</NavLink></div>
-        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/spot/2">I want to got to spot</NavLink></div>
+        <NavLink className='navLinks' exact to="/"> Home</NavLink>
+        <NavLink className='navLinks' to="/signup">Sign Up</NavLink>
+        <NavLink className='navLinks' to="/login">Log In</NavLink>
+        <NavLink className='navLinks' to="/spot/2">getOne</NavLink>
+        <NavLink className='navLinks' to="/spots/wat">getByTag</NavLink>
         {sessionUser && <ProfileButton exact to="/logout" />}
         </>
     )

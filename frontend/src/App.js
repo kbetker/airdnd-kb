@@ -4,9 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignupFormPage'
 import Navigation from './components/Navigation'
-// import FetchUserTests from './components/FetchUserTests'
-import FetchAllTest from './components/FetchAllTest'
+// import FetchAllTest from './components/FetchAllTest' // Testing purposes
 import SpotById from './components/SpotById'
+import SpotsByTag from './components/SpotsByTag'
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -34,9 +34,6 @@ let bg = '';
     <Navigation />
       <Switch>
 
-      <Route path='/all'>
-        <FetchAllTest/>
-      </Route>
 
       <Route exact path="/">
         <h1>Hello from App</h1>
@@ -54,6 +51,10 @@ let bg = '';
         <SpotById />
        </Route>
 
+       <Route path="/spots/:tag">
+        <SpotsByTag />
+       </Route>
+
     </Switch>
     </div>
     </>
@@ -61,3 +62,7 @@ let bg = '';
 }
 
 export default App;
+
+      // <Route path='/all'>
+      //   <FetchAllTest/>
+      // </Route>

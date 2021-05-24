@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import {fetchSpotById} from '../../store/spots'
+import {fetchSpotById} from '../../store/spot'
 
 export default function SpotById(){
     const { id } = useParams();
@@ -14,17 +14,11 @@ export default function SpotById(){
     const singleSpot = useSelector(state => state.spot.spot)
     if(!singleSpot){return null;}
 
-    console.log("WTFWTFWTFWTFW", singleSpot.ownerId)
-
-
-    // const all = useSelector(state => state.spot.spot);
-    // if(!all){return null;}
-
 
     return(
         <>
-        <div>Title: {singleSpot.title}</div>
-        <div>Location: {singleSpot.location}</div>
+        <div><h1>Title: {singleSpot.title}</h1></div>
+        <div><h2>Location: {singleSpot.location}</h2></div>
         <div>Price: {singleSpot.price}(gp)</div>
         <div>Allows Familiars?: {singleSpot.allowsFamiliar ? <span>Yes</span> : <span>No</span>}</div>
         <div>Main picture: {singleSpot.mainPic}</div>

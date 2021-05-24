@@ -1,21 +1,14 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-const {Users} = require('../../db/models')
+const spotRouter = require('./spot.js');
+const spotsRouter = require('./spots.js');
+// const {Users, Tag, Pic} = require('../../db/models')
 
 router.use('/session', sessionRouter);
-
 router.use('/users', usersRouter);
-
-router.get('/', (req, res) => {
-        res.cookie('XSRF-TOKEN', req.csrfToken())
-        res.send('What is updog?')
-    });
-
-
-// router.post('/test', function(req, res) {
-//         res.json({ requestBody: req.body });
-//         });
+router.use('/spot', spotRouter);
+router.use('/spots', spotsRouter);
 
 
 module.exports = router;

@@ -1,39 +1,37 @@
 // import { useParams } from 'react-router-dom';
-const LOAD_ONE = 'session/LOAD_ONE';
+const LOAD_ByTag = 'session/LOAD_ByTag';
 
 
-export const loadOneSpot = ( spot ) => {
+export const loadSpotsByTag = ( spots ) => {
     return {
-        type: LOAD_ONE,
-        spot
+        type: LOAD_ByTag,
+        spots
     };
 };
 
 
 
-export const fetchSpotById = (id) => async (dispatch) => {
-    const response = await fetch(`/spot/${id}`);
+export const fetchspotsByTag = (tag) => async (dispatch) => {
+    const response = await fetch(`/api/spots/${tag}`);
     if(response.ok){
-        const spot = await response.json();
-        dispatch(loadOneSpot(spot));
+        const spots = await response.json();
+        dispatch(loadSpotsByTag(spots));
     };
   };
 
 
-  const initialState = { spot: null }
+  const initialState = { spots: null }
 
-  const fetchSpotByIdReducer = (state = initialState, action) => {
+  const fetchSpotsReducer = (state = initialState, action) => {
     let newState;
     switch( action.type ){
-        case LOAD_ONE:
+        case LOAD_ByTag:
             newState = Object.assign({}, state);
-            newState.spot = action.spot;
+            newState.spots = action.spots;
             return newState;
         default:
             return state;
-
-
     };
 };
 
-export default fetchSpotByIdReducer
+export default fetchSpotsReducer

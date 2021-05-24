@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 function ProfileButton(){
     const dispatch = useDispatch();
     function logOut(e){
-        // console.log("WOOT!!")
         return dispatch(logout())
     }
 
