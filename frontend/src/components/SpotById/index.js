@@ -23,7 +23,34 @@ export default function SpotById(){
 
     return(
         <>
-        HI from spot by one
+        <div>Title: {singleSpot.title}</div>
+        <div>Location: {singleSpot.location}</div>
+        <div>Price: {singleSpot.price}(gp)</div>
+        <div>Allows Familiars?: {singleSpot.allowsFamiliar ? <span>Yes</span> : <span>No</span>}</div>
+        <div>Main picture: {singleSpot.mainPic}</div>
+        <div>
+            Smaller Pics:
+            <ul>
+                {singleSpot.Pics.map((e) =>
+                <li key={e.id}>{e.picUrl}</li>
+
+                )}
+            </ul>
+        </div>
+
+        <div>
+            Tags:
+            <ul>
+                {singleSpot.Tags.map((e) =>
+                <li key={e.id}>{e.tag}</li>
+
+                )}
+            </ul>
+        </div>
+        <div>Coordinates: X:{singleSpot.coordinateX}, Y:{singleSpot.coordinateY}</div>
+
+
+
         </>
     )
 

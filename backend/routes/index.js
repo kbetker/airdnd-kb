@@ -9,7 +9,7 @@ const { User, Spot, Review, Booking, Tag, Pic, Message } = require('../db/models
 
 
 router.get('/spot/:id', async(req, res) => {
-  const id = parseInt(req.params.id)
+  const id = req.params.id
   const spotById = await Spot.findOne({
     where: {id: id},
     include: [{model: Tag}, {model: Pic}]

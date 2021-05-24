@@ -11,3 +11,22 @@
     justify-content: space-evenly;
     background-color: bisque;
 }
+div{
+    margin: 5px;
+    padding: 5px;
+}
+div:nth-child(even){
+    background-color: rgb(221, 221, 221);
+}
+a:link,a:visited,a:active{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+a:hover{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-decoration: underline;
+    color: red;
+
+}
