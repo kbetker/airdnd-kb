@@ -18,6 +18,7 @@ function Navigation(){
         <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/signup">Sign Up</NavLink></div>
         <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/login">Log In</NavLink></div>
         <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/all">Gotta Fetch em All</NavLink></div>
+        <div stlye={{margin: '10px', padding: '10px'}}> <NavLink to="/spot/2">I want to got to spot</NavLink></div>
         {sessionUser && <ProfileButton exact to="/logout" />}
         </>
     )

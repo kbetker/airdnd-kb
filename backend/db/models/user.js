@@ -75,23 +75,42 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function(models) {
 
-    const columnMappingBooker = { // User -> User, through Follow as follower
+    const columnMappingBooker = {
       through: 'Bookings',
-      otherKey: 'hostId',
       foreignKey: 'bookerId',
+      otherKey: 'hostId',
       as: 'booker' //
     }
-    const columnMappingHost = { // User -> User, through Follow as following
+    const columnMappingHost = {
       through: 'Bookings',
-      otherKey: 'hostId',
-      foreignKey: 'bookerId',
+      foreignKey: 'hostId',
+      otherKey: 'bookerId',
       as: 'host'
+    }
+
+
+    const columnMappingMessageSender = {
+      through: 'Messages',
+      otherKey: 'senderId',
+      foreignKey: 'receiverId',
+      as: 'sender' //
+    }
+    const columnMappingMessageReceiver = {
+      through: 'Messages',
+      otherKey: 'receiverId',
+      foreignKey: 'senderId',
+      as: 'receiver'
     }
 
     User.hasMany(models.Review, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: 'true' });
     User.hasMany(models.Spot, { foreignKey: 'ownerId', onDelete: 'CASCADE', hooks: 'true' });
-    User.belongsToMany(models.User, columnMappingBooker);
-    User.belongsToMany(models.User, columnMappingHost);
+    User.belongsToMany(models.Booking, columnMappingBooker);
+    User.belongsToMany(models.Booking, columnMappingHost);
+    // User.hasMany(models.Booking, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: 'true' });
+
+    User.belongsToMany(models.Message, columnMappingMessageSender);
+    User.belongsToMany(models.Message, columnMappingMessageReceiver);
+    // User.hasMany(models.Message, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: 'true' });
 
   };
 

@@ -9,11 +9,14 @@ const cookieParser = require('cookie-parser');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 const routes = require('./routes');
+const path = require("path");
 
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Security Middleware

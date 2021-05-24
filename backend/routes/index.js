@@ -2,25 +2,32 @@ const express = require('express');
 const router = express();
 const apiRouter = require('./api')
 router.use('/api', apiRouter)
-const { User, Spot, Review, Booking, Tag, Pic } = require('../db/models')
+const { User, Spot, Review, Booking, Tag, Pic, Message } = require('../db/models')
 
 
 
 
 
-router.get('/testing', async(req, res) => {
-  const getInfo = await User.findAll()
-   res.json(getInfo)
+router.get('/spot/:id', async(req, res) => {
+  const id = parseInt(req.params.id)
+  const spotById = await Spot.findOne({
+    where: {id: id},
+    include: [{model: Tag}, {model: Pic}]
+
+  })
+   res.json(spotById)
 });
 
 
 router.get('/all', async(req, res) => {
   const getInfo = await Spot.findAll({
-  include: [{model: Tag}, {model: Pic}, {model: Booking}, {model: User}, {model: Review, include: User}, {model: Review, include: {model: User}}]
+  include: [{model: Tag}, {model: Pic}, {model: Booking}, {model: User}, {model: Review, include: User}]
 
   })
    res.json(getInfo)
 });
+
+
 
 
 
