@@ -18,7 +18,8 @@ function Navigation(){
         <NavLink className='navLinks' to="/signup">Sign Up</NavLink>
         <NavLink className='navLinks' to="/login">Log In</NavLink>
         <NavLink className='navLinks' to="/spot/2">getOne</NavLink>
-        <NavLink className='navLinks' to="/spots/wat">getByTag</NavLink>
+        <NavLink className='navLinks' to="/spot/new">create</NavLink>
+        <NavLink className='navLinks' to="/spots/coastal">getByTag</NavLink>
         {sessionUser && <ProfileButton exact to="/logout" />}
         </>
     )

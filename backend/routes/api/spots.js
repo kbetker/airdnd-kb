@@ -14,7 +14,7 @@ const router = express.Router();
         const tag = req.params.tag
         const spotsByTag = await Tag.findAll({
           where: {tag: tag},
-          include: [{model: Spot, include: [{model: Pic}, {model: Review}]}]
+          include: [{model: Spot, include: [{model: Pic}, {model: Review}, {model: Tag}]}]
 
         })
         res.json({spotsByTag})

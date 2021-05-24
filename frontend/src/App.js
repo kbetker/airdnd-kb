@@ -55,6 +55,10 @@ let bg = '';
         <SpotsByTag />
        </Route>
 
+       <Route path="/spot/create">
+        <SpotsByTag />
+       </Route>
+
     </Switch>
     </div>
     </>
