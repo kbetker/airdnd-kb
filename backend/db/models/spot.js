@@ -20,5 +20,20 @@ module.exports = (sequelize, DataTypes) => {
     Spot.hasMany(models.Pic, {foreignKey: "spotId"});
 
   };
+
+  Spot.newSpot = async function ({ title, location, coordinateX, coordinateY, price, description, ownerId, mainPic, allowsFamiliar }) {
+    const spot = await Spot.create({
+      title,
+      location,
+      coordinateX,
+      coordinateY,
+      price,
+      description,
+      ownerId,
+      mainPic,
+      allowsFamiliar
+    });
+    return await Spot.findByPk(spot.id);
+  };
   return Spot;
 };

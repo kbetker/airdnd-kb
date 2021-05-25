@@ -15,11 +15,9 @@ export default function SpotsByTag(){
     const spotsByTag = useSelector(state => state.spots.spots)
     if(!spotsByTag){return null;}
 
-    // console.log("XXXXXXXXXXXXXXXXXXXXXXX:  ", spotsByTag.spotsByTag)
 
     function average(arr){
         if(arr.length === 0) return `No reviews`
-        console.log(arr)
         let totalReview = 0;
         let numOfReviews = arr.length
         for(let i = 0; i < arr.length; i++){

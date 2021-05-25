@@ -29,12 +29,12 @@ export default function SpotById(){
         <div><h2>Location: {singleSpot.location}</h2></div>
         <div>Price: {singleSpot.price}(gp)</div>
         <div>Allows Familiars?: {singleSpot.allowsFamiliar ? <span>Yes</span> : <span>No</span>}</div>
-        <div style={{display: 'inline-block'}}><img src={singleSpot.mainPic} style={{height: '250px'}}></img>
+        <div style={{display: 'inline-block'}}><img src={singleSpot.mainPic} style={{height: '250px'}} alt="main view"></img>
 
 
                 {singleSpot.Pics.map((e) =>
 
-                <img src={e.picUrl} style={{height: '125px'}} key={e.id}></img>
+                <img src={e.picUrl} style={{height: '125px'}} key={e.id} alt="images"></img>
                 )}
 
         </div>

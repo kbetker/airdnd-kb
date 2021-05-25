@@ -34,7 +34,8 @@ module.exports = {
       },
       region: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        default: 'Sword Coast'
       },
       ownerId: {
         allowNull: false,

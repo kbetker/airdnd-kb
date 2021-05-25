@@ -7,6 +7,7 @@ import Navigation from './components/Navigation'
 // import FetchAllTest from './components/FetchAllTest' // Testing purposes
 import SpotById from './components/SpotById'
 import SpotsByTag from './components/SpotsByTag'
+import SpotNew from './components/SpotNew'
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -47,17 +48,19 @@ let bg = '';
         <LoginFormPage />
        </Route>
 
-       <Route path="/spot/:id">
+       <Route exact path="/spot/new">
+        <SpotNew />
+       </Route>
+
+       <Route exact path="/spot/:id">
         <SpotById />
        </Route>
+
 
        <Route path="/spots/:tag">
         <SpotsByTag />
        </Route>
 
-       <Route path="/spot/create">
-        <SpotsByTag />
-       </Route>
 
     </Switch>
     </div>
