@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignupFormPage'
 import Navigation from './components/Navigation'
+import HomepageNavigation from './components/HomepageNavigation'
 // import FetchAllTest from './components/FetchAllTest' // Testing purposes
 import SpotById from './components/SpotById'
 import SpotsByTag from './components/SpotsByTag'
@@ -30,25 +31,29 @@ let bg = '';
 
 
   return isLoaded && (
+
     <>
-    <div style={{backgroundColor: bg}} id="woot">
-    <Navigation />
+
       <Switch>
-
-
       <Route exact path="/">
+      <HomepageNavigation />
         <h1>Hello from App</h1>
       </Route>
 
+
+
       <Route path="/signup">
+      <Navigation />
         <SignupFormPage />
       </Route>
 
       <Route path="/login">
+      <Navigation />
         <LoginFormPage />
        </Route>
 
        <Route exact path="/spot/new">
+       <Navigation />
         <SpotNew />
        </Route>
 
@@ -63,8 +68,8 @@ let bg = '';
 
 
     </Switch>
-    </div>
     </>
+
   );
 }
 

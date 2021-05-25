@@ -2,26 +2,56 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton'
-
+import '../../navigation.css';
 
 
 
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
-    // if (sessionUser) return (
-    //     <Redirect to="/" />
-    // )
+
+        const scrollFunction = () =>{
+        if (document.body.scrollTop > 88 || document.documentElement.scrollTop > 88) {
+            document.querySelector(".navbarContainer").classList.add("navbarContainer-resize");
+        } else if (document.body.scrollTop < 88 || document.documentElement.scrollTop < 88) {
+            document.querySelector(".navbarContainer").classList.remove("navbarContainer-resize");
+
+        } ;
+    };
+    window.onscroll = function() {scrollFunction()};
+
+
+
+
+    function handleSearch(e){
+        e.preventDefault()
+        console.log('woot')
+    }
+
 
     return(
-        <>
-        <NavLink className='navLinks' exact to="/"> Home</NavLink>
-        <NavLink className='navLinks' to="/signup">Sign Up</NavLink>
-        <NavLink className='navLinks' to="/login">Log In</NavLink>
-        <NavLink className='navLinks' to="/spot/2">getOne</NavLink>
-        <NavLink className='navLinks' to="/spot/new">create</NavLink>
-        <NavLink className='navLinks' to="/spots/coastal">getByTag</NavLink>
-        {sessionUser && <ProfileButton exact to="/logout" />}
-        </>
+        <div>
+
+          <div id="fixedNav">
+                <nav className="navbarContainer">
+                    <NavLink className='navbar--element' exact to="/">
+                        <img src='/images/airDNDlogo2.svg' className="homepageLogo"></img>
+                    </NavLink>
+
+                <div className="navbar--element">
+                    <form onSubmit={(e) => handleSearch(e)} className='navbar--searchBar'>
+                        <input type="text" className="homeSearch"></input>
+                        <button style={{backgroundImage: 'url(/images/searchIcon.png)'}} className="searchIcon"></button>
+                    </form>
+                </div>
+
+
+                <div className="navbar--element"><div className="profile">
+                     {sessionUser && <ProfileButton exact to="/logout" />}
+                </div></div>
+                </nav>
+
+            </div>
+        </div>
     )
 }
 export default Navigation;

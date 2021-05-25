@@ -33,7 +33,9 @@ function Root() {
 
 ReactDOM.render(
   <React.StrictMode>
+    <div id="mainContainer">
     <Root />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

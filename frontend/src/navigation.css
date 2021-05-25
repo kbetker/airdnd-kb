@@ -1,24 +1,19 @@
-body{
-    margin: 0;
-    padding: 0;
+
+#fixedNav{
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
-#mainContainer {
-    background-color: rgb(118, 118, 197);
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-rows: 800px 400px 400px 60px;
-}
-
-#homepageHeader {
-    background-position-y: 90%;
-    background-size:cover;
-}
 .navbarContainer{
     display: flex;
     justify-content: space-between;
     height: 160px;
+    background-color:rgba(155, 155, 0, 0.5);
+    transition: all 0.25s ease-in-out;
+}
+.navbarContainer-resize{
+    height: 80px;
 }
 .navbar--element{
     min-width: 350px;
@@ -26,14 +21,6 @@ body{
     display: flex;
     align-content: center;
     justify-content: center;
-}
-#fixedNav{
-    position: fixed;
-    width: 100%;
-}
-#blackbar{
-    height: 25px;
-    background-color: black;
 }
 
 .navbar--searchBar {

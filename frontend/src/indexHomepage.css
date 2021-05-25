@@ -1,0 +1,9 @@
+#homepageHeader {
+    background-position-y: 90%;
+    background-size:cover;
+}
+
+#blackbar{
+    height: 25px;
+    background-color: black;
+}
