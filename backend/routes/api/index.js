@@ -3,12 +3,13 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const spotRouter = require('./spot.js');
 const spotsRouter = require('./spots.js');
-// const {Users, Tag, Pic} = require('../../db/models')
+const reviewRouter = require('./review.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/spot', spotRouter);
 router.use('/spots', spotsRouter);
+router.use('/spot/review', reviewRouter);
 
 
 module.exports = router;

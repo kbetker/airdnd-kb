@@ -12,5 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     Review.belongsTo(models.User, {foreignKey: 'userId'});
     Review.belongsTo(models.Spot, {foreignKey: 'spotId'});
   };
+
+  Review.newReview = async function ({ userId, spotId, body, cleanReview, locationReview, valueReview }) {
+    const newReview = await Review.create({
+      userId, spotId, body, cleanReview, locationReview, valueReview
+    });
+    return await Review.findByPk(newReview.id);
+  };
   return Review;
 };

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import {fetchSpotById} from '../../store/spot'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+import { postReview } from '../../store/review'
 
 export default function SpotById(){
 
@@ -16,15 +17,34 @@ export default function SpotById(){
 
 
     //======== grap one by id =======================
-    useEffect(()=>{
-        dispatch(fetchSpotById(id))
-    }, [dispatch, id])
-
+    const history = useHistory()
     const singleSpot = useSelector(state => state.spot.spot)
     const user = useSelector(state => state.session.user)
+    const review = useSelector(state => state.review)
 
+    useEffect(()=>{
+        dispatch(fetchSpotById(id))
+    }, [dispatch, review])
 
     if(!singleSpot){return null;}
+    let payload;
+
+    if(user){
+        payload = {
+        userId: user.id,
+        spotId: parseInt(id),
+        body,
+        cleanReview:  parseInt(cleanReview),
+        locationReview:  parseInt(locationReview),
+        valueReview:  parseInt(valueReview)
+    }}
+
+
+    async function reviewSubmit(e){
+        e.preventDefault()
+       await dispatch(postReview(payload));
+       history.push(`/spot/${parseInt(id)}`)
+    }
 
 
     function niceDate(str){
@@ -40,14 +60,9 @@ export default function SpotById(){
         <div><h2>Location: {singleSpot.location}</h2></div>
         <div>Price: {singleSpot.price}(gp)</div>
         <div>Allows Familiars?: {singleSpot.allowsFamiliar ? <span>Yes</span> : <span>No</span>}</div>
-        <div style={{display: 'inline-block'}}><img src={singleSpot.mainPic} style={{height: '250px'}} alt="main view"></img>
-
-
-                {singleSpot.Pics.map((e) =>
-
-                <img src={e.picUrl} style={{height: '125px'}} key={e.id} alt="images"></img>
-                )}
-
+        <div style={{display: 'inline-block'}}>
+                <img src={singleSpot.mainPic} style={{height: '250px'}} alt="main view"></img>
+                {singleSpot.Pics.map((e) => <img src={e.picUrl} style={{height: '125px'}} key={e.id} alt="images"></img> )}
         </div>
 
         <div>
@@ -76,10 +91,26 @@ export default function SpotById(){
 
                     { user &&
                     <div>
-                        Add Review:
-                        <form>
+                        <h2>Add Review:</h2>
+                        <br/>
+                        <form onSubmit={(e) => reviewSubmit(e)}>
+                            <label htmlFor="body">Review</label>
+                            <textarea id="body" onChange={(e)=>setBody(e.target.value)} value={body}></textarea>
+                            <br/>
 
-                           <input></input>
+                            <label htmlFor="cleanReview">Cleanliness</label>
+                            <input type="number" id="cleanReview" onChange={(e)=>setCleanReview(e.target.value)} value={cleanReview}></input>
+                            <br/>
+
+                            <label htmlFor="locationReview">Location</label>
+                            <input type="number" id="locationReview" onChange={(e)=>setLocationReview(e.target.value)} value={locationReview}></input>
+                            <br/>
+
+                            <label htmlFor="valueReview">Value</label>
+                            <input type="number" id="valueReview" onChange={(e)=>setValueReview(e.target.value)} value={valueReview}></input>
+                            <br/>
+
+                            <button type="submit">Submit</button>
 
 
                         </form>

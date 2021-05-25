@@ -29,7 +29,6 @@ export const postCreatedSpot = (payload) => async (dispatch) => {
     });
     if(response.ok){
         const data = await response.json();
-        console.log(data) // data is the appopriate Object
         dispatch(createSpot(data));
         return data
     }
