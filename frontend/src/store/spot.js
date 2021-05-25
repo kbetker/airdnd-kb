@@ -29,7 +29,7 @@ export const postCreatedSpot = (payload) => async (dispatch) => {
     });
     if(response.ok){
         const data = await response.json();
-        console.log(data)
+        console.log(data) // data is the appopriate Object
         dispatch(createSpot(data));
         return data
     }
@@ -56,7 +56,7 @@ export const fetchSpotById = (id) => async (dispatch) => {
             return newState;
         case CREATE_SPOT:
             newState = Object.assign({}, state);
-            newState.spot = action.spot;
+            newState.newSpot = action.newSpot;
             return newState;
         default:
             return state;

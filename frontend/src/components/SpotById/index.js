@@ -1,18 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import {fetchSpotById} from '../../store/spot'
 import {Link} from 'react-router-dom'
 
 export default function SpotById(){
+
     const { id } = useParams();
     const dispatch = useDispatch();
+    //=========  review form data  ===================
+    const [body, setBody] = useState('')
+    const [cleanReview, setCleanReview] = useState(1);
+    const [locationReview, setLocationReview] = useState(1);
+    const [valueReview, setValueReview] = useState(1);
 
+
+    //======== grap one by id =======================
     useEffect(()=>{
         dispatch(fetchSpotById(id))
     }, [dispatch, id])
 
     const singleSpot = useSelector(state => state.spot.spot)
+    const user = useSelector(state => state.session.user)
+
+
     if(!singleSpot){return null;}
 
 
@@ -53,7 +64,6 @@ export default function SpotById(){
 
         <div>
             Reviews:
-
                 {singleSpot.Reviews.map((e) =>
                 <ul key={e.id}>
                     <h2>By: {e.User.name} on {niceDate(e.createdAt)}</h2>
@@ -62,6 +72,24 @@ export default function SpotById(){
                 </ul>
                 )}
         </div>
+
+
+                    { user &&
+                    <div>
+                        Add Review:
+                        <form>
+
+                           <input></input>
+
+
+                        </form>
+
+
+                    </div>
+
+
+                    }
+
 
 
 
