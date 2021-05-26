@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#mainContainer {
+    /* background-color: rgb(110, 79, 195); */
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: 800px 500px 630px 60px;
+}
+
+#homepageHeader {
+    background-position-y: 90%;
+    background-size:cover;
+}
+
+#blackbar{
+    height: 25px;
+    background-color: black;
+}
+
+#exploreNearby{
+    /* background-color: saddlebrown; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+}
+
+.nearbyDiv{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    width: 350px;
+    height: 150px;
+    /* background-color: seagreen; */
+}
+.nearbyPic{
+    width: 128px;
+    height: 126px;
+    border-radius: 15px;
+    align-self: center;
+    display: inline-block;
+    margin: 0 15px;
+    transition: all .25s ease-in-out;
+}
+.nearbyPic:hover{
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+}
+.nearbyText{
+    display: inline-block;
+    /* background-color: red; */
+    align-self: center;
+    /* padding-left: 20px; */
+    font-family: Helvetica, Arial, sans-serif;
+    color: black;
+}
+
+h2{
+    font-size: 25px;
+    margin: 0;
+    color: black;
+}
+h1{
+    font-size: 45px;
+    display: inline;
+    font-family: Helvetica, Arial, sans-serif;
+    align-self: center;
+}
+
+
+
+
+#liveAnywhere{
+    /* background-color: rgb(253, 218, 16); */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 80px 500px;
+    gap: 10px;
+    padding: 0 60px;
+    margin-top: 60px;
+}
+
+.liveAnywhere--element{
+    /* background-color: rgb(182, 108, 108); */
+    /* border: 2px solid black; */
+}
+.liveAnywhereImg{
+    max-width: 438px;
+    height: 439px;
+    border-radius: 35px;
+}
+
+
+
+
+#footer{
+    background-color: rgb(172, 172, 172);
+}
+
+a:link,a:hover,a:visited,a:active{
+    text-decoration: none;
+}

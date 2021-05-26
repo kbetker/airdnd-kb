@@ -22,6 +22,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 function Root() {
+
+
+
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
@@ -33,9 +36,9 @@ function Root() {
 
 ReactDOM.render(
   <React.StrictMode>
-    <div id="mainContainer">
+    {/* <div id="mainContainer"> */}
     <Root />
-    </div>
+    {/* </div> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

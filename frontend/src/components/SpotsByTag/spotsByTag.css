@@ -1,0 +1,31 @@
+.spotWrapper{
+    /* margin: 190px 0; */
+    background-repeat: repeat;
+    display: grid;
+    grid-template-columns: 1fr 834px;
+    /* background-color: red; */
+}
+.map-sbt{
+    margin-top: 190px;
+    position: relative;
+}
+.spot{
+    margin-top: 190px;
+    height: 1140px;
+    overflow-x: auto;
+}
+.swordCoastMap{
+    width: 834px;
+}
+
+.locOnMap-sbt{
+    background-color: white;
+    font-size: 12px;
+    position: absolute;
+    border-radius: 20px;
+    padding: 7px;
+    font-family: Helvetica, Arial, sans-serif;
+    box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
+    /* width: 100px; */
+    /* transform-origin: 150% bottom; */
+}

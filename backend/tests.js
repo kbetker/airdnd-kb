@@ -25,3 +25,48 @@ console.log(cssColor.length)
 const typeTags = ["type-entireHome", "type-uniqueGetaway", "type-privateRoom", "type-sharedRoom", "type-entireHome", "type-privateRoom", "type-entireHome", "type-privateRoom"]
 const terrainTags = ["terrain-Alpine Lake", "terrain-Arctic", "terrain-Badlands", "terrain-Barren", "terrain-Bay", "terrain-Beach", "terrain-Bog", "terrain-Caldera", "terrain-Canals", "terrain-Canyon", "terrain-Caves", "terrain-Crags", "terrain-Crater", "terrain-Desert", "terrain-Forest", "terrain-Glacier", "terrain-Grassland", "terrain-Hills", "terrain-Jungle", "terrain-Lake", "terrain-Lava Field", "terrain-Marsh", "terrain-Meadow", "terrain-Mountain", "terrain-Prairie", "terrain-Rain Forest", "terrain-Sand Dunes", "terrain-Seaside", "terrain-Sewers", "terrain-Swamp", "terrain-Tundra", "terrain-Underdark", "terrain-Valley", "terrain-Volcanic", "terrain-Wastelands", "terrain-Wheat Field", "terrain-Wildlands", ]
 const nearbyTags = [ "nearby-Almraiven", "nearby-Bildoobaris", "nearby-Chethel", "nearby-Citadel Adbar", "nearby-Citadel of Ten Thousand Pearls", "nearby-Derlusk", "nearby-Dhaztanar", "nearby-Earthfast", "nearby-Elbulder", "nearby-Elturel", "nearby-Escalant", "nearby-Esmeltaran", "nearby-Everlund", "nearby-Hlammach", "nearby-Hlath", "nearby-Immilmar", "nearby-Iriaebor", "nearby-Kuda", "nearby-Lushpool", "nearby-Luskan", "nearby-Mintar", "nearby-Nathlekh", "nearby-Neverwinter", "nearby-Okahira", "nearby-Orvyltar", "nearby-Phandalin", "nearby-Phlan", "nearby-Phsant", "nearby-Proskur", "nearby-Reth", "nearby-Schamedar", "nearby-Sloopdilmonpolop", "nearby-Ss'zuraass'nee", "nearby-Sundabar", "nearby-Tamanokuni", "nearby-Taruin", "nearby-Telflamm", "nearby-Telos ", "nearby-Trailsend", "nearby-Tsurlagol", "nearby-Tukan", "nearby-Ubar", "nearby-Ulatos", "nearby-Urmlaspyr", "nearby-Vilkstead", "nearby-Waterdeep", "nearby-Yeshpek", "nearby-Yhaunn", "nearby-Zhentil Keep"]
+
+
+function FindPosition(oElement)
+{
+  if(typeof( oElement.offsetParent ) != "undefined")
+  {
+    for(var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent)
+    {
+      posX += oElement.offsetLeft;
+      posY += oElement.offsetTop;
+    }
+      return [ posX, posY ];
+    }
+    else
+    {
+      return [ oElement.x, oElement.y ];
+    }
+}
+
+function GetCoordinates(e)
+{
+  let PosX = 0;
+  let PosY = 0;
+  let ImgPos;
+  ImgPos = FindPosition(getXY);
+  if (!e) var e = window.event;
+  if (e.pageX || e.pageY)
+  {
+    PosX = e.pageX;
+    PosY = e.pageY;
+  }
+  else if (e.clientX || e.clientY)
+    {
+      PosX = e.clientX + document.body.scrollLeft
+        + document.documentElement.scrollLeft;
+      PosY = e.clientY + document.body.scrollTop
+        + document.documentElement.scrollTop;
+    }
+  PosX = PosX - ImgPos[0];
+  PosY = PosY - ImgPos[1];
+  console.log("X", PosX)
+  console.log("Y", PosY)
+//   document.getElementById("x").innerHTML = PosX;
+//   document.getElementById("y").innerHTML = PosY;
+}

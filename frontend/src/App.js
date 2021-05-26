@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignupFormPage'
@@ -20,14 +20,15 @@ function App() {
   }, [dispatch]);
 
 
-  const all = useSelector(state => state.session.user);
-let bg = '';
+  // import useSelector if using
+  // const all = useSelector(state => state.session.user);
+// let bg = '';
 
-    if(all){
-      bg = `${all.profileBackgroundColor}`
-    } else {
-      bg = 'white'
-    }
+//     if(all){
+//       bg = `${all.profileBackgroundColor}`
+//     } else {
+//       bg = 'white'
+//     }
 
 
   return isLoaded && (
@@ -37,7 +38,6 @@ let bg = '';
       <Switch>
       <Route exact path="/">
       <HomepageNavigation />
-        <h1>Hello from App</h1>
       </Route>
 
 
@@ -58,11 +58,13 @@ let bg = '';
        </Route>
 
        <Route exact path="/spot/:id">
+       <Navigation />
         <SpotById />
        </Route>
 
 
        <Route path="/spots/:tag">
+       <Navigation />
         <SpotsByTag />
        </Route>
 
