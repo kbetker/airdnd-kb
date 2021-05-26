@@ -13,6 +13,63 @@ export default function SpotsByTag(){
         dispatch(fetchspotsByTag(tag))
     }, [dispatch, tag])
 
+
+    // ================= adds hover effect to locations on map
+    useEffect(() => {
+        let listDivs = document.querySelectorAll('.list');
+        let mapDivs = document.querySelectorAll('.locOnMap-sbt');
+
+        if(listDivs){
+            for(let i =0; i < listDivs.length; i++){
+                listDivs[i].addEventListener("mouseenter", (e)=>{
+                    const getNum = e.target.id.split("-")
+                     const num = getNum[1]
+                   document.getElementById(`mapLoc-${num}`).classList.add('locOnMap-sbt--hover');
+                })
+
+                listDivs[i].addEventListener("mouseleave", (e)=>{
+                    const getNum = e.target.id.split("-")
+                     const num = getNum[1]
+                   document.getElementById(`mapLoc-${num}`).classList.remove('locOnMap-sbt--hover');
+                })
+            }
+        }
+
+        if(mapDivs){
+            for(let i =0; i < mapDivs.length; i++){
+                mapDivs[i].addEventListener("mouseenter", (e)=>{
+                    const getNum = e.target.id.split("-")
+                     const num = getNum[1]
+                  let getListDiv = document.getElementById(`list-${num}`)
+                  getListDiv.classList.add('list--hover');
+                  getListDiv.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+                })
+
+                mapDivs[i].addEventListener("mouseleave", (e)=>{
+                    const getNum = e.target.id.split("-")
+                     const num = getNum[1]
+                   document.getElementById(`list-${num}`).classList.remove('list--hover');
+                })
+            }
+        }
+
+
+
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
     const spotsByTag = useSelector(state => state.spots.spots)
     if(!spotsByTag){return null;}
 
@@ -33,10 +90,9 @@ export default function SpotsByTag(){
 
         <div className="spot">
 
-            <div>Hi from spotsByTag</div>
                 {spotsByTag.spotsByTag.map((e) =>
                     <Link to={`/spot/${e.Spot.id}`} key={e.id}>
-                        <div>
+                        <div id={`list-${e.id}`} className="list">
                             <div><h2>Title: {e.Spot.title}</h2></div>
                             <p>Location: {e.Spot.location}</p>
                             <p>Main Picture: {e.Spot.mainPic}</p>
@@ -53,8 +109,8 @@ export default function SpotsByTag(){
 
             {spotsByTag.spotsByTag.map((e) =>
                 <Link to={`/spot/${e.Spot.id}`} key={`${e.id}`}>
-                    <div className="locOnMap-sbt" style={{top: e.Spot.coordinateX, left: e.Spot.coordinateY}}>
-                        {e.Spot.title}
+                    <div  id={`mapLoc-${e.id}`} className="locOnMap-sbt" style={{top: e.Spot.coordinateX, left: e.Spot.coordinateY}}>
+                            {e.Spot.title}
                     </div>
                 </Link>
             )}

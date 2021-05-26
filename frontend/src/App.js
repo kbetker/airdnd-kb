@@ -9,6 +9,7 @@ import HomepageNavigation from './components/HomepageNavigation'
 import SpotById from './components/SpotById'
 import SpotsByTag from './components/SpotsByTag'
 import SpotNew from './components/SpotNew'
+import FourOhFour from './components/FourOhFour'
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -67,6 +68,11 @@ function App() {
        <Navigation />
         <SpotsByTag />
        </Route>
+{/*
+       <Route path={`*`}>
+       <Navigation />
+        <FourOhFour />
+       </Route> */}
 
 
     </Switch>

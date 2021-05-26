@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import {fetchSpotById} from '../../store/spot'
-import {Link, useHistory} from 'react-router-dom'
+import {Link, useHistory, Redirect} from 'react-router-dom'
 import { postReview } from '../../store/review'
+import { deleteReview } from '../../store/review'
 import './spotById.css'
 
 export default function SpotById(){
     const { id } = useParams();
     const dispatch = useDispatch();
+
     //=========  review form data  ===================
     const [body, setBody] = useState('')
     const [cleanReview, setCleanReview] = useState(1);
@@ -21,12 +23,13 @@ export default function SpotById(){
     const user = useSelector(state => state.session.user)
     const review = useSelector(state => state.review)
 
+    //fetches the spot by id
     useEffect(()=>{
         dispatch(fetchSpotById(id))
     }, [dispatch, review, id])
 
 
-
+    // for later when adding location on map... actually should it be on this page?
     useEffect(()=>{
     let getXY = document.querySelector(".map")
     if(getXY){
@@ -37,12 +40,11 @@ export default function SpotById(){
 
 
 
+    if(!singleSpot){return  null}
 
-    if(!singleSpot){return null;}
-    let payload;
-
-    if(user){
-        payload = {
+let payload;
+if(user){
+    payload = {
         userId: user.id,
         spotId: parseInt(id),
         body,
@@ -54,8 +56,14 @@ export default function SpotById(){
 
     async function reviewSubmit(e){
         e.preventDefault()
-       await dispatch(postReview(payload));
-       history.push(`/spot/${parseInt(id)}`)
+        await dispatch(postReview(payload));
+        history.push(`/spot/${parseInt(id)}`)
+    }
+
+    // deletes review
+    async function deleteMyReview(id){
+        console.log("=============DELETE REVIEW", id)
+            await dispatch(deleteReview(id))
     }
 
 
@@ -66,15 +74,14 @@ export default function SpotById(){
     }
 
 
-
-
-
     // getXY.addEventListener("mousedown", (e)=>{
     //     // GetCoordinates(e);
     //     console.log('woot')
     // style={{backgroundImage: 'url(/images/bkgrndPaper.jpg)'}}
 
     return(
+        <>
+        <div id='spacer'></div>
         <div className="spotWrapper" >
 
      <div className="spot">
@@ -102,11 +109,12 @@ export default function SpotById(){
         <div>
             Reviews:
                 {singleSpot.Reviews.map((e) =>
-                <ul key={e.id}>
+                <div key={e.id}>
                     <h2>By: {e.User.name} on {niceDate(e.createdAt)}</h2>
                     <p>{e.body}</p>
                     <p>Location: {e.valueReview} / 5. Cleanliness: {e.cleanReview} / 5. Value: {e.valueReview} / 5. Overall: {((e.valueReview + e.cleanReview + e.valueReview) / 3).toFixed(1)}</p>
-                </ul>
+                    {user.id === e.userId && <button onClick={() => deleteMyReview(e.id)}>{e.id}</button>}
+                </div>
                 )}
         </div>
 
@@ -134,17 +142,9 @@ export default function SpotById(){
 
                             <button type="submit">Submit</button>
 
-
                         </form>
-
-
                     </div>
-
-
                     }
-
-
-
             </div>
 
 
@@ -155,6 +155,7 @@ export default function SpotById(){
                     </div>
 
         </div>
+        </>
     )
 
 }

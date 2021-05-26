@@ -2,20 +2,22 @@
     /* margin: 190px 0; */
     background-repeat: repeat;
     display: grid;
-    grid-template-columns: 1fr 834px;
+    grid-template-columns: 1fr 934px;
     /* background-color: red; */
 }
 .map-sbt{
-    margin-top: 190px;
-    position: relative;
+    /* margin-top: 190px; */
+    position: fixed;
+    top: 190;
+    right: 0
 }
 .spot{
-    margin-top: 190px;
-    height: 1140px;
-    overflow-x: auto;
+    /* margin-top: 190px; */
+    /* height: 1140px; */
+    /* overflow-x: auto; */
 }
 .swordCoastMap{
-    width: 834px;
+    width: 934px;
 }
 
 .locOnMap-sbt{
@@ -26,6 +28,20 @@
     padding: 7px;
     font-family: Helvetica, Arial, sans-serif;
     box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
+    transition: all .55s ease-in-out;
     /* width: 100px; */
     /* transform-origin: 150% bottom; */
+}
+
+.locOnMap-sbt:hover,.locOnMap-sbt--hover{
+    background-color: black;
+    color: white;
+    z-index: 55;
+}
+.list{
+    background-color: rgb(212, 197, 197);
+    transition: all .55s ease-in-out;
+}
+.list:hover,.list--hover {
+    background-color: blueviolet;
 }

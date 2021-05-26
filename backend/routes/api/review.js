@@ -19,4 +19,12 @@ router.post('/new', async(req, res) => {
   });
 
 
+  router.delete('/delete/:id', async(req, res)=> {
+    const { id } = req.params
+    res.send(`${id}`)
+    const deltaco = await Review.deleteReview(id)
+    return res.json({ deltaco })
+  })
+
+
 module.exports = router;

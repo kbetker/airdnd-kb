@@ -1,6 +1,8 @@
 import { csrfFetch } from './csrf';
 // import { useParams } from 'react-router-dom';
 const ADD_REVIEW = 'session/ADD_REVIEW';
+const DELETE_REVIEW = 'session/DELETE_REVIEW';
+
 
 
 export const addReview = ( newReview ) => {
@@ -8,6 +10,27 @@ export const addReview = ( newReview ) => {
         type: ADD_REVIEW,
         newReview
     };
+};
+
+export const deleteReview = ( id ) => {
+    return {
+        type: DELETE_REVIEW,
+        id
+    };
+};
+
+
+export const deleteReviewThunk = (id) => async (dispatch) => {
+    console.log("======= THUNK =========")
+    await csrfFetch(`/api/spot/review/delete/${id}`, {
+        method: 'DELETE',
+});
+    // if(response.ok){
+    //     const data = await response.json();
+    //     console.log(data)
+    //     dispatch(deleteReview(data));
+    //     // return data
+    // }
 };
 
 
@@ -39,6 +62,10 @@ export const postReview = (payload) => async (dispatch) => {
         case ADD_REVIEW:
             newState = Object.assign({}, state);
             newState.newReview = action.newReview;
+            return newState;
+        case DELETE_REVIEW:
+            newState = Object.assign({}, state);
+            // newState.newReview = action.newReview;
             return newState;
         default:
             return state;

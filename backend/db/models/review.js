@@ -19,5 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     });
     return await Review.findByPk(newReview.id);
   };
+  Review.deleteReview = async function ({ id }) {
+    const newReview = await Review.destroy({
+      where: {id: id}
+    });
+    return await Review.findByPk(newReview.id);
+  };
   return Review;
 };

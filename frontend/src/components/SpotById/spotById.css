@@ -6,13 +6,15 @@
     /* background-color: red; */
 }
 .map{
-    margin-top: 190px;
-    position: relative;
+    /* margin-top: 190px; */
+    position: fixed;
+    top: 190;
+    right: 0
 }
 .spot{
-    margin-top: 190px;
-    height: 1140px;
-    overflow-x: auto;
+    /* margin-top: 190px; */
+    /* height: 1140px; */
+    /* overflow-x: auto; */
 }
 .swordCoastMap{
     width: 834px;
@@ -28,4 +30,9 @@
     box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
     /* width: 100px; */
     transform-origin: 150% bottom;
+}
+#spacer{
+    height: 190px;
+    background-color: white;
+    z-index: 10;
 }

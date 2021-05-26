@@ -29,15 +29,15 @@ function Navigation(){
             document.querySelector(".profile")?.classList.add("profile--resize");
 
         } else if (document.body.scrollTop < 88 || document.documentElement.scrollTop < 88) {
-            document.querySelector(".navbarContainer").classList.remove("navbarContainer--resize");
-            document.querySelector(".navbar--element1").classList.remove("navbar_element--resize1");
-            document.querySelector(".navbar--element2").classList.remove("navbar_element--resize2");
-            document.querySelector(".navbar--element3").classList.remove("navbar_element--resize3");
-            document.querySelector(".homepageLogo").classList.remove("homepageLogo--resize");
-            document.querySelector(".homeSearch").classList.remove("homeSearch--resize");
-            document.querySelector(".navbar--searchBar").classList.remove("navbar--searchBar--resize");
-            document.querySelector(".searchIcon").classList.remove("searchIcon--resize");
-            document.querySelector(".profile").classList.remove("profile--resize");
+            document.querySelector(".navbarContainer")?.classList.remove("navbarContainer--resize");
+            document.querySelector(".navbar--element1")?.classList.remove("navbar_element--resize1");
+            document.querySelector(".navbar--element2")?.classList.remove("navbar_element--resize2");
+            document.querySelector(".navbar--element3")?.classList.remove("navbar_element--resize3");
+            document.querySelector(".homepageLogo")?.classList.remove("homepageLogo--resize");
+            document.querySelector(".homeSearch")?.classList.remove("homeSearch--resize");
+            document.querySelector(".navbar--searchBar")?.classList.remove("navbar--searchBar--resize");
+            document.querySelector(".searchIcon")?.classList.remove("searchIcon--resize");
+            document.querySelector(".profile")?.classList.remove("profile--resize");
 
 
 
