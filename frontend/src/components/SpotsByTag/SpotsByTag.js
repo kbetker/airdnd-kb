@@ -42,7 +42,7 @@ export default function SpotsByTag(){
                      const num = getNum[1]
                   let getListDiv = document.getElementById(`list-${num}`)
                   getListDiv.classList.add('list--hover');
-                  getListDiv.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+                  getListDiv.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
                 })
 
                 mapDivs[i].addEventListener("mouseleave", (e)=>{
@@ -61,15 +61,6 @@ export default function SpotsByTag(){
 
 
 
-
-
-
-
-
-
-
-
-
     const spotsByTag = useSelector(state => state.spots.spots)
     if(!spotsByTag){return null;}
 
@@ -85,7 +76,8 @@ export default function SpotsByTag(){
     }
 
     return(
-
+    <>
+    <div id='spacer'></div>
     <div className="spotWrapper" >
 
         <div className="spot">
@@ -118,6 +110,7 @@ export default function SpotsByTag(){
 
         </div>
     </div>
+    </>
     )
 
 }

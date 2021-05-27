@@ -50,8 +50,8 @@
 
 .profile{
     height: 80px;
-    justify-self: flex-end;
-    align-self:flex-end;
+    /* justify-self: flex-end; */
+    align-self: center;
     /* background-color: rgba(96, 176, 196, 0.5); */
     transition: all .25s ease-in-out;
 }
@@ -108,10 +108,115 @@
     opacity: 0.8;
 }
 
+.profileMenu{
+    width: 150px;
+    background-color: white;
+    border-radius: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    transition: all .25s ease-in-out;
+}
+.profileMenu:hover{
+    box-shadow: 0 0  5px black;
+}
+.profileMenu--resize{
+    width: 100px;
+    padding: 0px;
 
+}
+.profileImg{
+    height: 66px;
+    width: 66px;
+    transition: all .25s ease-in-out;
+}
+.profileImg--resize{
+    height: 46px;
+    width: 46px;
+}
+.theImage{
+    height: 66px;
+    width: 66px;
+    z-index: 5;
+    filter: invert();
+    transition: all .25s ease-in-out;
+}
 
+.theImage--resize{
+    height: 46px;
+    width: 46px;
+}
 
+.profileCircle{
+    height: 62px;
+    width: 62px;
+    /* background-color: rgb(133, 133, 133); */
+    border-radius: 66px;
+    z-index: 2;
+    transition: all .25s ease-in-out;
+}
 
+.profileCircle--resize{
+    height: 44px;
+    width: 44px;
+}
+.theRing{
+    height: 66px;
+    width: 66px;
+    z-index: 15;
+    position: relative;
+    top: -72px;
+    right: 2px;
+    transition: all .25s ease-in-out;
+    /* right: 60px; */
+}
+.theRing--resize{
+    height: 46px;
+    width: 46px;
+    top: -51px
+}
+.menuIcon{
+    height: 66px;
+    width: 66px;
+    transition: all .25s ease-in-out;
+}
+.menuIcon--resize{
+    height: 46px;
+    width: 46px;
+}
+
+.menuOptions{
+    width: 150px;
+    height: 200px;
+    background-color: white;
+    position: relative;
+    top: -65px;
+    right: -180px;
+    border-radius: 25px;
+    transition: all .55s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.menuOptions--resize{
+    top: -45px;
+}
+.menuOptions--InView{
+    right: 85px;
+}
+.menu--element{
+    font-family: Helvetica, Arial,  sans-serif;
+    /* width: 130px;
+    height: 35px; */
+    border-radius: 20px;
+    padding: 10px;
+}
+.menu--element:hover{
+    background-color: rgb(216, 216, 216);
+}
 
 
 

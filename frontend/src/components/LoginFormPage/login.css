@@ -1,0 +1,36 @@
+#loginWrapper{
+    background-color: red;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#wtf{
+    display: flex;
+    margin-top: 200px;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.7);
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Helvetica, Arial, sans-serif;
+    border-radius: 20px;
+    border: 3px solid rgb(116, 116, 116);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+#password,#credential{
+    width: 250px;
+    height: 35px;
+}
+
+#loginBtn{
+    width: 254px;
+    height: 35px;
+    border-radius: 10px;
+}
+
+#credentialDiv,#passwordDiv{
+    width: 250px;
+}

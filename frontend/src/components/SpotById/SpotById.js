@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import {fetchSpotById} from '../../store/spot'
 import {Link, useHistory, Redirect} from 'react-router-dom'
 import { postReview } from '../../store/review'
-import { deleteReview } from '../../store/review'
+import { deleteReviewThunk } from '../../store/review'
 import './spotById.css'
 
 export default function SpotById(){
@@ -26,7 +26,7 @@ export default function SpotById(){
     //fetches the spot by id
     useEffect(()=>{
         dispatch(fetchSpotById(id))
-    }, [dispatch, review, id])
+    }, [dispatch, review, id, deleteMyReview])
 
 
     // for later when adding location on map... actually should it be on this page?
@@ -62,8 +62,8 @@ if(user){
 
     // deletes review
     async function deleteMyReview(id){
-        console.log("=============DELETE REVIEW", id)
-            await dispatch(deleteReview(id))
+            await dispatch(deleteReviewThunk(id))
+            history.push(`/spot/${singleSpot.id}`)
     }
 
 
@@ -113,7 +113,8 @@ if(user){
                     <h2>By: {e.User.name} on {niceDate(e.createdAt)}</h2>
                     <p>{e.body}</p>
                     <p>Location: {e.valueReview} / 5. Cleanliness: {e.cleanReview} / 5. Value: {e.valueReview} / 5. Overall: {((e.valueReview + e.cleanReview + e.valueReview) / 3).toFixed(1)}</p>
-                    {user.id === e.userId && <button onClick={() => deleteMyReview(e.id)}>{e.id}</button>}
+                    {user &&
+                    user.id === e.userId && <button onClick={() => deleteMyReview(e.id)}>{e.id}</button>}
                 </div>
                 )}
         </div>
