@@ -138,8 +138,8 @@ function Navigation(){
                      <img src="/images/profile/profile-default.png" className="theImage"></img>
                      <img src="/images/profile/aProfileRing.png" className="theRing" style={{opacity: '0'}}></img>
                              <div className="menuOptions">
-                             <NavLink to={'/login'}  className="menu--element">Log in</NavLink>
-                             <NavLink to={'/signup'}  className="menu--element">Sign In</NavLink>
+                             <NavLink to={'/login'}  className="menu--element">Log In</NavLink>
+                             <NavLink to={'/signup'}  className="menu--element">Sign Up</NavLink>
                              <NavLink to={'/login'}  className="menu--element">Demo User</NavLink>
                              </div>
                      </div>

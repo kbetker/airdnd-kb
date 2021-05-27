@@ -1,0 +1,61 @@
+#signUpForm{
+    display: flex;
+    margin-top: 200px;
+    width: 400px;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.7);
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Helvetica, Arial, sans-serif;
+    border-radius: 20px;
+    border: 3px solid rgb(116, 116, 116);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+#password,#credential{
+    width: 250px;
+    height: 35px;
+}
+
+#loginBtn{
+    width: 254px;
+    height: 35px;
+    border-radius: 10px;
+}
+
+#credentialSignUpDiv{
+    width: 250px;
+}
+
+.input--element{
+    width: 250px;
+}
+.selectProfileDiv{
+    width: 250px;
+    position: relative;
+}
+
+.select-profile{
+    display: inline-block;
+}
+.plusButton{
+    display: inline-block;
+}
+
+.profilePicturesDiv{
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    position: absolute;
+    left: 340px;
+    bottom: -200px;
+    border-radius: 15px;
+}
+.profPic{
+    width: 70px;
+    height: 70px;
+    /* background-color: red; */
+    display: inline-block;
+    /* border-radius: 95px; */
+    /* border: 1px solid black; */
+}

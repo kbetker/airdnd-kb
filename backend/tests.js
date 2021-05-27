@@ -70,3 +70,27 @@ function GetCoordinates(e)
 //   document.getElementById("x").innerHTML = PosX;
 //   document.getElementById("y").innerHTML = PosY;
 }
+
+
+
+
+let profileArray = [
+'images/profile/profile-default.png',
+'images/profile/profilepic_Barbarian.png',
+'images/profile/profilepic_Bard.png',
+'images/profile/profilepic_Cleric.png',
+'images/profile/profilepic_Druid.png',
+'images/profile/profilepic_EmeraldEnclave.png',
+'images/profile/profilepic_Fighter.png',
+'images/profile/profilepic_Harpers.png',
+'images/profile/profilepic_LordsAlliance.png',
+'images/profile/profilepic_Monk.png',
+'images/profile/profilepic_orderOfGauntlet.png',
+'images/profile/profilepic_Paladin.png',
+'images/profile/profilepic_Ranger.png',
+'images/profile/profilepic_Rogue.png',
+'images/profile/profilepic_Sorcerer.png',
+'images/profile/profilepic_Warlock.png',
+'images/profile/profilepic_Wizard.png',
+'images/profile/profilepic_Zhentarium.png',
+]
