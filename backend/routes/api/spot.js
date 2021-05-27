@@ -24,7 +24,7 @@ router.post('/new', async(req, res) => {
         const id = req.params.id
         const spotById = await Spot.findOne({
           where: {id: id},
-          include: [{model: Tag}, {model: Pic}, {model: Review, include: User}]
+          include: [{model: User}, {model: Tag}, {model: Pic}, {model: Review, include: User}]
 
         })
          res.json(spotById)

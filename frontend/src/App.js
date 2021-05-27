@@ -21,61 +21,45 @@ function App() {
   }, [dispatch]);
 
 
-  // import useSelector if using
-  // const all = useSelector(state => state.session.user);
-// let bg = '';
-
-//     if(all){
-//       bg = `${all.profileBackgroundColor}`
-//     } else {
-//       bg = 'white'
-//     }
-
-
   return isLoaded && (
 
     <>
-
       <Switch>
-      <Route exact path="/">
-      <HomepageNavigation />
-      </Route>
+        <Route exact path="/">
+          <HomepageNavigation />
+        </Route>
 
+        <Route path="/signup">
+          <Navigation />
+          <SignupFormPage />
+        </Route>
 
+        <Route path="/login">
+          <Navigation />
+          <LoginFormPage />
+        </Route>
 
-      <Route path="/signup">
-      <Navigation />
-        <SignupFormPage />
-      </Route>
+        <Route exact path="/spot/new">
+          <Navigation />
+          <SpotNew />
+        </Route>
 
-      <Route path="/login">
-      <Navigation />
-        <LoginFormPage />
-       </Route>
+        <Route exact path="/spot/:id">
+          <Navigation />
+          <SpotById />
+        </Route>
 
-       <Route exact path="/spot/new">
-       <Navigation />
-        <SpotNew />
-       </Route>
+        <Route path="/spots/:tag">
+          <Navigation />
+          <SpotsByTag />
+        </Route>
 
-       <Route exact path="/spot/:id">
-       <Navigation />
-        <SpotById />
-       </Route>
+        <Route path='/'>
+          <Navigation />
+          <FourOhFour />
+        </Route>
 
-
-       <Route path="/spots/:tag">
-       <Navigation />
-        <SpotsByTag />
-       </Route>
-{/*
-       <Route path={`*`}>
-       <Navigation />
-        <FourOhFour />
-       </Route> */}
-
-
-    </Switch>
+      </Switch>
     </>
 
   );

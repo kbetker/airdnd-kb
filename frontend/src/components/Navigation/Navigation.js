@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton'
+// import ProfileButton from './ProfileButton'
 import './navigation.css';
 import { logout } from '../../store/session'
 
@@ -9,6 +9,7 @@ import { logout } from '../../store/session'
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
     const bg = sessionUser?.profileBackgroundColor
+    const profPic = sessionUser?.profilePic
 
     useEffect(()=>{
 
@@ -108,17 +109,17 @@ function Navigation(){
 
                 <div className="navbar--element3"><div className="profile">
 
-                    {sessionUser ?
+                    {
+                    // session user logged in ?
+                    sessionUser ?
                     <div className="profileMenu" id="profileMenu">
                            <img src="/images/menuImage.png" className="menuIcon"></img>
                            <div className='profileImg'>
                                 <div className="profileCircle" style={{backgroundColor: bg}}>
-                                <img src="/images/profile/profile-default.png" className="theImage"></img>
+                                <img src={`/images/profile/${profPic}`} className="theImage"></img>
                                 <img src="/images/profile/aProfileRing.png" className="theRing"></img>
-                                        <div className="menuOptions" style={{height: '50px'}}>
-                                        {/* <NavLink to={'/login'}  className="menu--element">Log in</NavLink>
-                                        <NavLink to={'/login'}  className="menu--element">Sign In</NavLink>
-                                        <NavLink to={'/login'}  className="menu--element">Demo User</NavLink> */}
+                                        <div className="menuOptions" style={{height: '95px'}}>
+                                        <NavLink to={'/spot/new'}  className="menu--element">List your spot!</NavLink>
                                         <div className="menu--element" onClick={(e)=>logOut()}>Log Out</div>
 
                                         </div>
@@ -127,7 +128,7 @@ function Navigation(){
                     </div>
 
 
-                :
+                : // else
 
 
                 <div className="profileMenu" id="profileMenu">
@@ -140,8 +141,6 @@ function Navigation(){
                              <NavLink to={'/login'}  className="menu--element">Log in</NavLink>
                              <NavLink to={'/signup'}  className="menu--element">Sign In</NavLink>
                              <NavLink to={'/login'}  className="menu--element">Demo User</NavLink>
-                             {/* <div className="menu--element" onClick={(e)=>logOut()}>Log Out</div> */}
-
                              </div>
                      </div>
                  </div>

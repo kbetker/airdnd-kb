@@ -39,9 +39,42 @@
     z-index: 55;
 }
 .list{
-    background-color: rgb(212, 197, 197);
+    background-color: rgb(240, 238, 238);
+    display: flex;
     transition: all .55s ease-in-out;
+    margin: 0 0 20px 20px;
+    padding: 15px;
+    border-bottom-left-radius: 35px;
+    border-top-left-radius: 35px;
+    border: 1px solid rgb(175, 175, 175);
 }
 .list:hover,.list--hover {
-    background-color: blueviolet;
+    background-color: rgb(236, 224, 206);
+    border: 1px solid rgb(240, 106, 106);
+}
+
+.spotImage{
+    width: 400px;
+    border-radius: 25px;
+    border: 1px solid rgb(136, 136, 136);
+}
+.spotContent{
+    margin-left: 25px;
+    font-family: Helvetica, Arial, sans-serif;
+    color: black;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    /* background-color: coral; */
+    justify-content: space-between;
+    /* height: 300px */
+}
+hr{
+    color: rgb(161, 161, 161);
+    /* width: 150px; */
+    align-self: flex-start;
+}
+.bottom{
+    display: flex;
+    justify-content: space-between;
 }
