@@ -259,20 +259,10 @@ export default function SpotById() {
 
                         </div>
 
-
-
-
                         <div className="divHR"></div>
 
 
-
-
-
-
-
                     <div className="reviews">
-
-
 
                 {singleSpot.Reviews.map((e) =>
                         <div key={e.id} className="reviewDiv">
@@ -299,21 +289,54 @@ export default function SpotById() {
                                 {e.body}
                             </div>
 
-                            <div>
-                                    <div>Location: {e.valueReview} / 5. Cleanliness: {e.cleanReview} / 5. Value: {e.valueReview} / 5. Overall: {((e.valueReview + e.cleanReview + e.valueReview) / 3).toFixed(1)}</div>
-
+                            <div className="reviewAndDeleteBtn">
+                                    <div className="userReviews">Location: {e.valueReview} / 5. Cleanliness: {e.cleanReview} / 5. Value: {e.valueReview} / 5. Overall: {((e.valueReview + e.cleanReview + e.valueReview) / 3).toFixed(1)}</div>
+                                    {user && user.id === e.userId && <button onClick={() => deleteMyReview(e.id)} className="deleteReviewBtn">Delete Review</button>}
                             </div>
 
-
-
-                            {/* <p>Location: {e.valueReview} / 5. Cleanliness: {e.cleanReview} / 5. Value: {e.valueReview} / 5. Overall: {((e.valueReview + e.cleanReview + e.valueReview) / 3).toFixed(1)}</p>
-                            {user &&
-                                user.id === e.userId && <button onClick={() => deleteMyReview(e.id)}>{e.id}</button>} */}
                         </div>
-
-
-
                     )}
+
+
+                    {user &&
+                         <div className="reviewDiv">
+                            <form onSubmit={(e) => reviewSubmit(e)} className="formFields">
+                                <h2>Add Review:</h2>
+                                <div className="form--element">
+                                    <label htmlFor="body">Review</label>
+                                    <textarea id="body" onChange={(e) => setBody(e.target.value)} value={body}></textarea>
+                                </div>
+
+                                <div className="form--element">
+                                    <label htmlFor="cleanReview">Cleanliness</label>
+                                    <input type="number" id="cleanReview" onChange={(e) => setCleanReview(e.target.value)} value={cleanReview}></input>
+                                </div>
+
+                                <div className="form--element">
+                                    <label htmlFor="locationReview">Location</label>
+                                    <input type="number" id="locationReview" onChange={(e) => setLocationReview(e.target.value)} value={locationReview}></input>
+                                </div>
+
+                                <div className="form--element">
+                                    <label htmlFor="valueReview">Value</label>
+                                    <input type="number" id="valueReview" onChange={(e) => setValueReview(e.target.value)} value={valueReview}></input>
+                                </div>
+
+                                <button type="submit">Submit</button>
+
+                            </form>
+                        </div>
+                    }
+
+
+
+
+
+
+
+
+
+
                     </div>
 
 
@@ -326,32 +349,7 @@ export default function SpotById() {
 
 
 
-                    {user &&
-                        <div>
-                            <h2>Add Review:</h2>
-                            <br />
-                            <form onSubmit={(e) => reviewSubmit(e)}>
-                                <label htmlFor="body">Review</label>
-                                <textarea id="body" onChange={(e) => setBody(e.target.value)} value={body}></textarea>
-                                <br />
 
-                                <label htmlFor="cleanReview">Cleanliness</label>
-                                <input type="number" id="cleanReview" onChange={(e) => setCleanReview(e.target.value)} value={cleanReview}></input>
-                                <br />
-
-                                <label htmlFor="locationReview">Location</label>
-                                <input type="number" id="locationReview" onChange={(e) => setLocationReview(e.target.value)} value={locationReview}></input>
-                                <br />
-
-                                <label htmlFor="valueReview">Value</label>
-                                <input type="number" id="valueReview" onChange={(e) => setValueReview(e.target.value)} value={valueReview}></input>
-                                <br />
-
-                                <button type="submit">Submit</button>
-
-                            </form>
-                        </div>
-                    }
                 </div>
 
 

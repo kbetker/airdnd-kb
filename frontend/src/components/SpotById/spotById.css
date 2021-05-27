@@ -209,6 +209,7 @@
     justify-content: space-between;
     min-height: 250px;
     border: 1px solid rgb(148, 148, 148);
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .nameAndIcon{
@@ -230,9 +231,27 @@
 .reviewBody{
     font-family: Helvetica, Arial,  sans-serif;
     font-size: 14px;
-
+    font-style: italic;
 }
 
+
+.userReviews{
+    font-family: Helvetica, Arial,  sans-serif;
+    font-size: 14px;
+}
+
+.reviewAndDeleteBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.deleteReviewBtn{
+    margin-right: 20px;
+    height: 25px;
+    background-color: darkred;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
 
 
 .map{
@@ -255,4 +274,16 @@
     box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
     /* width: 100px; */
     transform-origin: 150% bottom;
+}
+.formFields{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 250px;
+    width: 450px;
+    margin: 0 auto;
+}
+.form--element{
+    display: flex;
+    flex-direction: column;
 }
