@@ -33,15 +33,12 @@ export default function SpotById() {
     }, [dispatch, review, id, deleted])
 
 
-    // for later when adding location on map... actually should it be on this page?
-    useEffect(() => {
-        let getXY = document.querySelector(".map")
-        if (getXY) {
-            getXY.addEventListener("mouseup", (e) => {
-                console.log('woot')
-            })
-        }
-    })
+      // scrolls to top of page
+      useEffect(() => {
+        const topDiv = document.getElementById('spacer')
+        topDiv?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+
+     }, [])
 
     if (!singleSpot) { return null }
 
@@ -338,7 +335,7 @@ export default function SpotById() {
 
 
                 <div className="map">
-                    <div id="locOnMap" style={{ top: singleSpot.coordinateY, left: singleSpot.coordinateX }}>{singleSpot.title}</div>
+                    <div id="locOnMap" style={{ top: singleSpot.coordinateX, left: singleSpot.coordinateY }}>{singleSpot.title}</div>
                     <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
                 </div>
 

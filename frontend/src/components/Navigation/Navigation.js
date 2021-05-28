@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 // import ProfileButton from './ProfileButton'
 import './navigation.css';
 import { logout } from '../../store/session'
+import * as sessionActions from '../../store/session'
 
 
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
     const bg = sessionUser?.profileBackgroundColor
     const profPic = sessionUser?.profilePic
+
+    function demoLogin (credential, password) {
+        return dispatch(sessionActions.login({ credential, password }));
+      }
 
     useEffect(()=>{
 
@@ -140,7 +145,7 @@ function Navigation(){
                              <div className="menuOptions">
                              <NavLink to={'/login'}  className="menu--element">Log In</NavLink>
                              <NavLink to={'/signup'}  className="menu--element">Sign Up</NavLink>
-                             <NavLink to={'/login'}  className="menu--element">Demo User</NavLink>
+                             <div onClick={()=>demoLogin('demo-user', 'password')}  className="menu--element">Demo User</div>
                              </div>
                      </div>
                  </div>
