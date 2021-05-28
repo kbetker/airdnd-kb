@@ -149,8 +149,8 @@
 }
 
 .profileCircle{
-    height: 62px;
-    width: 62px;
+    height: 60px;
+    width: 60px;
     /* background-color: rgb(133, 133, 133); */
     border-radius: 66px;
     z-index: 2;
@@ -167,7 +167,7 @@
     z-index: 15;
     position: relative;
     top: -72px;
-    right: 2px;
+    right: 0px;
     transition: all .25s ease-in-out;
     /* right: 60px; */
 }

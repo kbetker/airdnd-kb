@@ -43,6 +43,11 @@ export default function SpotNew(){
     }
 
     return(
+<>
+        <div id='spacer'></div>
+        <div className="spotWrapper">
+
+        <div className="spotById">
         <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="title">Title:</label>
             <input type="text" id="title" onChange={(e) => setTitle(e.target.value)} value={title}></input>
@@ -71,5 +76,17 @@ export default function SpotNew(){
             <button type="submit">Submit</button>
 
         </form>
+        </div>
+
+
+
+
+
+
+</div>
+
+</>
+
+
     )
 }
