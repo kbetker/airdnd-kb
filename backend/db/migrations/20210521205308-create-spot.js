@@ -33,7 +33,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       region: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
         default: 'Sword Coast'
       },
