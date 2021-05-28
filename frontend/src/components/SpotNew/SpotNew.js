@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { postCreatedSpot } from '../../store/spot'
 import { useHistory } from 'react-router-dom'
@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 
 export default function SpotNew(){
     const history = useHistory();
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState('Place your marker');
     const [location, setLocation] = useState('');
     const [coordinateX, setCoordinateX] = useState(0);
     const [coordinateY, setCoordinateY] = useState(0);
@@ -22,6 +22,74 @@ export default function SpotNew(){
     const dispatch = useDispatch();
     // useEffect()
     const userId = useSelector(state => state.session.user)
+
+    useEffect(() => {
+        let getXY = document.querySelector(".map")
+        if (getXY) {
+            getXY.addEventListener("mouseup", (e) => {
+                GetCoordinates()
+            })
+        }
+
+        function FindPosition(oElement)
+        {
+          if(typeof( oElement.offsetParent ) != "undefined")
+          {
+            for(var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent)
+            {
+              posX += oElement.offsetLeft;
+              posY += oElement.offsetTop;
+            }
+              return [ posX, posY ];
+            }
+            else
+            {
+              return [ oElement.x, oElement.y ];
+            }
+        }
+
+        function GetCoordinates(e)
+        {
+          let PosX = 0;
+          let PosY = 0;
+          let ImgPos;
+          ImgPos = FindPosition(getXY);
+          if (!e) var e = window.event;
+          if (e.pageX || e.pageY)
+          {
+            PosX = e.pageX;
+            PosY = e.pageY;
+          }
+          else if (e.clientX || e.clientY)
+            {
+              PosX = e.clientX + document.body.scrollLeft
+                + document.documentElement.scrollLeft;
+              PosY = e.clientY + document.body.scrollTop
+                + document.documentElement.scrollTop;
+            }
+          PosX = PosX - ImgPos[0];
+          PosY = PosY - ImgPos[1];
+          setCoordinateX(PosX)
+          setCoordinateY(PosY)
+        //   document.getElementById("x").innerHTML = PosX;
+        //   document.getElementById("y").innerHTML = PosY;
+        }
+
+
+
+
+
+
+
+
+
+
+    })
+
+
+
+
+
     if(!userId){return null;}
     const payload = {
         title,
@@ -41,6 +109,30 @@ export default function SpotNew(){
     //    console.log(createSpot.newSpot.id)
         history.push(`/spot/${createSpot.newSpot.id}`)
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return(
 <>
@@ -78,6 +170,10 @@ export default function SpotNew(){
         </form>
         </div>
 
+        <div className="map">
+        <div id="locOnMap" draggable="true" style={{ top: coordinateY, left: coordinateX }}>{title}</div>
+                    <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
+                </div>
 
 
 

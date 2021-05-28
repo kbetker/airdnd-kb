@@ -158,11 +158,11 @@ export default function SpotById() {
                             </div>
                             <div className="rightPics">
                                     <div className="upperLeft">
-                                        <img src={singleSpot.Pics[0]?.picUrl ? singleSpot.Pics[0].picUrl : '/images/morePhotosComingT.jpg'} className="upLeftPic" alt="up left pic"></img>
+                                        <img src={singleSpot.Pics[0]?.picUrl ? singleSpot.Pics[0].picUrl : '/images/morePhotosComingB.jpg'} className="upLeftPic" alt="up left pic"></img>
                                     </div>
 
                                     <div className="upperRight">
-                                        <img src={singleSpot.Pics[1] ? singleSpot.Pics[1].picUrl : '/images/morePhotosComingT.jpg'} className="upRightPic" alt="up right pic"></img>
+                                        <img src={singleSpot.Pics[1] ? singleSpot.Pics[1].picUrl : '/images/morePhotosComingB.jpg'} className="upRightPic" alt="up right pic"></img>
                                     </div>
 
                                     <div className="lowerLeft">
@@ -355,7 +355,7 @@ export default function SpotById() {
 
 
                 <div className="map">
-                    <div id="locOnMap" style={{ top: singleSpot.coordinateX, left: singleSpot.coordinateY }}>{singleSpot.title}</div>
+                    <div id="locOnMap" style={{ top: singleSpot.coordinateY, left: singleSpot.coordinateX }}>{singleSpot.title}</div>
                     <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
                 </div>
 
