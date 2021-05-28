@@ -113,11 +113,11 @@ function Navigation(){
                     // session user logged in ?
                     sessionUser ?
                     <div className="profileMenu" id="profileMenu">
-                           <img src="/images/menuImage.png" className="menuIcon"></img>
+                           <img src="/images/menuImage.png" className="menuIcon" alt="menu icon"></img>
                            <div className='profileImg'>
                                 <div className="profileCircle" style={{backgroundColor: bg}}>
-                                <img src={`/images/profile/${profPic}`} className="theImage"></img>
-                                <img src="/images/profile/aProfileRing.png" className="theRing"></img>
+                                <img src={`/images/profile/${profPic}`} className="theImage" alt="profileImage"></img>
+                                <img src="/images/profile/aProfileRing.png" className="theRing" alt="ringImage"></img>
                                         <div className="menuOptions" style={{height: '95px'}}>
                                         <NavLink to={'/spot/new'}  className="menu--element">List your spot!</NavLink>
                                         <div className="menu--element" onClick={(e)=>logOut()}>Log Out</div>
@@ -132,11 +132,11 @@ function Navigation(){
 
 
                 <div className="profileMenu" id="profileMenu">
-                <img src="/images/menuImage.png" className="menuIcon"></img>
-                <div className='profileImg'>
+                <img src="/images/menuImage.png" className="menuIcon" alt="menu icon logged out"></img>
+                <div className='profileImg' alt="logged out profile">
                      <div className="profileCircle" style={{backgroundColor: '#777777'}}>
-                     <img src="/images/profile/profile-default.png" className="theImage"></img>
-                     <img src="/images/profile/aProfileRing.png" className="theRing" style={{opacity: '0'}}></img>
+                     <img src="/images/profile/profile-default.png" className="theImage" alt="default profile"></img>
+                     <img src="/images/profile/aProfileRing.png" className="theRing" style={{opacity: '0'}} alt="default ring"></img>
                              <div className="menuOptions">
                              <NavLink to={'/login'}  className="menu--element">Log In</NavLink>
                              <NavLink to={'/signup'}  className="menu--element">Sign Up</NavLink>
