@@ -27,7 +27,7 @@ function HomepageNavigation(){
                     <div className="nearbyDiv"></div>
                     <div className="nearbyDiv"></div>
 
-                   <Link to='/spot/2' className="nearbyDiv">
+                   <Link to='/spot/1' className="nearbyDiv">
 
                         <img src="/images/homepage/neverWinter.jpg" className="nearbyPic" alt="Neverwinter"></img>
                             <div className="nearbyText">
@@ -47,7 +47,7 @@ function HomepageNavigation(){
 
                     </Link>
 
-                    <Link to='/spot/2' className="nearbyDiv">
+                    <Link to='/spot/3' className="nearbyDiv">
 
                         <img src="/images/homepage/luskan.jpg" className="nearbyPic" alt="Luskan"></img>
                             <div className="nearbyText">
@@ -57,7 +57,7 @@ function HomepageNavigation(){
 
                     </Link>
 
-                    <Link to='/spot/2' className="nearbyDiv">
+                    <Link to='/spot/4' className="nearbyDiv">
 
                         <img src="/images/homepage/mitrhalHall.jpg" className="nearbyPic" alt="Mithral Hall"></img>
                             <div className="nearbyText">
@@ -67,7 +67,7 @@ function HomepageNavigation(){
 
                     </Link>
 
-                    <Link to='/spot/2' className="nearbyDiv">
+                    <Link to='/spot/5' className="nearbyDiv">
 
                         <img src="/images/homepage/IcewindDale.jpg" className="nearbyPic" alt="Icewind Dale"></img>
                             <div className="nearbyText">
@@ -77,7 +77,7 @@ function HomepageNavigation(){
 
                     </Link>
 
-                    <Link to='/spot/2' className="nearbyDiv">
+                    <Link to='/spot/6' className="nearbyDiv">
 
                         <img src="/images/homepage/waterdeep.jpg" className="nearbyPic" alt="Waterdeep"></img>
                             <div className="nearbyText">
@@ -87,7 +87,7 @@ function HomepageNavigation(){
 
                     </Link>
 
-                    <Link to='/spot/2' className="nearbyDiv">
+                    <Link to='/spot/7' className="nearbyDiv">
 
                         <img src="/images/homepage/conyBerry.jpg" className="nearbyPic" alt="Cony Berry"></img>
                             <div className="nearbyText">
@@ -97,9 +97,9 @@ function HomepageNavigation(){
 
                     </Link>
 
-                    <Link to='/spot/2' className="nearbyDiv">
+                    <Link to='/spot/8' className="nearbyDiv">
 
-                        <img src="/images/homepage/neverWinter.jpg" className="nearbyPic" alt="menzobaranzan"></img>
+                        <img src="/images/homepage/menzobaranzan.jpg" className="nearbyPic" alt="menzobaranzan"></img>
                             <div className="nearbyText">
                                 <h2>Menzobaranzan</h2>
                                <p className="nearbyText"> ??? </p>
@@ -112,22 +112,22 @@ function HomepageNavigation(){
             <div id="liveAnywhere">
                 <div className="liveAnywhere--element"><h1>Live Anywhere</h1></div><div className="liveAnywhere--element"></div><div></div><div></div>
 
-                <Link to="/spots/coastal" className="liveAnywhere--element">
+                <Link to="/spots/Forest" className="liveAnywhere--element">
                     <img src="/images/homepage/outdoorExperience.jpg" className="liveAnywhereImg" alt="Outdoor Experiences"></img>
                     <h2>Outdoor Experiences</h2>
                 </Link>
 
-                <Link to="/spots/wat" className="liveAnywhere--element">
+                <Link to="/spots/Sewers" className="liveAnywhere--element">
                     <img src="/images/homepage/uniqueStays.jpg" className="liveAnywhereImg" alt="Unique Stays"></img>
                     <h2>Unique Stays</h2>
                 </Link>
 
-                <Link to="/spots/coastal" className="liveAnywhere--element">
+                <Link to="/spots/Tundra" className="liveAnywhere--element">
                     <img src="/images/homepage/entireHouse.jpg" className="liveAnywhereImg" alt="Entire House"></img>
                     <h2>Entire House</h2>
                 </Link>
 
-                <Link to="/spots/coastal" className="liveAnywhere--element">
+                <Link to="/spots/Badlands" className="liveAnywhere--element">
                     <img src="/images/homepage/takesFamiliars.jpg" className="liveAnywhereImg" alt="Takes Famliars"></img>
                     <h2>Takes Famliars</h2>
                 </Link>

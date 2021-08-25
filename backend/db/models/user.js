@@ -30,6 +30,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    hashedPassword: {
+      type: DataTypes.STRING.BINARY,
+      allowNull: false,
+      validate: {
+        len: [60, 60]
+      },
+    },
     isHost:{
       type: DataTypes.BOOLEAN,
       default: false,
@@ -50,13 +57,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       default: 'white',
     },
-    hashedPassword: {
-      type: DataTypes.STRING.BINARY,
-      allowNull: false,
-      validate: {
-        len: [60, 60]
-      },
-    },
+
   },
   {
     defaultScope: {
@@ -142,12 +143,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ name, username, email, password, about, profilePic, profileBackgroundColor }) {
+
+    console.log( name, username, email, password, about, profilePic, profileBackgroundColor )
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
-      username,
-      email,
-      hashedPassword,
+      name, username, email, hashedPassword, about, profilePic, profileBackgroundColor
+
+
     });
     return await User.scope('currentUser').findByPk(user.id);
   };

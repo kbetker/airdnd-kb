@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { fetchSpotById } from '../../store/spot'
-import { Link, useHistory, Redirect } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { postReview } from '../../store/review'
 import { deleteReviewThunk } from '../../store/review'
 import './spotById.css'
@@ -22,8 +22,8 @@ export default function SpotById() {
     const singleSpot = useSelector(state => state.spot.spot)
     const user = useSelector(state => state.session.user)
     const review = useSelector(state => state.review)
-    const profPic = singleSpot?.User.profilePic
-    const bgColor = singleSpot?.User.profileBackgroundColor
+    // const profPic = singleSpot?.User.profilePic
+    // const bgColor = singleSpot?.User.profileBackgroundColor
 
     //fetches the spot by id
     const [deleted, setDeleted] = useState([]);
@@ -33,15 +33,12 @@ export default function SpotById() {
     }, [dispatch, review, id, deleted])
 
 
-    // for later when adding location on map... actually should it be on this page?
-    useEffect(() => {
-        let getXY = document.querySelector(".map")
-        if (getXY) {
-            getXY.addEventListener("mouseup", (e) => {
-                console.log('woot')
-            })
-        }
-    })
+      // scrolls to top of page
+      useEffect(() => {
+        const topDiv = document.getElementById('spacer')
+        topDiv?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+
+     }, [])
 
     if (!singleSpot) { return null }
 
@@ -158,11 +155,11 @@ export default function SpotById() {
                             </div>
                             <div className="rightPics">
                                     <div className="upperLeft">
-                                        <img src={singleSpot.Pics[0]?.picUrl ? singleSpot.Pics[0].picUrl : '/images/morePhotosComingT.jpg'} className="upLeftPic" alt="up left pic"></img>
+                                        <img src={singleSpot.Pics[0]?.picUrl ? singleSpot.Pics[0].picUrl : '/images/morePhotosComingB.jpg'} className="upLeftPic" alt="up left pic"></img>
                                     </div>
 
                                     <div className="upperRight">
-                                        <img src={singleSpot.Pics[1] ? singleSpot.Pics[1].picUrl : '/images/morePhotosComingT.jpg'} className="upRightPic" alt="up right pic"></img>
+                                        <img src={singleSpot.Pics[1] ? singleSpot.Pics[1].picUrl : '/images/morePhotosComingB.jpg'} className="upRightPic" alt="up right pic"></img>
                                     </div>
 
                                     <div className="lowerLeft">
@@ -190,8 +187,8 @@ export default function SpotById() {
 
                          </div>
 
+                          <div className="tags">Tags: {singleSpot.Tags.map((e) => <Link to={`/spots/${e.tag}`} key={e.id}> {e.tag} </Link>)}</div>
                         <div className="divHR"></div>
-
 
                         <div className="reviewsStats">
                             <div className="starAndRating">
@@ -329,24 +326,7 @@ export default function SpotById() {
                     }
 
 
-
-
-
-
-
-
-
-
                     </div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -364,27 +344,3 @@ export default function SpotById() {
     )
 
 }
-
-
-
-
-   {/* <div><h1>Title: {singleSpot.title}</h1></div>
-                        <div><h2>Location: {singleSpot.location}</h2></div>
-                        <div>Price: {singleSpot.price}(gp)</div>
-                        <div>Allows Familiars?: {singleSpot.allowsFamiliar ? <span>Yes</span> : <span>No</span>}</div>
-                        <div style={{ display: 'inline-block' }}>
-                            <img src={singleSpot.mainPic} style={{ height: '250px' }} alt="main view"></img>
-                            {singleSpot.Pics.map((e) => <img src={e.picUrl} style={{ height: '125px' }} key={e.id} alt="images"></img>)}
-                        </div>
-
-                        <div>
-                            Tags:
-                               <ul>
-                                {singleSpot.Tags.map((e) =>
-                                    <Link to={`/spots/${e.tag}`} key={e.id}>
-                                        <li>{e.tag}</li>
-                                    </Link>
-                                )}
-                            </ul>
-                        </div>
-                        <div>Coordinates: X:{singleSpot.coordinateX}, Y:{singleSpot.coordinateY}</div> */}

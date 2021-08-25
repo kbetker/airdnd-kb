@@ -28,7 +28,7 @@ module.exports = {
       },
       isHost: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
         default: false,
       },
       about: {

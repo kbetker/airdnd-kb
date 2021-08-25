@@ -287,3 +287,9 @@
     display: flex;
     flex-direction: column;
 }
+.tags{
+    font-family: Helvetica, Arial,  sans-serif;
+    color: black;
+    font-style: italic;
+    margin-left: 20px;
+}

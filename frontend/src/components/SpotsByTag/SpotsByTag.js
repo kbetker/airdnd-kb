@@ -13,6 +13,13 @@ export default function SpotsByTag() {
         dispatch(fetchspotsByTag(tag))
     }, [dispatch, tag])
 
+    // scrolls to top of page
+    useEffect(() => {
+       const topDiv = document.getElementById('spacer')
+       topDiv?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+
+    }, [])
+
 
     // ================= adds hover effect to locations on map
     useEffect(() => {
