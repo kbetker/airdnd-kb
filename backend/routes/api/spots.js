@@ -29,7 +29,7 @@ const router = express.Router();
           where: {
             [Op.or]: [
               { title: {[Op.startsWith]: titleUpperCase} },
-              { title: {[Op.iLike]: title} },
+              { title: {[Op.regexp]: title} },
               { title: {[Op.substring]: title} }
             ]
           }
