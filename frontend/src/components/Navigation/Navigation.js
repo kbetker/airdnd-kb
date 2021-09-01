@@ -5,12 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import './navigation.css';
 import { logout } from '../../store/session'
 import * as sessionActions from '../../store/session'
+import { searchSpotsByTitle } from '../../store/spots';
 
 
 function Navigation(){
     const sessionUser = useSelector(state => state.session.user);
     const bg = sessionUser?.profileBackgroundColor
     const profPic = sessionUser?.profilePic
+    const [searchWord, setSearchWord] = useState("")
+    const dispatch = useDispatch();
 
     function demoLogin (credential, password) {
         return dispatch(sessionActions.login({ credential, password }));
@@ -83,7 +86,6 @@ function Navigation(){
 
     })
 
-    const dispatch = useDispatch();
     function logOut(e){
         return dispatch(logout())
     }
@@ -91,7 +93,9 @@ function Navigation(){
 
     function handleSearch(e){
         e.preventDefault()
-        console.log('woot')
+        console.log(searchWord, "WTFWTFWTFWTFWTWTFWTFWTFWTFWTFWTFWTFWFTFWT")
+        dispatch(searchSpotsByTitle(searchWord))
+
     }
 
 
@@ -106,7 +110,14 @@ function Navigation(){
 
                 <div className="navbar--element2">
                     <form onSubmit={(e) => handleSearch(e)} className='navbar--searchBar'>
-                        <input type="text" className="homeSearch"></input>
+                        <input
+                        type="text"
+                        className="homeSearch"
+                        onChange={(e)=>setSearchWord(e.target.value)}
+                        value={searchWord}
+                        >
+
+                        </input>
                         <button style={{backgroundImage: 'url(/images/searchIcon.png)'}} className="searchIcon"></button>
                     </form>
                 </div>

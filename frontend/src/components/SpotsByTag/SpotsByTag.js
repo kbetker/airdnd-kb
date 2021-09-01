@@ -7,6 +7,8 @@ import './spotsByTag.css'
 
 export default function SpotsByTag() {
     const { tag } = useParams();
+    const { wtf } = useParams();
+
     const dispatch = useDispatch();
 
     useEffect(() => {

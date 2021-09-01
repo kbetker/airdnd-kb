@@ -54,6 +54,11 @@ function App() {
           <SpotsByTag />
         </Route>
 
+        <Route path="/spots/search/:title">
+          <Navigation />
+          <SpotsByTag />
+        </Route>
+
         <Route path='/'>
           <Navigation />
           <FourOhFour />
