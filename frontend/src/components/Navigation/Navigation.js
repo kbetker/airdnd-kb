@@ -136,6 +136,7 @@ function Navigation(){
                                 <img src="/images/profile/aProfileRing.png" className="theRing" alt="ringImage"></img>
                                         <div className="menuOptions" style={{height: '95px'}}>
                                         <NavLink to={'/spot/new'}  className="menu--element">List your spot!</NavLink>
+                                        <NavLink to={'/userPage'}  className="menu--element">My Page</NavLink>
                                         <div className="menu--element" onClick={(e)=>logOut()}>Log Out</div>
 
                                         </div>
@@ -156,6 +157,7 @@ function Navigation(){
                              <div className="menuOptions">
                              <NavLink to={'/login'}  className="menu--element">Log In</NavLink>
                              <NavLink to={'/signup'}  className="menu--element">Sign Up</NavLink>
+
                              <div onClick={()=>demoLogin('demo-user', 'password')}  className="menu--element">Demo User</div>
                              </div>
                      </div>

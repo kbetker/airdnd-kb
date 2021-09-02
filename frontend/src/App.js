@@ -9,6 +9,7 @@ import HomepageNavigation from './components/HomepageNavigation'
 import SpotById from './components/SpotById'
 import SpotsByTag from './components/SpotsByTag'
 import SpotNew from './components/SpotNew'
+import UserPage from "./components/UserPage/UserPage";
 import FourOhFour from './components/FourOhFour'
 import * as sessionActions from "./store/session";
 
@@ -57,6 +58,11 @@ function App() {
         <Route path="/spots/search/:title">
           <Navigation />
           <SpotsByTag />
+        </Route>
+
+        <Route path="/userpage">
+          <Navigation />
+          <UserPage />
         </Route>
 
         <Route path='/'>

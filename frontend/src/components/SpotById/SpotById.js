@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { fetchSpotById } from '../../store/spot'
 import { useHistory, Link } from 'react-router-dom'
 import { postReview } from '../../store/review'
 import { deleteReviewThunk } from '../../store/review'
+import { bookSpot } from '../../store/booking';
 import './spotById.css'
 
 export default function SpotById() {
@@ -17,6 +18,7 @@ export default function SpotById() {
     const [locationReview, setLocationReview] = useState(1);
     const [valueReview, setValueReview] = useState(1);
     const [bookForm, setBookForm] = useState(false)
+    const loggedIn = useRef(false)
 
     //======== grap one by id =======================
     const history = useHistory()
@@ -46,6 +48,8 @@ export default function SpotById() {
         topDiv?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
 
     }, [])
+
+
 
     if (!singleSpot) { return null }
 
@@ -136,6 +140,8 @@ export default function SpotById() {
     }
 
     function toggleBookSpot() {
+        if (user?.id === undefined) { alert("You must have an account and be logged in to book this Spot"); return }
+
         bookForm ? setBookForm(false) : setBookForm(true)
     }
 
@@ -147,15 +153,16 @@ export default function SpotById() {
             startDate,
             endDate,
             spotId: singleSpot.id,
-            numGuests
+            numGuests: parseInt(numGuests)
         };
-
-        console.log(bookingPayload)
+        let data = dispatch(bookSpot(bookingPayload))
+        console.log(data)
     }
 
     // getXY.addEventListener("mousedown", (e)=>{
     //     // GetCoordinates(e);
     //     console.log('woot')
+
 
     return (
         <>
@@ -208,6 +215,7 @@ export default function SpotById() {
                                 <input type="date" onChange={(e) => setEndDate(e.target.value)} value={endDate}></input>
                                 <input type="number" onChange={(e) => setNumGuests(e.target.value)} value={numGuests}></input>
                                 <button type="submit">Submit</button>
+                                <button onClick={(e) => toggleBookSpot()}>Cancel</button>
                             </form>
                             <div className="divHR"></div>
 
@@ -221,7 +229,7 @@ export default function SpotById() {
 
                         <div className="spotById--price--book">
                             <h2 className="loc">{singleSpot.price} (gp) / night</h2>
-                            {user.id !== singleSpot?.User.id && <button className="bookSpot" onClick={(e) => toggleBookSpot()}>Book Spot</button>}
+                            {user?.id !== singleSpot?.User.id && !bookForm && <button className="bookSpot" onClick={(e) => toggleBookSpot()}>Book Spot</button>}
                         </div>
 
                     </div>
