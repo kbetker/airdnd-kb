@@ -2,6 +2,8 @@ import { csrfFetch } from './csrf';
 // import { useParams } from 'react-router-dom';
 const BOOK_SPOT = 'session/BOOK_SPOT';
 const BOOKED_SPOTS = 'session/BOOKED_SPOTS';
+const DELETE_BOOKING = 'session/DELETE_BOOKING';
+
 
 
 export const bookSpotFunc = ( payload ) => {
@@ -18,9 +20,15 @@ export const bookedSpots = ( data ) => {
     };
 };
 
+export const deltaco = ( data ) => {
+    return {
+        type: DELETE_BOOKING,
+        data
+    };
+};
+
 
 export const bookSpot = (payload) => async (dispatch) => {
-    console.log(payload, "in the thunk")
     const response = await csrfFetch(`/api/booking/new`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -35,6 +43,22 @@ export const bookSpot = (payload) => async (dispatch) => {
         return response
     }
 };
+
+
+export const deleteBooking = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/booking/delete/${id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+    });
+    if(response.ok){
+        const data = await response.json();
+        dispatch(deltaco(data));
+        return data
+    } else {
+        return response
+    }
+};
+
 
 
 
@@ -62,9 +86,14 @@ export const getBookedSpots = (id) => async (dispatch) => {
             newState.spot = action.spot;
             return newState;
         case BOOKED_SPOTS:
-            console.log("getting here??!?!?!", action)
             newState = Object.assign({}, state);
             newState.spot = action.data;
+            return newState;
+        case DELETE_BOOKING:
+            // console.log(state, action.data.id, "In the reducer *******************************")
+            newState = Object.assign({}, state);
+            let newArr = newState.spot.filter(el => el.id !== parseInt(action.data.id))
+            newState.spot = newArr
             return newState;
         default:
             return state;
