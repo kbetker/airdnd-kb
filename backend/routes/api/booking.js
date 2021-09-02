@@ -43,8 +43,18 @@ router.get('/:id', async(req, res) => {
       include: [{model: Spot, include: User}]
 
     })
-    res.type('json').send(JSON.stringify(booking, null, 2) + '\n');
-    //  res.json(booking)
+    // res.type('json').send(JSON.stringify(booking, null, 2) + '\n');
+     res.json(booking)
   });
+
+  router.delete('/delete/:id', async(req, res) => {
+    const id = req.params.id
+    const deltaco = await Booking.destroy({
+      where: {id: id}
+    })
+    // res.type('json').send(JSON.stringify(booking, null, 2) + '\n');
+     res.json({"id": id})
+  });
+
 
   module.exports = router;

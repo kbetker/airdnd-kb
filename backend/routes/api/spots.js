@@ -38,6 +38,19 @@ const router = express.Router();
         res.json({spotsByTitle})
       });
 
+      router.get('/myspots/:id', async(req, res) => {
+        const id = req.params.id
+        const myspots = await Spot.findAll({
+          where: {
+            ownerId: id
+          }
+          // include: [{model: Pic}, {model: Review}, {model: Tag}]
+        })
+        res.type('json').send(JSON.stringify(myspots, null, 2) + '\n');
+
+        // res.json({myspots})
+      });
+
 
 
 module.exports = router;

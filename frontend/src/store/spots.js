@@ -1,6 +1,8 @@
 // import { useParams } from 'react-router-dom';
 const LOAD_ByTag = 'session/LOAD_ByTag';
 const LOAD_ByTitle = 'session/LOAD_ByTitle';
+const LOAD_MYSPOTS = 'session/LOAD_MYSPOTS';
+
 
 
 
@@ -17,6 +19,23 @@ export const loadSpotsByTitle = ( title ) => {
         title
     };
 };
+
+export const loadMySpots = ( spots ) => {
+    return {
+        type: LOAD_MYSPOTS,
+        spots
+    };
+};
+
+
+
+export const fetchMySpots = (id) => async (dispatch) => {
+    const response = await fetch(`/api/spots/myspots/${id}`);
+    if(response.ok){
+        const spots = await response.json();
+        dispatch(loadMySpots(spots));
+    };
+  };
 
 
 
@@ -47,6 +66,10 @@ export const fetchspotsByTag = (tag) => async (dispatch) => {
             newState.spots = action.spots;
             return newState;
         case LOAD_ByTitle:
+            newState = Object.assign({}, state);
+            newState.spots = action.spots;
+            return newState;
+        case LOAD_MYSPOTS:
             newState = Object.assign({}, state);
             newState.spots = action.spots;
             return newState;

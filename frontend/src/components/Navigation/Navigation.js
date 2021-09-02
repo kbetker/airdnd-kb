@@ -93,7 +93,6 @@ function Navigation(){
 
     function handleSearch(e){
         e.preventDefault()
-        console.log(searchWord, "WTFWTFWTFWTFWTWTFWTFWTFWTFWTFWTFWTFWFTFWT")
         dispatch(searchSpotsByTitle(searchWord))
 
     }
