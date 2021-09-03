@@ -25,6 +25,22 @@ router.post('/new', async (req, res) => {
     return res.json({ booking });
 });
 
+router.put('/edit/:id', async (req, res) => {
+  const id = req.params.id
+  const {  startDate, endDate, numGuests } = req.body;
+  const editThis = await Booking.findOne({
+    where: {id: id}
+  })
+
+  let response = await editThis.update(
+    {
+      startDate,
+      endDate,
+      numGuests
+    })
+  return res.json({ response });
+});
+
 
 router.get('/:id', async(req, res) => {
     const id = req.params.id
