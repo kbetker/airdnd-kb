@@ -68,6 +68,7 @@ export default function SpotNew(){
           PosY = PosY - ImgPos[1];
           setCoordinateX(PosX)
           setCoordinateY(PosY)
+          console.log(PosX, PosY, "YEAAAHHH!!!")
 
         }
 

@@ -127,7 +127,7 @@ export default function SpotsByTag() {
 
                     {spotsByTag.spotsByTag.map((e) =>
                         <Link to={`/spot/${e.Spot.id}`} key={`${e.id}`}>
-                            <div id={`mapLoc-${e.id}`} className="locOnMap-sbt" style={{ top: e.Spot.coordinateX, left: e.Spot.coordinateY }}>
+                            <div id={`mapLoc-${e.id}`} className="locOnMap-sbt" style={{ top: e.Spot.coordinateY, left: e.Spot.coordinateX }}>
                                 {e.Spot.title}
                             </div>
                         </Link>
