@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { postCreatedSpot } from '../../store/spot'
 import { useHistory } from 'react-router-dom'
 import './NewSpot.css'
+import "../SpotById/spotById.css"
+import Swordcoast from "../Swordcoast"
 
 // import { useDispatch } from 'react-router-dom';
 
@@ -21,58 +23,58 @@ export default function SpotNew(){
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user)
 
-    useEffect(() => {
-        let getXY = document.querySelector(".map")
-        if (getXY) {
-            getXY.addEventListener("click", (e) => {
-                GetCoordinates()
-            })
-        }
+    // useEffect(() => {
+    //     let getXY = document.querySelector(".map")
+    //     if (getXY) {
+    //         getXY.addEventListener("click", (e) => {
+    //             GetCoordinates()
+    //         })
+    //     }
 
-        function FindPosition(oElement){
-          if(typeof( oElement.offsetParent ) != "undefined")
-          {
-            for(var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent)
-            {
-              posX += oElement.offsetLeft;
-              posY += oElement.offsetTop;
-            }
-              return [ posX, posY ];
-            }
-            else
-            {
-              return [ oElement.x, oElement.y ];
-            }
-        }
+    //     function FindPosition(oElement){
+    //       if(typeof( oElement.offsetParent ) != "undefined")
+    //       {
+    //         for(var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent)
+    //         {
+    //           posX += oElement.offsetLeft;
+    //           posY += oElement.offsetTop;
+    //         }
+    //           return [ posX, posY ];
+    //         }
+    //         else
+    //         {
+    //           return [ oElement.x, oElement.y ];
+    //         }
+    //     }
 
-        function GetCoordinates(e)
-        {
-          let PosX = 0;
-          let PosY = 0;
-          let ImgPos;
-          ImgPos = FindPosition(getXY);
-          if (!e) e = window.event;
-          if (e.pageX || e.pageY)
-          {
-            PosX = e.pageX;
-            PosY = e.pageY;
-          }
-          else if (e.clientX || e.clientY)
-            {
-              PosX = e.clientX + document.body.scrollLeft
-                + document.documentElement.scrollLeft;
-              PosY = e.clientY + document.body.scrollTop
-                + document.documentElement.scrollTop;
-            }
-          PosX = PosX - ImgPos[0];
-          PosY = PosY - ImgPos[1];
-          setCoordinateX(PosX)
-          setCoordinateY(PosY)
-          console.log(PosX, PosY, "YEAAAHHH!!!")
+    //     function GetCoordinates(e)
+    //     {
+    //       let PosX = 0;
+    //       let PosY = 0;
+    //       let ImgPos;
+    //       ImgPos = FindPosition(getXY);
+    //       if (!e) e = window.event;
+    //       if (e.pageX || e.pageY)
+    //       {
+    //         PosX = e.pageX;
+    //         PosY = e.pageY;
+    //       }
+    //       else if (e.clientX || e.clientY)
+    //         {
+    //           PosX = e.clientX + document.body.scrollLeft
+    //             + document.documentElement.scrollLeft;
+    //           PosY = e.clientY + document.body.scrollTop
+    //             + document.documentElement.scrollTop;
+    //         }
+    //       PosX = PosX - ImgPos[0];
+    //       PosY = PosY - ImgPos[1];
+    //       setCoordinateX(PosX)
+    //       setCoordinateY(PosY)
+    //       console.log(PosX, PosY, "YEAAAHHH!!!")
 
-        }
+    //     }
 
-    })
+    // })
 
 
 
@@ -145,10 +147,12 @@ export default function SpotNew(){
         </form>
         </div>
 
-        <div className="map">
-        <div id="locOnMap" draggable="true" style={{ top: coordinateY, left: coordinateX }}>{title}</div>
-                    <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
-                </div>
+        <div className="map" style={{overflow: "hidden", border: "solid 2px red"}}>
+          <div style={{position: "relative", top: "-684px", transform: "scale(0.75, 0.75)"}}>
+        <Swordcoast/>
+        </div>
+
+        </div>
 
 
 

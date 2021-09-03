@@ -258,10 +258,13 @@
     /* margin-top: 190px; */
     position: fixed;
     top: 190;
-    right: 0
+    right: 0;
+    height: 700px;
+    background-color: rgba(150, 0, 150, 0.2);
 }
 .swordCoastMap{
-    width: 834px;
+    width: 1434px;
+    height: 1963px;
 }
 
 #locOnMap{
