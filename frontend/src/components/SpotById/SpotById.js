@@ -385,7 +385,7 @@ export default function SpotById() {
 
 
                 <div className="map">
-                    <div id="locOnMap" style={{ top: singleSpot.coordinateX, left: singleSpot.coordinateY }}>{singleSpot.title}</div>
+                    <div id="locOnMap" style={{ top: singleSpot.coordinateY, left: singleSpot.coordinateX }}>{singleSpot.title}</div>
                     <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
                 </div>
 
