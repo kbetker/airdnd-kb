@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import './NewSpot.css'
 import "../SpotById/spotById.css"
 import Swordcoast from "../Swordcoast"
+import { dispatchMapControl } from "../../store/mapControl"
 
 // import { useDispatch } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ export default function SpotNew(){
 
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user)
+    const mapControl = useSelector(state => state.mapControl)
 
     // useEffect(() => {
     //     let getXY = document.querySelector(".map")
@@ -101,7 +103,15 @@ export default function SpotNew(){
     }
 
 
+    function adjustMap(arr){
+        let newObj = Object.assign({}, mapControl);
 
+        for(let i = 0; i < arr.length; i++){
+           newObj[Object.keys(arr[i])] += Object.values(arr[i])[0]
+        }
+        dispatch(dispatchMapControl(newObj))
+
+    }
 
 
     return(
@@ -146,9 +156,17 @@ export default function SpotNew(){
             <button type="submit">Submit</button>
         </form>
         </div>
+        <div className="mapControls">
+            <div className="controlElement"><div className="arrowLeft"></div></div>
+            <div className="controlElement"><div className="arrowRight"></div></div>
+            <div className="controlElement"><div className="arrowUp"></div></div>
+            <div className="controlElement"><div className="arrowDown"></div></div>
+            <div className="controlElement" onClick={()=>adjustMap([{"scale": 0.5}, {"offsetX": -175}, {"offsetY": -700} ])}>+</div>
+            <div className="controlElement" onClick={()=>adjustMap([{"scale": -0.5}])}>-</div>
 
-        <div className="map" style={{overflow: "hidden", border: "solid 2px red"}}>
-          <div style={{position: "relative", top: "-684px", transform: "scale(0.75, 0.75)"}}>
+        </div>
+        <div className="map" style={{overflow: "hidden"}}>
+          <div style={{position: "relative", left:`${mapControl.mapX}px`, top: `${mapControl.mapY}px`, transform: `scale(${mapControl.scale})`, transition: "all 0.3s ease-in-out"}}>
         <Swordcoast/>
         </div>
 
