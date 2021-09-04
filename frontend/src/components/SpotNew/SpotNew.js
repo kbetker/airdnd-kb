@@ -104,9 +104,11 @@ export default function SpotNew(){
 
 
     function adjustMap(arr){
+
         let newObj = Object.assign({}, mapControl);
 
         for(let i = 0; i < arr.length; i++){
+            console.log([Object.keys(arr[i])])
            newObj[Object.keys(arr[i])] += Object.values(arr[i])[0]
         }
         dispatch(dispatchMapControl(newObj))
@@ -157,12 +159,29 @@ export default function SpotNew(){
         </form>
         </div>
         <div className="mapControls">
-            <div className="controlElement"><div className="arrowLeft"></div></div>
-            <div className="controlElement"><div className="arrowRight"></div></div>
-            <div className="controlElement"><div className="arrowUp"></div></div>
-            <div className="controlElement"><div className="arrowDown"></div></div>
-            <div className="controlElement" onClick={()=>adjustMap([{"scale": 0.5}, {"offsetX": -175}, {"offsetY": -700} ])}>+</div>
-            <div className="controlElement" onClick={()=>adjustMap([{"scale": -0.5}])}>-</div>
+            <div className="controlElement"  onClick={()=>adjustMap([ {"mapX": 130}])}><div className="arrowLeft"></div></div>
+            <div className="controlElement" onClick={()=>adjustMap([ {"mapX": -130}])}><div className="arrowRight" ></div></div>
+            <div className="controlElement" onClick={()=>adjustMap([ {"mapY": 130}])}><div className="arrowUp"></div></div>
+            <div className="controlElement" onClick={()=>adjustMap([ {"mapY": -130}])}><div className="arrowDown"></div></div>
+            <div className="controlElement" onClick={()=>adjustMap([
+                {"scale": 0.5},
+                {"offsetX": -175},
+                {"offsetY": -700} ,
+                {"fontSize": -2},
+                {"padding": -1},
+                {"shadowX": -1},
+                {"shadowY": -1},
+                {"shadowBlur": -1}
+            ])}>+</div>
+            <div className="controlElement" onClick={()=>adjustMap([{"scale": -0.5},
+                {"offsetX": 175},
+                {"offsetY": 700} ,
+                {"fontSize": 2},
+                {"padding": 1},
+                {"shadowX": 1},
+                {"shadowY": 1},
+                {"shadowBlur": 1}
+                ])}>-</div>
 
         </div>
         <div className="map" style={{overflow: "hidden"}}>

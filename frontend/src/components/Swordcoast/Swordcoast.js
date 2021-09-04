@@ -76,7 +76,13 @@ function Swordcoast() {
   return (
     <div style={{ width: "2800px", height: "2800px" }}>
       <img src="/images/swordCoast2800.jpg" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
-      <div id="locOnMap" draggable="true" style={{ top: coordinateY, left: coordinateX, fontSize: "12px", padding: "7px", boxShadow: "5px 5px 9px rgba(0, 0, 0, 0.6)" }}>{title}</div>
+      <div id="locOnMap" draggable="true" style={{
+        top: coordinateY,
+        left: coordinateX,
+        fontSize: `${mapControl.fontSize}px`,
+        padding: `${mapControl.padding}px`,
+        boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)` }
+        }>{title}</div>
     </div>
   )
 }

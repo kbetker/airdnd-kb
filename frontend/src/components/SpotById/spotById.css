@@ -292,8 +292,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-
+    transition: all 0.3s linear;
 }
+
 .arrowRight{
     width: 0;
     height: 0;
