@@ -7,6 +7,7 @@ import fetchSpotsReducer from './spots';
 import reviewReducer from './review';
 import booking from "./booking"
 import mapControl from "./mapControl";
+import coordinates from "./locCoordinates";
 
 const rootReducer = combineReducers({
    session: sessionReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
    review: reviewReducer,
    booking,
    mapControl,
+   coordinates,
 });
 
 let enhancer;

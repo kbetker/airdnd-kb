@@ -16,8 +16,25 @@
     /* height: 1140px; */
     /* overflow-x: auto; */
 }
-.swordCoastMap{
+/* .swordCoastMap{
     width: 934px;
+} */
+
+.mapContainer{
+    width: 2800px;
+    height: 2800px;
+    background-color: black;
+}
+.target{
+    width: 20px;
+    height: 20px;
+    border: 2px solid red;
+    z-index: 999999;
+    position: fixed;
+    top: 250px;
+    left: 340px;
+    border-radius: 99px;
+    pointer-events: none;
 }
 
 .locOnMap-sbt{
@@ -58,6 +75,22 @@
     border-radius: 25px;
     border: 1px solid rgb(136, 136, 136);
 }
+.locationDot{
+background-color: black;
+z-index: 1;
+position: absolute;
+border-radius: 20px;
+}
+
+.square{
+    width: 6px;
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    right: -1px;
+}
+
 .spotContent{
     margin-left: 25px;
     font-family: Helvetica, Arial, sans-serif;
