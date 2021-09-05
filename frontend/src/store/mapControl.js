@@ -14,7 +14,22 @@ export const dispatchMapControl = (mapControl) => async (dispatch) => {
   };
 
 
-  const initialState = { scale: 1, mapX: 0, mapY: 0, offsetX: 0, offsetY: 0, fontSize: 12, padding: 7, shadowX: 5, shadowY: 5, shadowBlur: 9 }
+  const initialState = {
+      scale: 1,
+      mapX: 0,
+      mapY: 0,
+      offsetX: 0,
+      offsetY: 0,
+      fontSize: 12,
+      padding: 7,
+      shadowX: 5,
+      shadowY: 5,
+      shadowBlur: 9,
+      maxMapX: -235,
+      maxMapY: -435,
+      minMapX: 0,
+      minMapY: 0,
+    }
 
   const mapControl = (state = initialState, action) => {
     let newState;

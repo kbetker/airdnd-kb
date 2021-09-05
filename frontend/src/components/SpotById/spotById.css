@@ -266,6 +266,8 @@
 }
 .swordCoastMap{
     transition: all 0.3s linear;
+    box-sizing: border-box;
+    border: 1px solid lime;
 
     /* width: 3000px; */
     /* height: 3000px; */

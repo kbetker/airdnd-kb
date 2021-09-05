@@ -20,9 +20,6 @@ function Swordcoast() {
 
 
 
-  // useEffect(() => {
-  //   let getXY = document.getElementById("map")
-  //   if (getXY) {
     useEffect(()=>{
       getXY.current.addEventListener("click", (e) => {
           GetCoordinates.current()
@@ -37,7 +34,6 @@ function Swordcoast() {
             console.log(mapControl.offsetX, mapControl.offsetY)
             posX = (posX + mapDiv.offsetLeft);
             posY = (posY + mapDiv.offsetTop);
-            // console.log("offsetLeft", mapDiv.offsetLeft, "offsetTop", mapDiv.offsetTop)
           }
           return [posX, posY];
         }
