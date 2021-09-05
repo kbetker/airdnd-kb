@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchCoordinates } from "../../store/locCoordinates";
 
 function Swordcoast() {
 
@@ -9,7 +10,7 @@ function Swordcoast() {
   const getXY = useRef()
   const FindPosition = useRef('')
   const GetCoordinates = useRef('')
-
+  const dispatch = useDispatch()
   const [coordinateX, setCoordinateX] = useState(0);
   const [coordinateY, setCoordinateY] = useState(0);
   // const [price, setPrice] = useState(0);
@@ -64,21 +65,38 @@ function Swordcoast() {
           PosY = ((PosY - ImgPos[1]) / mapControl.scale);
           setCoordinateX(PosX)
           setCoordinateY(PosY)
-          console.log(`X:${PosX}, offsetX:${ImgPos[0]}, Y:${PosY}, offsetY:${ImgPos[1]}`)
+           dispatch(dispatchCoordinates({"X": PosX, "Y": PosY}))
+          // console.log(`X:${PosX}, offsetX:${ImgPos[0]}, Y:${PosY}, offsetY:${ImgPos[1]}`)
         }
       },[mapControl])
 
 
   return (
-    <div style={{ width: "2800px", height: "2800px" }}>
+    <div className="mapContainer">
       <img src="/images/swordCoast2800.jpg" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
+
       <div id="locOnMap" draggable="true" style={{
         top: coordinateY,
         left: coordinateX,
         fontSize: `${mapControl.fontSize}px`,
         padding: `${mapControl.padding}px`,
-        boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)` }
-        }>{title}</div>
+        boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
+        zIndex: "10",
+      }
+        }>{title}
+        <div className="locationDot" style={{
+          width: "10px",
+          height: "10px",
+          top: "-7px",
+          left: "-7px",
+          border: "solid white 2px",
+          zIndex: "-100"
+
+        }}>
+          <div className="square"></div>
+
+        </div>
+        </div>
     </div>
   )
 }
