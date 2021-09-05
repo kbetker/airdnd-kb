@@ -257,21 +257,86 @@
 .map{
     /* margin-top: 190px; */
     position: fixed;
-    top: 190;
-    right: 0
+    top: 240px;
+    right: 50px;
+    height: 500px;
+    width: 700px;
+    background-color: rgba(150, 0, 150, 0.2);
+
 }
 .swordCoastMap{
-    width: 834px;
+    transition: all 0.3s linear;
+    box-sizing: border-box;
+    border: 1px solid lime;
+
+    /* width: 3000px; */
+    /* height: 3000px; */
+}
+.mapControls{
+    display: flex;
+    height: 50px;
+    background-color: rgb(160, 121, 121);
+    width: 700px;
+    position: fixed;
+    right: 50px;
+    border: solid 1px red;
+    box-sizing: border-box;
+
+}
+.controlElement{
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    font-weight: 600;
+    box-sizing: border-box;
+    border: solid 1px green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.arrowRight{
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid rgb(2, 2, 2);
+}
+
+.arrowLeft{
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid rgb(2, 2, 2);
+}
+
+.arrowUp{
+    width: 0;
+    height: 0;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    border-bottom: 12px solid rgb(2, 2, 2);
+}
+
+.arrowDown{
+    width: 0;
+    height: 0;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    border-top: 12px solid rgb(2, 2, 2);
 }
 
 #locOnMap{
-    background-color: white;
+    /* box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
     font-size: 12px;
+    padding: 7px; */
+    background-color: white;
     position: absolute;
-    border-radius: 20px;
-    padding: 7px;
+    border-radius: 0 20px 20px;
     font-family: Helvetica, Arial, sans-serif;
-    box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
     /* width: 100px; */
     transform-origin: 150% bottom;
 }
