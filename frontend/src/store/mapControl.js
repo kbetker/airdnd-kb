@@ -14,7 +14,7 @@ export const dispatchMapControl = (mapControl) => async (dispatch) => {
   };
 
 
-  const initialState = {
+  export const initialState = {
       scale: 1,
       mapX: 0,
       mapY: 0,
@@ -29,17 +29,19 @@ export const dispatchMapControl = (mapControl) => async (dispatch) => {
       maxMapY: -200,
       minMapX: 0,
       minMapY: 0,
+      dotOffset: -6,
     }
 
   const mapControl = (state = initialState, action) => {
     let newState;
     switch( action.type ){
         case MAP_CONTROL:
-            // newState = Object.assign({}, state);
+            newState = Object.assign({}, state);
+            newState = action.mapControl
             // // console.log(newState, "NEW STATE _+_+_+_+_+_+_+")
             // newState.mapControl = action.mapControl;
             // console.log(action.mapControl, "ACTION!?!?!?!?!?")
-            return action.mapControl;
+            return newState;
 
         default:
             return state;

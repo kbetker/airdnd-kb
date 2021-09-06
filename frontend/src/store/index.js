@@ -8,6 +8,7 @@ import reviewReducer from './review';
 import booking from "./booking"
 import mapControl from "./mapControl";
 import coordinates from "./locCoordinates";
+import mapTitle from "./mapTitle";
 
 const rootReducer = combineReducers({
    session: sessionReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
    booking,
    mapControl,
    coordinates,
+   mapTitle,
 });
 
 let enhancer;

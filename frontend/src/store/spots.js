@@ -63,11 +63,11 @@ export const fetchspotsByTag = (tag) => async (dispatch) => {
     switch( action.type ){
         case LOAD_ByTag:
             newState = Object.assign({}, state);
-            newState.spots = action.spots;
+            newState = action.spots;
             return newState;
         case LOAD_ByTitle:
             newState = Object.assign({}, state);
-            newState.spots = action.spots;
+            newState= action.spots;
             return newState;
         case LOAD_MYSPOTS:
             newState = Object.assign({}, state);

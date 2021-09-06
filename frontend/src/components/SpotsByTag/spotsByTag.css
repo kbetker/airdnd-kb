@@ -76,10 +76,8 @@
     border: 1px solid rgb(136, 136, 136);
 }
 .locationDot{
-background-color: black;
-z-index: 1;
 position: absolute;
-border-radius: 20px;
+transition: all 0.3s ease-in-out;
 }
 
 .square{

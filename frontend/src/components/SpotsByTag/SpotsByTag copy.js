@@ -7,13 +7,13 @@ import './spotsByTag.css'
 
 export default function SpotsByTag() {
     const { tag } = useParams();
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchspotsByTag(tag))
     }, [dispatch, tag])
 
-    const spotsByTag = useSelector(state => state.spots)
     // scrolls to top of page
     useEffect(() => {
        const topDiv = document.getElementById('spacer')
@@ -65,8 +65,8 @@ export default function SpotsByTag() {
 
 
 
-
-    // if (!spotsByTag) { return null; }
+    const spotsByTag = useSelector(state => state.spots.spots)
+    if (!spotsByTag) { return null; }
 
 
     function average(arr) {
@@ -86,36 +86,36 @@ export default function SpotsByTag() {
 
                 <div className="spot">
 
-                    { spotsByTag.spots && spotsByTag?.spots.map((e) =>
-                        <Link to={`/spot/${e.Spot?.id}`} key={e.id}>
+                    {spotsByTag.spotsByTag.map((e) =>
+                        <Link to={`/spot/${e.Spot.id}`} key={e.id}>
                             <div id={`list-${e.id}`} className="list">
 
-                                <img src={e.Spot?.mainPic} className="spotImage" alt="Main Pic"></img>
+                                <img src={e.Spot.mainPic} className="spotImage" alt="Main Pic"></img>
 
                                 <div className="spotContent">
                                     <div className="top">
-                                        <h2>{e.Spot?.title}</h2>
-                                        <h3>{e.Spot?.location}</h3>
+                                        <h2>{e.Spot.title}</h2>
+                                        <h3>{e.Spot.location}</h3>
                                         <hr className="spotHr"></hr>
-                                        <p>{e.Spot?.description}</p>
+                                        <p>{e.Spot.description}</p>
                                     </div>
 
                                     <div className="bottom">
                                         <div>
                                             <img src='/images/redStar.png' style={{ width: '15px' }} alt="rating star"></img>
-                                                &nbsp; {e.Spot && average(e.Spot?.Reviews)}</div>
-                                        <div>{e.Spot?.price} gp / night</div>
+                                                &nbsp; {average(e.Spot.Reviews)}</div>
+                                        <div>{e.Spot.price} gp / night</div>
                                     </div>
                                 </div>
 
 
 
                                 {/*
-                            <div><h2>Title: {e.Spot?.title}</h2></div>
-                            <p>Location: {e.Spot?.location}</p>
-                            <p>Main Picture: {e.Spot?.mainPic}</p>
-                            <p>Price: {e.Spot?.price}</p>
-                            <p>Rating: {average(e.Spot?.Reviews)}</p> */}
+                            <div><h2>Title: {e.Spot.title}</h2></div>
+                            <p>Location: {e.Spot.location}</p>
+                            <p>Main Picture: {e.Spot.mainPic}</p>
+                            <p>Price: {e.Spot.price}</p>
+                            <p>Rating: {average(e.Spot.Reviews)}</p> */}
                             </div>
                         </Link>
 
@@ -125,10 +125,10 @@ export default function SpotsByTag() {
 
                 <div className="map-sbt">
 
-                    { spotsByTag.spots  && spotsByTag?.spots.map((e) =>
-                        <Link to={`/spot/${e.Spot?.id}`} key={`${e.id}`}>
-                            <div id={`mapLoc-${e.id}`} className="locOnMap-sbt" style={{ top: e.Spot?.coordinateY, left: e.Spot?.coordinateX }}>
-                                {e.Spot?.title}
+                    {spotsByTag.spotsByTag.map((e) =>
+                        <Link to={`/spot/${e.Spot.id}`} key={`${e.id}`}>
+                            <div id={`mapLoc-${e.id}`} className="locOnMap-sbt" style={{ top: e.Spot.coordinateY, left: e.Spot.coordinateX }}>
+                                {e.Spot.title}
                             </div>
                         </Link>
                     )}

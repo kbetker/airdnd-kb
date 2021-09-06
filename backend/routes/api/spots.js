@@ -14,12 +14,12 @@ const router = express.Router();
 
     router.get('/:tag', async(req, res) => {
       const tag = req.params.tag
-      const spotsByTag = await Tag.findAll({
+      const spots = await Tag.findAll({
         where: {tag: tag},
         include: [{model: Spot, include: [{model: Pic}, {model: Review}, {model: Tag}]}]
 
       })
-      res.json({spotsByTag})
+      res.json({spots})
     });
 
     router.get('/search/:title', async(req, res) => {
