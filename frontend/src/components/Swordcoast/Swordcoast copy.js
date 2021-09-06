@@ -28,7 +28,6 @@ function Swordcoast({ props }) {
     getXY.current.addEventListener("click", (e) => {
       GetCoordinates.current()
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -72,7 +71,6 @@ function Swordcoast({ props }) {
       dispatch(dispatchCoordinates({ "X": PosX, "Y": PosY }))
       // console.log(`X:${PosX}, offsetX:${ImgPos[0]}, Y:${PosY}, offsetY:${ImgPos[1]}`)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapControl])
 
   return (
@@ -82,7 +80,7 @@ function Swordcoast({ props }) {
 
       <img src="/images/swordCoast2800faded.jpg" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
 
-      {currentPage === "new" &&
+      {/* {currentPage !== "new" &&
 
         <div className="locOnMap" draggable="true" style={{
           top: coordinateY,
@@ -100,16 +98,14 @@ function Swordcoast({ props }) {
             left: `${mapControl.dotOffset}px`,
           }}></img>
         </div>
-        }
+        } */}
 
+      {/* currentPage !== "new" && */}
 
+      { spots && spots.map((el) => {
 
-      {currentPage !== "new" && spots && spots.map((el) =>
-          <div id={`mapLoc-${el.id}`}
-          className="locOnMap-sbt"
-          draggable="true"
-          onClick={(e)=>dispatch(dispatchCoordinates({"X": el.Spot.coordinateY, "Y": el.Spot.coordinateX}))}
-          key={`loc-${el.id}`} style={{
+        {console.log(el.Spot.coordinateX, el.Spot?.coordinateY, el.Spot?.title)}
+          <div className="locOnMap" draggable="true" style={{
             top: el.Spot?.coordinateX,
             left: el.Spot?.coordinateY,
             fontSize: `${mapControl.fontSize}px`,
@@ -126,7 +122,50 @@ function Swordcoast({ props }) {
             }}></img>
           </div>
 
-        )}
+        })
+
+        }
+
+
+      {/* {spots &&
+        <>
+          <div className="locOnMap" draggable="true" style={{
+            top: spots[0].Spot.coordinateX,
+            left: spots[0].Spot.coordinateY,
+            fontSize: `${mapControl.fontSize}px`,
+            padding: `${mapControl.padding}px`,
+            boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
+            zIndex: "1000",
+          }
+          }>{spots[0].Spot.title}
+            <img className="locationDot" src="/images/locationDot.png" style={{
+              width: `${mapControl.fontSize}px`,
+              height: `${mapControl.fontSize}px`,
+              bottom: `${mapControl.dotOffset}px`,
+              left: `${mapControl.dotOffset}px`,
+            }}></img>
+          </div>
+
+          <div className="locOnMap" draggable="true" style={{
+            top: spots[1].Spot.coordinateX,
+            left: spots[1].Spot.coordinateY,
+            fontSize: `${mapControl.fontSize}px`,
+            padding: `${mapControl.padding}px`,
+            boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
+            zIndex: "1000",
+          }
+          }>{spots[1].Spot.title}
+            <img className="locationDot" src="/images/locationDot.png" style={{
+              width: `${mapControl.fontSize}px`,
+              height: `${mapControl.fontSize}px`,
+              bottom: `${mapControl.dotOffset}px`,
+              left: `${mapControl.dotOffset}px`,
+            }}></img>
+          </div>
+        </>
+      } */}
+
+
     </div>
   )
 }

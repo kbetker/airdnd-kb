@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { postCreatedSpot } from '../../store/spot'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './NewSpot.css'
 import "../SpotById/spotById.css"
 import { dispatchMapTitle } from "../../store/mapTitle"
@@ -13,7 +13,7 @@ export default function SpotNew() {
     const history = useHistory();
     const dispatch = useDispatch();
     const [title, setTitle] = useState('');
-    const [location, setLocation] = useState("Sword Coast");
+    const location = "Sword Coast";
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [mainPic, setMainPic] = useState('');
