@@ -1,61 +1,48 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { postCreatedSpot } from '../../store/spot'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import './NewSpot.css'
 import "../SpotById/spotById.css"
 import Swordcoast from "../Swordcoast"
 import { dispatchMapControl } from "../../store/mapControl"
 import { initialState } from "../../store/mapControl"
+import { dispatchMapTitle } from "../../store/mapTitle"
 
 // import { useDispatch } from 'react-router-dom';
 
 export default function SpotNew() {
     const history = useHistory();
-    const [title, setTitle] = useState('Click on map to place marker');
-    const [location, setLocation] = useState('');
-    const [coordinateX, setCoordinateX] = useState(0);
-    const [coordinateY, setCoordinateY] = useState(0);
+    const [title, setTitle] = useState('');
+    const [location, setLocation] = useState("Sword Coast");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [mainPic, setMainPic] = useState('');
     const [allowsFamiliar, setAllowsFamiliar] = useState(false);
     const direction = useRef('')
-    const theySeeMeScrolling = useRef('')
-    const leftButton = useRef()
 
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user)
     const mapControl = useSelector(state => state.mapControl)
     const coordinates = useSelector(state => state.coordinates)
 
-    // useEffect(()=>{
-    //     leftButton.current.addEventListener("click", ()=>{
-    //         theySeeMeScrolling.current = setInterval(() => {
-    //             direction.current = "left"
-    //             adjustMap([{ "scale": 0.5 }])
-    //         }, 1000);
-    //     })
-
-    // }, [])
 
     if (!userId) { return null; }
     const payload = {
         title,
         location,
-        coordinateX,
-        coordinateY,
+        coordinateX: coordinates.X,
+        coordinateY: coordinates.Y,
         price,
         description,
         mainPic,
         ownerId: userId.id,
         allowsFamiliar,
     };
-    // console.log(userId.id)
+
     async function handleSubmit(e) {
         e.preventDefault();
         let createSpot = await dispatch(postCreatedSpot(payload))
-        //    console.log(createSpot.newSpot.id)
         history.push(`/spot/${createSpot.newSpot.id}`)
     }
 
@@ -84,10 +71,6 @@ export default function SpotNew() {
             } else if (direction.current === "up" && newValue >= newObj.minMapY && key === "mapY") {
                 newObj[key] = newObj.minMapY
             }
-
-            // else if ( key === "dotOffset" && newObj.scale === 2){
-            //     newObj[key] = -5
-            // }
 
             // Zooms in/out towards/away location marker
             else if (key === "mapX" && direction.current === "zoomIn") {
@@ -135,12 +118,15 @@ export default function SpotNew() {
 
                         <div className="newSpot--element">
                             <label htmlFor="title">Title:</label>
-                            <input type="text" id="title" onChange={(e) => setTitle(e.target.value)} value={title} className="newSpot--element"></input>
-                        </div>
+                            <input
+                            type="text"
+                            id="title"
+                            onChange={(e) => [dispatch(dispatchMapTitle(e.target.value)),setTitle(e.target.value)] }
+                            value={title}
+                            placeholder="Click on map to move location marker"
+                            className="newSpot--element">
 
-                        <div className="newSpot--element">
-                            <label htmlFor="location">Location:</label>
-                            <input type="text" id="location" onChange={(e) => setLocation(e.target.value)} value={location} className="newSpot--element"></input>
+                        </input>
                         </div>
 
                         <div className="newSpot--element">
@@ -166,6 +152,8 @@ export default function SpotNew() {
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+
+
                 <div className="mapControls">
                     <div className="controlElement"
                         // ref={leftButton}
