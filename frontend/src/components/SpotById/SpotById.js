@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { fetchSpotById } from '../../store/spot'
@@ -18,7 +18,7 @@ export default function SpotById() {
     const [locationReview, setLocationReview] = useState(1);
     const [valueReview, setValueReview] = useState(1);
     const [bookForm, setBookForm] = useState(false)
-    const loggedIn = useRef(false)
+    // const loggedIn = useRef(false)
 
     //======== grap one by id =======================
     const history = useHistory()

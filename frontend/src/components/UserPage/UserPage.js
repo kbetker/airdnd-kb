@@ -21,7 +21,7 @@ function UserPage() {
         dispatch(getBookedSpots(user.id))
         dispatch(fetchMySpots(user.id))
 
-    }, [])
+    }, [dispatch, user.id])
 
     useEffect(() => {
         if (!user) {

@@ -262,8 +262,9 @@
     height: 500px;
     width: 700px;
     background-color: black;
-    border-bottom: solid 3px black;
+    border: solid 3px black;
     box-sizing: border-box;
+    overflow: hidden;
 }
 .swordCoastMap{
     transition: all 0.3s linear;
@@ -350,7 +351,7 @@
     border-top: 12px solid rgb(2, 2, 2);
 }
 
-#locOnMap{
+.locOnMap{
     /* box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
     font-size: 12px;
     padding: 7px; */

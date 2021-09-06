@@ -4,6 +4,9 @@ import { useParams } from 'react-router';
 import { fetchspotsByTag } from '../../store/spots'
 import { Link } from 'react-router-dom'
 import './spotsByTag.css'
+import '../SpotNew/NewSpot.css'
+import "../SpotById/spotById.css"
+import MapController from '../MapController/MapController';
 
 export default function SpotsByTag() {
     const { tag } = useParams();
@@ -20,7 +23,6 @@ export default function SpotsByTag() {
        topDiv?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
 
     }, [])
-
 
     // ================= adds hover effect to locations on map
     useEffect(() => {
@@ -45,7 +47,7 @@ export default function SpotsByTag() {
 
         if (mapDivs) {
             for (let i = 0; i < mapDivs.length; i++) {
-                mapDivs[i].addEventListener("mouseenter", (e) => {
+                mapDivs[i].addEventListener("click", (e) => {
                     const getNum = e.target.id.split("-")
                     const num = getNum[1]
                     let getListDiv = document.getElementById(`list-${num}`)
@@ -60,7 +62,6 @@ export default function SpotsByTag() {
                 })
             }
         }
-
     })
 
 
@@ -122,8 +123,8 @@ export default function SpotsByTag() {
                     )}
 
                 </div>
-
-                <div className="map-sbt">
+                            <MapController  />
+                {/* <div className="map-sbt">
 
                     { spotsByTag.spots  && spotsByTag?.spots.map((e) =>
                         <Link to={`/spot/${e.Spot?.id}`} key={`${e.id}`}>
@@ -134,7 +135,7 @@ export default function SpotsByTag() {
                     )}
                     <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
 
-                </div>
+                </div> */}
             </div>
         </>
     )

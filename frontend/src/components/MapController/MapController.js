@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import '../SpotNew/NewSpot.css'
 import "../SpotById/spotById.css"
@@ -9,7 +9,6 @@ import { initialState } from "../../store/mapControl"
 function MapController() {
 
     const direction = useRef('')
-
     const dispatch = useDispatch();
     const mapControl = useSelector(state => state.mapControl)
     const coordinates = useSelector(state => state.coordinates)
@@ -17,11 +16,12 @@ function MapController() {
 
     useEffect(()=>{
         dispatch(dispatchMapControl(initialState))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     function adjustMap(arr) {
         let newObj = Object.assign({}, mapControl);
-        console.log(newObj)
+        // console.log(newObj)
         for (let i = 0; i < arr.length; i++) {
             let key = Object.keys(arr[i])[0]
             let value = newObj[Object.keys(arr[i])]
@@ -151,7 +151,8 @@ function MapController() {
             <div className="controlElement resetView" onClick={() => dispatch(dispatchMapControl(initialState))}>reset view</div>
 
         </div>
-        <div className="map" style={{ overflow: "hidden" }}>
+        {/* style={{ overflow: "hidden" }} */}
+        <div className="map" >
             <div style={{
                 position: "relative",
                 left: `${mapControl.mapX}px`,
