@@ -14,7 +14,7 @@ export const dispatchCoordinates = (coordinates) => async (dispatch) => {
   };
 
 
-  const initialState = {"X": 0, "Y": 0}
+  const initialState = {"X": 50, "Y": 50}
 
   const coordinates = (state = initialState, action) => {
     let newState;

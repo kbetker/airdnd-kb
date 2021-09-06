@@ -11,8 +11,8 @@ function Swordcoast() {
   const FindPosition = useRef('')
   const GetCoordinates = useRef('')
   const dispatch = useDispatch()
-  const [coordinateX, setCoordinateX] = useState(0);
-  const [coordinateY, setCoordinateY] = useState(0);
+  const [coordinateX, setCoordinateX] = useState(50);
+  const [coordinateY, setCoordinateY] = useState(50);
   // const [price, setPrice] = useState(0);
   // const [description, setDescription] = useState('');
   // const [mainPic, setMainPic] = useState('');
@@ -73,7 +73,7 @@ function Swordcoast() {
 
   return (
     <div className="mapContainer">
-      <img src="/images/swordCoast2800.jpg" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
+      <img src="/images/swordCoast2800faded.jpg" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
 
       <div id="locOnMap" draggable="true" style={{
         top: coordinateY,
@@ -84,18 +84,14 @@ function Swordcoast() {
         zIndex: "10",
       }
         }>{title}
-        <div className="locationDot" style={{
-          width: "10px",
-          height: "10px",
-          top: "-7px",
-          left: "-7px",
-          border: "solid white 2px",
-          zIndex: "-100"
+        <img className="locationDot" src="/images/locationDot.png" style={{
+          width: `${mapControl.fontSize}px`,
+          height: `${mapControl.fontSize}px`,
+          bottom:  `${mapControl.dotOffset}px`,
+          left: `${mapControl.dotOffset}px`,
+        }}></img>
 
-        }}>
-          <div className="square"></div>
-
-        </div>
+          {/* <div className="square"></div> */}
         </div>
     </div>
   )

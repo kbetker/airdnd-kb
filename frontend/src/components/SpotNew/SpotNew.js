@@ -6,6 +6,7 @@ import './NewSpot.css'
 import "../SpotById/spotById.css"
 import Swordcoast from "../Swordcoast"
 import { dispatchMapControl } from "../../store/mapControl"
+import { initialState } from "../../store/mapControl"
 
 // import { useDispatch } from 'react-router-dom';
 
@@ -59,22 +60,7 @@ export default function SpotNew() {
     }
 
 
-    const initialState = {
-        scale: 1,
-        mapX: 0,
-        mapY: 0,
-        offsetX: 0,
-        offsetY: 0,
-        fontSize: 12,
-        padding: 5,
-        shadowX: 5,
-        shadowY: 5,
-        shadowBlur: 9,
-        maxMapX: 0,
-        maxMapY: -200,
-        minMapX: 0,
-        minMapY: 0,
-      }
+
 
 
     function adjustMap(arr) {
@@ -83,41 +69,34 @@ export default function SpotNew() {
         for (let i = 0; i < arr.length; i++) {
             let key = Object.keys(arr[i])[0]
             let value = newObj[Object.keys(arr[i])]
-            let newValue = Object.values(arr[i])[0]
+            let action = Object.values(arr[i])[0]
+            let newValue = value + action;
             // console.log(key, newValue, direction.current)
-            if(key === "scale" && (newObj.scale + newValue < 1 || newObj.scale + newValue > 4)) return;
+            if(key === "scale" && (newValue < 1 || newValue > 4)) return;
 
-            if (direction.current === "right" && value + newValue <= newObj.maxMapX && key === "mapX") {
+            // keeps the map within the edges
+            if (direction.current === "right" && newValue <= newObj.maxMapX && key === "mapX") {
                 newObj[key] = newObj.maxMapX
-            } else if (direction.current === "down" && value + newValue <= newObj.maxMapY && key === "mapY") {
+            } else if (direction.current === "down" && newValue <= newObj.maxMapY && key === "mapY") {
                 newObj[key] = newObj.maxMapY
-            } else if (direction.current === "left" && value + newValue >= newObj.minMapX && key === "mapX") {
+            } else if (direction.current === "left" && newValue >= newObj.minMapX && key === "mapX") {
                 newObj[key] = newObj.minMapX
-            } else if (direction.current === "up" && value + newValue >= newObj.minMapY && key === "mapY") {
+            } else if (direction.current === "up" && newValue >= newObj.minMapY && key === "mapY") {
                 newObj[key] = newObj.minMapY
             }
 
-            else if (key === "mapX" && direction.current === "zoomIn") {
-                let zoomInValX = newObj.minMapX - (coordinates.X * newObj.scale) + 350;
+            // else if ( key === "dotOffset" && newObj.scale === 2){
+            //     newObj[key] = -5
+            // }
 
-                // if ((zoomInValX) > newObj.minMapX) {
-                //     newObj[key] = newObj.minMapX
-                // } else if ((zoomInValX) < newObj.maxMapX) {
-                //     newObj[key] = newObj.maxMapX
-                // } else {
-                    newObj[key] = zoomInValX
-                // }
+            // Zooms in/out towards/away location marker
+            else if (key === "mapX" && direction.current === "zoomIn") {
+                 newObj[key] = newObj.minMapX - (coordinates.X * newObj.scale) + 350;
             }
+
             else if (key === "mapY" && direction.current === "zoomIn") {
                 let zoomInValY = newObj.minMapY - (coordinates.Y * newObj.scale) + 250;
-
-                // if ((zoomInValY) < newObj.minMapY) {
-                //     newObj[key] = newObj.minMapY
-                // } else if ((zoomInValY) > newObj.maxMapY) {
-                //     newObj[key] = newObj.maxMapY
-                // } else {
                     newObj[key] = zoomInValY
-                // }
             }
 
             else if (key === "mapX" && direction.current === "zoomOut") {
@@ -136,26 +115,12 @@ export default function SpotNew() {
             }
 
             else {
-                newObj[key] += newValue
+                newObj[key] = newValue
 
             }
         }
         dispatch(dispatchMapControl(newObj))
         console.log(newObj)
-    }
-
-    function zoom(xy, min, max) {
-        console.log(mapControl.maxMapX, mapControl.maxMapY)
-
-        let X = (max - min) / 2
-        let Y = (max - min) / 2
-        // let X = mapControl.maxMapX + ((mapControl.maxMapX - mapControl.mapX) / 2);
-        // let Y = mapControl.maxMapY +((mapControl.maxMapY - mapControl.mapY) / 2);
-        if (xy === "x") {
-            return 0
-        } else {
-            return 570
-        }
     }
 
 
@@ -249,6 +214,7 @@ export default function SpotNew() {
                             { "minMapY": 700 },
                             { "mapX": null },
                             { "mapY": null },
+                            { "dotOffset": 0.5,}
                         ])]}>+</div>
                     <div className="controlElement" onClick={() => [
                         direction.current = "zoomOut",
@@ -267,6 +233,7 @@ export default function SpotNew() {
                             { "minMapY": -700 },
                             { "mapX": null },
                             { "mapY": null },
+                            { "dotOffset": -0.5,}
                         ])]}>-</div>
 
                 <div className="controlElement resetView" onClick={() => dispatch(dispatchMapControl(initialState))}>reset view</div>

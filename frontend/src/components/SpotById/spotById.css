@@ -261,31 +261,35 @@
     right: 50px;
     height: 500px;
     width: 700px;
-    background-color: rgb(31, 24, 15);
-
+    background-color: black;
+    border-bottom: solid 3px black;
+    box-sizing: border-box;
 }
 .swordCoastMap{
     transition: all 0.3s linear;
     box-sizing: border-box;
-    border: 1px solid lime;
+    /* border: 1px solid lime; */
     width: 700px;
     /* width: 3000px; */
     /* height: 3000px; */
 }
 .mapControls{
     display: flex;
+    align-items: center;
+    padding-left: 4px;
     height: 50px;
-    background-color: rgb(160, 121, 121);
+    background-color: rgb(49, 49, 49);
     width: 700px;
     position: fixed;
     right: 50px;
-    border: solid 1px red;
+    border: 3px solid rgb(0, 0, 0);
+    /* box-shadow: 0 3px 10px 5px inset rgb(0, 0, 0); */
     box-sizing: border-box;
 
 }
 .controlElement{
-    height: 50px;
-    width: 50px;
+    height: 44px;
+    width: 44px;
     font-size: 40px;
     font-weight: 600;
     box-sizing: border-box;
@@ -294,8 +298,15 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 4px;
     transition: all 0.2s linear;
+    box-shadow: 0 0 2px inset white;
+    margin-right: 2px;
     background-color: rgb(146, 146, 146);
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 
 }
 .controlElement:hover{
@@ -345,11 +356,13 @@
     padding: 7px; */
     background-color: white;
     position: absolute;
-    border-radius: 0 20px 20px;
+    border-radius: 20px 20px 20px 0;
     font-family: Helvetica, Arial, sans-serif;
     /* width: 100px; */
     transform-origin: 150% bottom;
     transition: all 0.3s ease-in-out;
+    /* top: 50%; */
+    transform: translate(0, -100%);
 
 }
 .formFields{
