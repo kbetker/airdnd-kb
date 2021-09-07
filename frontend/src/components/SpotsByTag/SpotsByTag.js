@@ -68,6 +68,7 @@ export default function SpotsByTag() {
 
 
 
+
     // if (!spotsByTag) { return null; }
 
 
@@ -89,7 +90,7 @@ export default function SpotsByTag() {
                 <div className="spot">
 
                     { spotsByTag.spots && spotsByTag?.spots.map((e) =>
-                        <Link to={`/spot/${e.Spot?.id}`} onMouseOver={()=> dispatch(dispatchCoordinates({ "X": e.Spot?.coordinateY, "Y": e.Spot?.coordinateX })) } key={e.id}>
+                        <Link to={`/spot/${e.Spot?.id}`} onMouseOver={()=> dispatch(dispatchCoordinates({ "X": e.Spot?.coordinateX, "Y": e.Spot?.coordinateY })) } key={e.id}>
                             <div id={`list-${e.id}`} className="list">
 
                                 <img src={e.Spot?.mainPic} className="spotImage" alt="Main Pic"></img>

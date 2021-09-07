@@ -9,7 +9,6 @@ const router = express.Router();
 
 
 router.post('/new', async(req, res) => {
-  console.log("HELLO FROM THE BACKEND NEW REVIEW", req.body)
   const { userId, spotId, body, cleanReview, locationReview, valueReview} = req.body;
 
   const newReview = await Review.newReview({userId, spotId, body, cleanReview, locationReview, valueReview})

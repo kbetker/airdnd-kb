@@ -47,6 +47,7 @@
     box-shadow: 5px 5px 9px rgba(0, 0, 0, 0.6);
     transition: all .4s ease-in-out;
     cursor: pointer;
+    transform: translate(0, -100%);
     /* width: 100px; */
     /* transform-origin: 150% bottom; */
 }

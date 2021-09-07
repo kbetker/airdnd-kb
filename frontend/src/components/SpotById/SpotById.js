@@ -7,6 +7,8 @@ import { postReview } from '../../store/review'
 import { deleteReviewThunk } from '../../store/review'
 import { bookSpot } from '../../store/booking';
 import './spotById.css'
+import MapController from '../MapController/MapController';
+import { dispatchCoordinates } from '../../store/locCoordinates';
 
 export default function SpotById() {
     const { id } = useParams();
@@ -34,7 +36,23 @@ export default function SpotById() {
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState("")
     const [numGuests, setNumGuests] = useState(0)
+    const [totalCost, setTotalCost] = useState(0)
 
+    useEffect(()=>{
+        let date1 = new Date(startDate)
+        let date2 = new Date(endDate)
+
+        let milliseconds = Math.abs(date1 - date2)
+        let seconds = milliseconds / 1000
+        let minutes = seconds / 60
+        let hours = minutes / 60
+        let days = hours / 24
+        let cost = singleSpot?.price * days || 0
+
+        setTotalCost(cost)
+
+
+    },[startDate, endDate])
 
     //fetches the spot by id
     useEffect(() => {
@@ -48,7 +66,6 @@ export default function SpotById() {
         topDiv?.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
 
     }, [])
-
 
 
     if (!singleSpot) { return null }
@@ -156,7 +173,6 @@ export default function SpotById() {
             numGuests: parseInt(numGuests)
         };
         let data = dispatch(bookSpot(bookingPayload))
-        console.log(data)
     }
 
     // getXY.addEventListener("mousedown", (e)=>{
@@ -214,6 +230,7 @@ export default function SpotById() {
                                 <input type="date" onChange={(e) => setStartDate(e.target.value)} value={startDate}></input>
                                 <input type="date" onChange={(e) => setEndDate(e.target.value)} value={endDate}></input>
                                 <input type="number" onChange={(e) => setNumGuests(e.target.value)} value={numGuests}></input>
+                                <div>{totalCost}</div>
                                 <button type="submit">Submit</button>
                                 <button onClick={(e) => toggleBookSpot()}>Cancel</button>
                             </form>
@@ -383,11 +400,11 @@ export default function SpotById() {
                 </div>
 
 
-
-                <div className="map">
+                <MapController  />
+                {/* <div className="map">
                     <div id="locOnMap" style={{ top: singleSpot.coordinateY, left: singleSpot.coordinateX }}>{singleSpot.title}</div>
                     <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
-                </div>
+                </div> */}
 
             </div>
         </>
