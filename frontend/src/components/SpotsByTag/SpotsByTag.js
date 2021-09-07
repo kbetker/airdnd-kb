@@ -7,6 +7,7 @@ import './spotsByTag.css'
 import '../SpotNew/NewSpot.css'
 import "../SpotById/spotById.css"
 import MapController from '../MapController/MapController';
+import { dispatchCoordinates } from '../../store/locCoordinates';
 
 export default function SpotsByTag() {
     const { tag } = useParams();
@@ -88,7 +89,7 @@ export default function SpotsByTag() {
                 <div className="spot">
 
                     { spotsByTag.spots && spotsByTag?.spots.map((e) =>
-                        <Link to={`/spot/${e.Spot?.id}`} key={e.id}>
+                        <Link to={`/spot/${e.Spot?.id}`} onMouseOver={()=> dispatch(dispatchCoordinates({ "X": e.Spot?.coordinateY, "Y": e.Spot?.coordinateX })) } key={e.id}>
                             <div id={`list-${e.id}`} className="list">
 
                                 <img src={e.Spot?.mainPic} className="spotImage" alt="Main Pic"></img>

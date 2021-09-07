@@ -14,6 +14,8 @@ export const dispatchMapControl = (mapControl) => async (dispatch) => {
   };
 
 
+
+
   export const initialState = {
       scale: 1,
       mapX: 0,
