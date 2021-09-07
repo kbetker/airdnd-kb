@@ -49,6 +49,7 @@ function Swordcoast({ props }) {
   }, [mapControl])
 
   useEffect(() => {
+
     GetCoordinates.current = function (e) {
       let PosX = 0;
       let PosY = 0;
@@ -69,7 +70,9 @@ function Swordcoast({ props }) {
       PosY = ((PosY - ImgPos[1]) / mapControl.scale);
       setCoordinateX(PosX)
       setCoordinateY(PosY)
-      dispatch(dispatchCoordinates({ "X": PosX, "Y": PosY }))
+      if(currentPage === "new"){
+        dispatch(dispatchCoordinates({ "X": PosX, "Y": PosY }))
+      }
       // console.log(`X:${PosX}, offsetX:${ImgPos[0]}, Y:${PosY}, offsetY:${ImgPos[1]}`)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

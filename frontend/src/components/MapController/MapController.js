@@ -5,17 +5,50 @@ import "../SpotById/spotById.css"
 import Swordcoast from "../Swordcoast"
 import { dispatchMapControl } from "../../store/mapControl"
 import { initialState } from "../../store/mapControl"
+import { dispatchCoordinates } from "../../store/locCoordinates"
+
 
 function MapController() {
 
+    const currentPage = window.document.URL.substring(window.document.URL.lastIndexOf('/') + 1)
     const direction = useRef('')
     const dispatch = useDispatch();
     const mapControl = useSelector(state => state.mapControl)
     const coordinates = useSelector(state => state.coordinates)
+
+
     const panValue = 160
+    const
+        scale = 0.5,
+        offsetX = -175,
+        offsetY = -700,
+        fontSize = -1,
+        padding = -0.5,
+        shadowX = -1,
+        shadowY = -1,
+        shadowBlur = -1,
+        maxMapX = -175,
+        maxMapY = 350,
+        minMapX = 175,
+        minMapY = 700,
+        mapX = 0,
+        mapY = 0 ,
+        dotOffset = 0.5
+
+
+    const zoomIn = [  {"scale": scale}, {"offsetX": offsetX}, {"offsetY": offsetY}, {"fontSize": fontSize}, {"padding": padding}, {"shadowX": shadowX}, {"shadowY": shadowY}, {"shadowBlur": shadowBlur}, {"maxMapX": maxMapX}, {"maxMapY": maxMapY}, {"minMapX": minMapX}, {"minMapY": minMapY}, {"mapX": mapX}, { "mapY": mapY}, { "dotOffset": dotOffset}]
+
+    const zoomOut = [  {"scale": scale * -1}, {"offsetX": offsetX * -1}, {"offsetY": offsetY * -1}, {"fontSize": fontSize * -1}, {"padding": padding * -1}, {"shadowX": shadowX * -1}, {"shadowY": shadowY * -1}, {"shadowBlur": shadowBlur * -1}, {"maxMapX": maxMapX * -1}, {"maxMapY": maxMapY * -1}, {"minMapX": minMapX * -1}, {"minMapY": minMapY * -1}, {"mapX": mapX}, { "mapY": mapY}, { "dotOffset": dotOffset}]
+
+
+
+
+
+
 
     useEffect(()=>{
         dispatch(dispatchMapControl(initialState))
+        dispatch(dispatchCoordinates({ "X": 350, "Y": 250 }))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -66,6 +99,15 @@ function MapController() {
                 }
             }
 
+            else if (key === "mapX" && direction.current === "panToView") {
+                newObj[key] = newObj.minMapX - (coordinates.X * newObj.scale) + 350;
+            }
+
+            else if (key === "mapY" && direction.current === "panToView") {
+                let zoomInValY = newObj.minMapY - (coordinates.Y * newObj.scale) + 250;
+                newObj[key] = zoomInValY
+            }
+
             else {
                 newObj[key] = newValue
 
@@ -75,6 +117,22 @@ function MapController() {
         console.log(newObj)
     }
 
+
+function invokeAdjust(){
+    if(currentPage === "new"){
+        console.log(currentPage === "new", "IS THIS PAGE NewSpoT!?!?!?!?!?!")
+        return
+    } else {
+        console.log(currentPage === "new", "IS THIS PAGE NewSpoT!?!?!?!?!?!")
+        direction.current = "panToView"
+        adjustMap([{"mapX": coordinates.X},{"mapY": coordinates.Y}])
+     }
+}
+
+    useEffect(()=>{
+        invokeAdjust()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [coordinates])
 
 
     return (<>
@@ -111,42 +169,10 @@ function MapController() {
 
             <div className="controlElement" onClick={() => [
                 direction.current = "zoomIn",
-                adjustMap([
-                    { "scale": 0.5 },
-                    { "offsetX": -175 },
-                    { "offsetY": -700 },
-                    { "fontSize": -1 },
-                    { "padding": -0.5 },
-                    { "shadowX": -1 },
-                    { "shadowY": -1 },
-                    { "shadowBlur": -1 },
-                    { "maxMapX": -175 },
-                    { "maxMapY": 350 },
-                    { "minMapX": 175 },
-                    { "minMapY": 700 },
-                    { "mapX": null },
-                    { "mapY": null },
-                    { "dotOffset": 0.5, }
-                ])]}>+</div>
+                adjustMap(zoomIn)]}>+</div>
             <div className="controlElement" onClick={() => [
                 direction.current = "zoomOut",
-                adjustMap([
-                    { "scale": -0.5 },
-                    { "offsetX": 175 },
-                    { "offsetY": 700 },
-                    { "fontSize": 1 },
-                    { "padding": 0.5 },
-                    { "shadowX": 1 },
-                    { "shadowY": 1 },
-                    { "shadowBlur": 1 },
-                    { "maxMapX": 175 },
-                    { "maxMapY": -350 },
-                    { "minMapX": -175 },
-                    { "minMapY": -700 },
-                    { "mapX": null },
-                    { "mapY": null },
-                    { "dotOffset": -0.5, }
-                ])]}>-</div>
+                adjustMap(zoomOut)]}>-</div>
 
             <div className="controlElement resetView" onClick={() => dispatch(dispatchMapControl(initialState))}>reset view</div>
 
@@ -158,7 +184,7 @@ function MapController() {
                 left: `${mapControl.mapX}px`,
                 top: `${mapControl.mapY}px`,
                 transform: `scale(${mapControl.scale})`,
-                transition: "all 0.3s ease-in-out"
+                transition: `all 0.6s ease-in-out`
             }}>
 
                 <Swordcoast />
