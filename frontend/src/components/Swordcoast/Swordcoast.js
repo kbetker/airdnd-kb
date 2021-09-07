@@ -4,10 +4,12 @@ import { dispatchCoordinates } from "../../store/locCoordinates";
 import '../SpotsByTag/spotsByTag.css'
 import '../SpotNew/NewSpot.css'
 import "../SpotById/spotById.css"
+import { useParams } from "react-router";
 
 function Swordcoast({ props }) {
   // const spots = useRef()
   const title = useSelector(state => state.mapTitle)
+  const id = useParams().id || null
   const titleWhenEmpty = "Click on map to move location marker"
   const getXY = useRef()
   const FindPosition = useRef('')
@@ -17,13 +19,14 @@ function Swordcoast({ props }) {
   const [coordinateY, setCoordinateY] = useState(50);
   const mapControl = useSelector(state => state.mapControl)
   const spots = useSelector(state => state.spots.spots)
+  const spot = useSelector(state => state.spot.spot)
   const currentPage = window.document.URL.substring(window.document.URL.lastIndexOf('/') + 1)
 
   // useEffect(()=>{
   //   spots = props.spots
   // }, [])
 
-
+  console.log(id)
   useEffect(() => {
     getXY.current.addEventListener("click", (e) => {
       GetCoordinates.current()
@@ -36,7 +39,7 @@ function Swordcoast({ props }) {
 
       if (typeof (mapDiv.offsetParent) != "undefined") {
         for (var posX = mapControl.offsetX, posY = mapControl.offsetY; mapDiv; mapDiv = mapDiv.offsetParent) {
-          console.log(mapControl.offsetX, mapControl.offsetY)
+          // console.log(mapControl.offsetX, mapControl.offsetY)
           posX = (posX + mapDiv.offsetLeft);
           posY = (posY + mapDiv.offsetTop);
         }
@@ -70,7 +73,7 @@ function Swordcoast({ props }) {
       PosY = ((PosY - ImgPos[1]) / mapControl.scale);
       setCoordinateX(PosX)
       setCoordinateY(PosY)
-      if(currentPage === "new"){
+      if (currentPage === "new") {
         dispatch(dispatchCoordinates({ "X": PosX, "Y": PosY }))
       }
       // console.log(`X:${PosX}, offsetX:${ImgPos[0]}, Y:${PosY}, offsetY:${ImgPos[1]}`)
@@ -103,33 +106,54 @@ function Swordcoast({ props }) {
             left: `${mapControl.dotOffset}px`,
           }}></img>
         </div>
+      }
+
+
+      {currentPage !== "new" && id &&
+
+        <div className="locOnMap" draggable="true" style={{
+          top: spot.coordinateY,
+          left: spot.coordinateX,
+          fontSize: `${mapControl.fontSize}px`,
+          padding: `${mapControl.padding}px`,
+          boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
+          zIndex: "10",
         }
+        }>{spot.title}
+          <img className="locationDot" src="/images/locationDot.png" style={{
+            width: `${mapControl.fontSize}px`,
+            height: `${mapControl.fontSize}px`,
+            bottom: `${mapControl.dotOffset}px`,
+            left: `${mapControl.dotOffset}px`,
+          }}></img>
+        </div>
+      }
 
 
 
-      {currentPage !== "new" && spots && spots.map((el) =>
-          <div id={`mapLoc-${el.id}`}
+      {currentPage !== "new" && !id && spots && spots.map((el) =>
+        <div id={`mapLoc-${el.id}`}
           className="locOnMap-sbt"
           draggable="true"
-          onClick={(e)=>dispatch(dispatchCoordinates({"X": el.Spot.coordinateY, "Y": el.Spot.coordinateX}))}
+          onClick={(e) => dispatch(dispatchCoordinates({ "X": el.Spot.coordinateY, "Y": el.Spot.coordinateX }))}
           key={`loc-${el.id}`} style={{
-            top: el.Spot?.coordinateX,
-            left: el.Spot?.coordinateY,
+            top: el.Spot?.coordinateY,
+            left: el.Spot?.coordinateX,
             fontSize: `${mapControl.fontSize}px`,
             padding: `${mapControl.padding}px`,
             boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
             zIndex: "1000",
           }
           }>{el.Spot.title}
-            <img className="locationDot" src="/images/locationDot.png" style={{
-              width: `${mapControl.fontSize}px`,
-              height: `${mapControl.fontSize}px`,
-              bottom: `${mapControl.dotOffset}px`,
-              left: `${mapControl.dotOffset}px`,
-            }}></img>
-          </div>
+          <img className="locationDot" src="/images/locationDot.png" style={{
+            width: `${mapControl.fontSize}px`,
+            height: `${mapControl.fontSize}px`,
+            bottom: `${mapControl.dotOffset}px`,
+            left: `${mapControl.dotOffset}px`,
+          }}></img>
+        </div>
 
-        )}
+      )}
     </div>
   )
 }

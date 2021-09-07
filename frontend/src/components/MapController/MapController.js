@@ -6,6 +6,7 @@ import Swordcoast from "../Swordcoast"
 import { dispatchMapControl } from "../../store/mapControl"
 import { initialState } from "../../store/mapControl"
 import { dispatchCoordinates } from "../../store/locCoordinates"
+import { useParams } from "react-router"
 
 
 function MapController() {
@@ -15,6 +16,10 @@ function MapController() {
     const dispatch = useDispatch();
     const mapControl = useSelector(state => state.mapControl)
     const coordinates = useSelector(state => state.coordinates)
+    const spot = useSelector(state => state.spot.spot)
+    const spots = useSelector(state => state.spots.spots)
+    const { id } = useParams();
+
 
 
     const panValue = 160
@@ -50,7 +55,13 @@ function MapController() {
         dispatch(dispatchMapControl(initialState))
         dispatch(dispatchCoordinates({ "X": 350, "Y": 250 }))
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [spots])
+
+    useEffect(()=>{
+        if(id && currentPage !== "new"){
+            dispatch(dispatchCoordinates({ "X": spot.coordinateX, "Y": spot.coordinateY }))
+        }
+    }, [spot])
 
     function adjustMap(arr) {
         let newObj = Object.assign({}, mapControl);
@@ -114,16 +125,13 @@ function MapController() {
             }
         }
         dispatch(dispatchMapControl(newObj))
-        console.log(newObj)
     }
 
 
 function invokeAdjust(){
     if(currentPage === "new"){
-        console.log(currentPage === "new", "IS THIS PAGE NewSpoT!?!?!?!?!?!")
         return
     } else {
-        console.log(currentPage === "new", "IS THIS PAGE NewSpoT!?!?!?!?!?!")
         direction.current = "panToView"
         adjustMap([{"mapX": coordinates.X},{"mapY": coordinates.Y}])
      }
