@@ -9,6 +9,7 @@ import { searchSpotsByTitle } from '../../store/spots';
 
 
 function Navigation(){
+    const currentPage = window.document.URL.substring(window.document.URL.lastIndexOf('/') + 1)
     const sessionUser = useSelector(state => state.session.user);
     const bg = sessionUser?.profileBackgroundColor
     const profPic = sessionUser?.profilePic
@@ -43,7 +44,7 @@ function Navigation(){
     useEffect(() => {
     const scrollFunction = () =>{
 
-        if (document.body.scrollTop > 88 || document.documentElement.scrollTop > 88) {
+        if ((document.body.scrollTop > 88 || document.documentElement.scrollTop > 88) && !currentPage || currentPage) {
             document.querySelector(".navbarContainer")?.classList.add("navbarContainer--resize");
             document.querySelector(".navbar--element1")?.classList.add("navbar_element--resize1");
             document.querySelector(".navbar--element2")?.classList.add("navbar_element--resize2");
@@ -62,7 +63,7 @@ function Navigation(){
             document.querySelector(".menuOptions")?.classList.add("menuOptions--resize");
 
 
-        } else if (document.body.scrollTop < 88 || document.documentElement.scrollTop < 88) {
+        } else if ((document.body.scrollTop < 88 || document.documentElement.scrollTop < 88) && !currentPage) {
             document.querySelector(".navbarContainer")?.classList.remove("navbarContainer--resize");
             document.querySelector(".navbar--element1")?.classList.remove("navbar_element--resize1");
             document.querySelector(".navbar--element2")?.classList.remove("navbar_element--resize2");

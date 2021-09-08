@@ -1,7 +1,10 @@
 // import { useParams } from 'react-router-dom';
+import { csrfFetch } from './csrf';
+
 const LOAD_ByTag = 'session/LOAD_ByTag';
 const LOAD_ByTitle = 'session/LOAD_ByTitle';
 const LOAD_MYSPOTS = 'session/LOAD_MYSPOTS';
+const DELETE_SPOT = 'session/DELETE_SPOT';
 
 
 
@@ -25,6 +28,27 @@ export const loadMySpots = ( spots ) => {
         type: LOAD_MYSPOTS,
         spots
     };
+};
+
+export const deleteSpotLoader = ( spot ) => {
+    return {
+        type: DELETE_SPOT,
+        spot
+    };
+};
+
+export const deleteMySpot = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spot/${id}/delete`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+    });
+    if(response.ok){
+        const data = await response.json();
+        dispatch(deleteSpotLoader(data));
+        return data
+    } else {
+        return response
+    }
 };
 
 
@@ -72,6 +96,13 @@ export const fetchspotsByTag = (tag) => async (dispatch) => {
         case LOAD_MYSPOTS:
             newState = Object.assign({}, state);
             newState.spots = action.spots;
+            return newState;
+        case DELETE_SPOT:
+            newState = Object.assign({}, state);
+            console.log("WTFWTFW", newState, action, "WTFWTFWTFW")
+            let newArr = newState.spots.filter(el => el.id !== parseInt(action.spot.id))
+            newState.spots = newArr
+            // newState.newSpot = action.newSpot;
             return newState;
         default:
             return state;

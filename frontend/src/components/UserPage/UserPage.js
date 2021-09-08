@@ -5,6 +5,7 @@ import { fetchMySpots } from '../../store/spots';
 import { useHistory } from 'react-router-dom'
 import { deleteBooking } from '../../store/booking';
 import { editTheBooking } from '../../store/booking';
+import { deleteMySpot } from '../../store/spots';
 
 
 function UserPage() {
@@ -52,6 +53,10 @@ function UserPage() {
         setEditBooking(targetBooking)
     }
 
+    function handleSpotDelete(id){
+         dispatch(deleteMySpot(id))
+    }
+
     return (
         <div style={{ marginTop: "250px" }}>
             <h2>My Booked Spots</h2>
@@ -88,10 +93,14 @@ function UserPage() {
             <h2>My Spots</h2>
             <div style={{ display: 'flex' }}>
                 {mySpots?.map((el) =>
+                    <>
                     <div style={{ margin: "10px", padding: "10px" }} key={`${el.id}-bookedSpot`}>
                         Name: {el.title} Price: {el.price}
                         <img src={el.mainPic} style={{ width: "250px" }}></img>
+                        {user.id === el.ownerId &&  <button onClick={()=> history.push(`/spot/${el.id}/edit`)}>Edit</button>}
+                        {user.id === el.ownerId &&  <button onClick={()=> handleSpotDelete(el.id)}>Delete</button>}
                     </div>
+                    </>
                 )}
             </div>
 

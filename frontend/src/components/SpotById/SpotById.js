@@ -177,7 +177,6 @@ export default function SpotById() {
 
     // getXY.addEventListener("mousedown", (e)=>{
     //     // GetCoordinates(e);
-    //     console.log('woot')
 
 
     return (

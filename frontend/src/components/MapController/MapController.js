@@ -59,19 +59,17 @@ function MapController() {
 
     useEffect(()=>{
         if(id && currentPage !== "new"){
-            dispatch(dispatchCoordinates({ "X": spot.coordinateX, "Y": spot.coordinateY }))
+            dispatch(dispatchCoordinates({ "X": spot?.coordinateX, "Y": spot?.coordinateY }))
         }
     }, [spot])
 
     function adjustMap(arr) {
         let newObj = Object.assign({}, mapControl);
-        // console.log(newObj)
         for (let i = 0; i < arr.length; i++) {
             let key = Object.keys(arr[i])[0]
             let value = newObj[Object.keys(arr[i])]
             let action = Object.values(arr[i])[0]
             let newValue = value + action;
-            // console.log(key, newValue, direction.current)
             if (key === "scale" && (newValue < 1 || newValue > 4)) return;
 
             // keeps the map within the edges
@@ -128,18 +126,22 @@ function MapController() {
     }
 
 
-function invokeAdjust(){
-    if(currentPage === "new"){
-        return
-    } else {
-        direction.current = "panToView"
-        adjustMap([{"mapX": coordinates.X},{"mapY": coordinates.Y}])
-     }
-}
+// function invokeAdjust(){
+//     if(currentPage === "new"){
+//         return
+//     } else {
+//         direction.current = "panToView"
+//         adjustMap([{"mapX": coordinates.X},{"mapY": coordinates.Y}])
+//      }
+// }
 
     useEffect(()=>{
-        invokeAdjust()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        if(currentPage === "new" || currentPage === "edit"){
+            return
+        } else {
+            direction.current = "panToView"
+            adjustMap([{"mapX": coordinates.X},{"mapY": coordinates.Y}])
+         }        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [coordinates])
 
 

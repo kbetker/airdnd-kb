@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     spotId: DataTypes.INTEGER
   }, {});
   Tag.associate = function(models) {
-    Tag.belongsTo(models.Spot, {foreignKey: "spotId"});
+    Tag.belongsTo(models.Spot, {foreignKey: "spotId", onDelete: 'CASCADE'});
   };
   return Tag;
 };

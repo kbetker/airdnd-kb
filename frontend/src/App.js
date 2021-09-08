@@ -12,6 +12,7 @@ import SpotNew from './components/SpotNew'
 import UserPage from "./components/UserPage/UserPage";
 import FourOhFour from './components/FourOhFour'
 import * as sessionActions from "./store/session";
+import SpotEdit from "./components/SpotEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,11 @@ function App() {
         <Route exact path="/spot/:id">
           <Navigation />
           <SpotById />
+        </Route>
+
+        <Route exact path="/spot/:id/edit">
+          <Navigation />
+          <SpotEdit />
         </Route>
 
         <Route path="/spots/:tag">
