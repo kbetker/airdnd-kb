@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     valueReview: DataTypes.INTEGER
   }, {});
   Review.associate = function(models) {
-    Review.belongsTo(models.User, {foreignKey: 'userId'});
-    Review.belongsTo(models.Spot, {foreignKey: 'spotId'});
+    Review.belongsTo(models.User, {foreignKey: 'userId' , onDelete: 'CASCADE'});
+    Review.belongsTo(models.Spot, {foreignKey: 'spotId', onDelete: 'CASCADE'});
   };
 
   Review.newReview = async function ({ userId, spotId, body, cleanReview, locationReview, valueReview }) {

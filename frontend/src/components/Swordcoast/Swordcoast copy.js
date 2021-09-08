@@ -35,7 +35,6 @@ function Swordcoast({ props }) {
 
       if (typeof (mapDiv.offsetParent) != "undefined") {
         for (var posX = mapControl.offsetX, posY = mapControl.offsetY; mapDiv; mapDiv = mapDiv.offsetParent) {
-          console.log(mapControl.offsetX, mapControl.offsetY)
           posX = (posX + mapDiv.offsetLeft);
           posY = (posY + mapDiv.offsetTop);
         }
@@ -104,7 +103,6 @@ function Swordcoast({ props }) {
 
       { spots && spots.map((el) => {
 
-        {console.log(el.Spot.coordinateX, el.Spot?.coordinateY, el.Spot?.title)}
           <div className="locOnMap" draggable="true" style={{
             top: el.Spot?.coordinateX,
             left: el.Spot?.coordinateY,

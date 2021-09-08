@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     spotId: DataTypes.INTEGER
   }, {});
   Pic.associate = function(models) {
-    Pic.belongsTo(models.Spot, {foreignKey: "spotId"});
+    Pic.belongsTo(models.Spot, {foreignKey: "spotId", onDelete: 'CASCADE'});
   };
   return Pic;
 };

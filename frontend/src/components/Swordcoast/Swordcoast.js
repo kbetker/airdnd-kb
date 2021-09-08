@@ -8,7 +8,8 @@ import { useParams } from "react-router";
 
 function Swordcoast({ props }) {
   // const spots = useRef()
-  const title = useSelector(state => state.mapTitle)
+  const updateTitle = useSelector(state => state.mapTitle)
+  const [title, setTitle] = useState("")
   const id = useParams().id || null
   const titleWhenEmpty = "Click on map to move location marker"
   const getXY = useRef()
@@ -21,12 +22,11 @@ function Swordcoast({ props }) {
   const spots = useSelector(state => state.spots.spots)
   const spot = useSelector(state => state.spot.spot)
   const currentPage = window.document.URL.substring(window.document.URL.lastIndexOf('/') + 1)
-
+  console.log(currentPage)
   // useEffect(()=>{
   //   spots = props.spots
   // }, [])
 
-  console.log(id)
   useEffect(() => {
     getXY.current.addEventListener("click", (e) => {
       GetCoordinates.current()
@@ -34,12 +34,23 @@ function Swordcoast({ props }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(()=>{
+    setTitle(updateTitle)
+  }, [updateTitle])
+
+  useEffect(()=>{
+    if(currentPage === "edit"){
+      setCoordinateX(spot?.coordinateX)
+      setCoordinateY(spot?.coordinateY)
+      setTitle(spot?.title)
+    }
+  }, [spot])
+
   useEffect(() => {
     FindPosition.current = function (mapDiv) {
 
       if (typeof (mapDiv.offsetParent) != "undefined") {
         for (var posX = mapControl.offsetX, posY = mapControl.offsetY; mapDiv; mapDiv = mapDiv.offsetParent) {
-          // console.log(mapControl.offsetX, mapControl.offsetY)
           posX = (posX + mapDiv.offsetLeft);
           posY = (posY + mapDiv.offsetTop);
         }
@@ -73,7 +84,7 @@ function Swordcoast({ props }) {
       PosY = ((PosY - ImgPos[1]) / mapControl.scale);
       setCoordinateX(PosX)
       setCoordinateY(PosY)
-      if (currentPage === "new") {
+      if (currentPage === "new" || currentPage === "edit") {
         dispatch(dispatchCoordinates({ "X": PosX, "Y": PosY }))
       }
       // console.log(`X:${PosX}, offsetX:${ImgPos[0]}, Y:${PosY}, offsetY:${ImgPos[1]}`)
@@ -88,7 +99,7 @@ function Swordcoast({ props }) {
 
       <img src="/images/swordCoast2800faded.jpg" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
 
-      {currentPage === "new" &&
+      {(currentPage === "new" || currentPage === "edit") &&
 
         <div className="locOnMap" draggable="true" style={{
           top: coordinateY,
@@ -109,11 +120,12 @@ function Swordcoast({ props }) {
       }
 
 
-      {currentPage !== "new" && id &&
+
+      {(currentPage !== "new" && currentPage !== "edit") && id && spot &&
 
         <div className="locOnMap" draggable="true" style={{
-          top: spot.coordinateY,
-          left: spot.coordinateX,
+          top: spot?.coordinateY,
+          left: spot?.coordinateX,
           fontSize: `${mapControl.fontSize}px`,
           padding: `${mapControl.padding}px`,
           boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
@@ -131,11 +143,11 @@ function Swordcoast({ props }) {
 
 
 
-      {currentPage !== "new" && !id && spots && spots.map((el) =>
+      {(currentPage !== "new" && currentPage !== "edit") && !id && spots && spots.map((el) =>
         <div id={`mapLoc-${el.id}`}
           className="locOnMap-sbt"
           draggable="true"
-          onClick={(e) => dispatch(dispatchCoordinates({ "X": el.Spot.coordinateY, "Y": el.Spot.coordinateX }))}
+          onClick={(e) => dispatch(dispatchCoordinates({ "X": el.Spot.coordinateX, "Y": el.Spot.coordinateY }))}
           key={`loc-${el.id}`} style={{
             top: el.Spot?.coordinateY,
             left: el.Spot?.coordinateX,
@@ -144,7 +156,7 @@ function Swordcoast({ props }) {
             boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
             zIndex: "1000",
           }
-          }>{el.Spot.title}
+          }>{el.Spot?.title}
           <img className="locationDot" src="/images/locationDot.png" style={{
             width: `${mapControl.fontSize}px`,
             height: `${mapControl.fontSize}px`,
