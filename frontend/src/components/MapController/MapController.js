@@ -7,6 +7,7 @@ import { dispatchMapControl } from "../../store/mapControl"
 import { initialState } from "../../store/mapControl"
 import { dispatchCoordinates } from "../../store/locCoordinates"
 import { useParams } from "react-router"
+import clouds from "./clouds700x700.jpg"
 
 
 function MapController() {
@@ -43,7 +44,7 @@ function MapController() {
 
     const zoomIn = [  {"scale": scale}, {"offsetX": offsetX}, {"offsetY": offsetY}, {"fontSize": fontSize}, {"padding": padding}, {"shadowX": shadowX}, {"shadowY": shadowY}, {"shadowBlur": shadowBlur}, {"maxMapX": maxMapX}, {"maxMapY": maxMapY}, {"minMapX": minMapX}, {"minMapY": minMapY}, {"mapX": mapX}, { "mapY": mapY}, { "dotOffset": dotOffset}]
 
-    const zoomOut = [  {"scale": scale * -1}, {"offsetX": offsetX * -1}, {"offsetY": offsetY * -1}, {"fontSize": fontSize * -1}, {"padding": padding * -1}, {"shadowX": shadowX * -1}, {"shadowY": shadowY * -1}, {"shadowBlur": shadowBlur * -1}, {"maxMapX": maxMapX * -1}, {"maxMapY": maxMapY * -1}, {"minMapX": minMapX * -1}, {"minMapY": minMapY * -1}, {"mapX": mapX}, { "mapY": mapY}, { "dotOffset": dotOffset}]
+    const zoomOut = [  {"scale": scale * -1}, {"offsetX": offsetX * -1}, {"offsetY": offsetY * -1}, {"fontSize": fontSize * -1}, {"padding": padding * -1}, {"shadowX": shadowX * -1}, {"shadowY": shadowY * -1}, {"shadowBlur": shadowBlur * -1}, {"maxMapX": maxMapX * -1}, {"maxMapY": maxMapY * -1}, {"minMapX": minMapX * -1}, {"minMapY": minMapY * -1}, {"mapX": mapX}, { "mapY": mapY}, { "dotOffset": dotOffset * -1}]
 
 
 
@@ -188,13 +189,14 @@ function MapController() {
 
         </div>
         {/* style={{ overflow: "hidden" }} */}
-        <div className="map" >
+        <div className="map" style={{backgroundImage: `url(${clouds})`}} >
             <div style={{
                 position: "relative",
                 left: `${mapControl.mapX}px`,
                 top: `${mapControl.mapY}px`,
                 transform: `scale(${mapControl.scale})`,
-                transition: `all 0.6s ease-in-out`
+                transition: `all 0.6s ease-in-out`,
+
             }}>
 
                 <Swordcoast />

@@ -39,6 +39,7 @@ export default function SpotNew() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        console.log(payload)
         let createSpot = await dispatch(postCreatedSpot(payload))
         history.push(`/spot/${createSpot.newSpot.id}`)
     }
@@ -52,63 +53,70 @@ export default function SpotNew() {
 
                     <form onSubmit={(e) => handleSubmit(e)} className="newSpotForm">
 
-                        <div className="newSpot--element">
-                            <label htmlFor="title">Title:</label>
-                            <input
-                                type="text"
-                                id="title"
-                                onChange={(e) => [dispatch(dispatchMapTitle(e.target.value)), setTitle(e.target.value)]}
-                                value={title}
-                                placeholder="Click on map to move location marker"
-                                className="newSpot--element">
-                            </input>
+                        <div className="newSpot--element flexIt">
+                            <div>
+                                <label htmlFor="title">Title:</label>
+                                <input
+                                    type="text"
+                                    id="title"
+                                    onChange={(e) => [dispatch(dispatchMapTitle(e.target.value)), setTitle(e.target.value)]}
+                                    value={title}
+                                    placeholder="Click on map to move location marker"
+                                    style={{ width: "100px", margin: "0 10px" }}
+                                />
+                            </div>
+
+
+                            <div>
+                                <label htmlFor="price">Price:</label>
+                                <input
+                                    type="text"
+                                    id="price"
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    value={price}
+                                    style={{ width: "100px" }}
+                                />
+                            </div>
                         </div>
 
                         <div className="newSpot--element">
-                            <div><label htmlFor="price">price:</label></div>
-                            <input
-                                type="text"
-                                id="price"
-                                onChange={(e) => setPrice(e.target.value)}
-                                value={price}
-                                className="newSpot--element">
-                            </input>
-                        </div>
-
-                        <div className="newSpot--element">
-                            <label htmlFor="description" >description:</label>
+                            <label htmlFor="description" >Description:</label>
                             <textarea
                                 id="description"
-                                style={{ height: '90px' }}
+                                style={{ height: '70px' }}
                                 onChange={(e) => setDescription(e.target.value)}
                                 value={description}
                                 className="newSpot--element">
                             </textarea>
                         </div>
 
-                        <div className="newSpot--element">
-                            <label htmlFor="mainPic">mainPic:</label>
+                        <div className="newSpot--element flexIt">
+
+                            <label htmlFor="mainPic">Image URL:</label>
                             <input
                                 type="text"
                                 id="mainPic"
                                 onChange={(e) => setMainPic(e.target.value)}
                                 value={mainPic}
-                                className="newSpot--element">
+                                style={{ width: "240px", marginLeft: "10px" }}
+                            >
                             </input>
-                        </div>
 
-                        <div className="newSpot--element">
-                            <label htmlFor="allowsFamiliar">allowsFamiliar:</label>
+                        </div>
+                        <div className="imageContainer" style={{ backgroundImage: `url(${mainPic})` }}></div>
+
+                        <div className="newSpot--element flexIt">
+                            <label htmlFor="allowsFamiliar">Allow Familiars?:</label>
                             <input
-                                type="text"
-                                id="allowsFamiliar"
-                                onChange={(e) => setAllowsFamiliar(e.target.value)}
-                                value={allowsFamiliar}
-                                className="newSpot--element">
-                            </input>
+                                name="allowsFamiliar"
+                                type="checkbox"
+                                checked={allowsFamiliar}
+
+                                onChange={(e) => { setAllowsFamiliar(e.target.checked) }} />
+
                         </div>
 
-                        <button type="submit">Submit</button>
+                        <button type="submit" className="submitButton">Submit</button>
                     </form>
                 </div>
 

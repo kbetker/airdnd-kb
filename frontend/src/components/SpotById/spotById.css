@@ -1,5 +1,5 @@
 #spacer{
-    height: 190px;
+    height: 90px;
     background-color: white;
     z-index: 10;
 }
@@ -257,15 +257,30 @@
 .map{
     /* margin-top: 190px; */
     position: fixed;
-    top: 240px;
+    top: 140px;
     right: 50px;
     height: 500px;
     width: 700px;
-    background-color: black;
+    /* background-color: #b1a587; */
     border: solid 3px black;
     box-sizing: border-box;
     overflow: hidden;
+    background-repeat: repeat-x;
+    animation: animatedClouds 60s linear infinite;
+
+    /* background-image: url("https://cdn.vox-cdn.com/thumbor/BOeJJw_17HVPXGwQsSYtn0kBvec=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15800428/20150428-cloud-computing.0.1537161120.jpg"); */
 }
+
+@keyframes animatedClouds {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -700px 0;
+    }
+  }
+
+
 .swordCoastMap{
     transition: all 0.3s linear;
     box-sizing: border-box;

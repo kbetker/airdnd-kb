@@ -23,19 +23,9 @@
 .mapContainer{
     width: 2800px;
     height: 2800px;
-    background-color: black;
+    /* background-color: #b1a587; */
 }
-.target{
-    width: 20px;
-    height: 20px;
-    border: 2px solid red;
-    z-index: 999999;
-    position: fixed;
-    top: 250px;
-    left: 340px;
-    border-radius: 99px;
-    pointer-events: none;
-}
+
 
 .locOnMap-sbt{
     background-color: white;
