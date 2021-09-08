@@ -9,6 +9,7 @@ import MapController from "../MapController/MapController"
 import { fetchSpotById } from "../../store/spot"
 import { useParams } from 'react-router';
 import { editSpot } from "../../store/spot"
+import castle from "../SpotNew/NoImageSelected.png"
 
 // import { useDispatch } from 'react-router-dom';
 
@@ -63,7 +64,7 @@ export default function SpotNew() {
     return (
         <>
             <div id='spacer'></div>
-            <div className="newSpotWrapper">
+            <div className="newSpotWrapper"  style={{backgroundImage: `url(${castle})`}}>
 
                 <div className="newSpot" >
 

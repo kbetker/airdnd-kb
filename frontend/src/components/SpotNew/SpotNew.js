@@ -6,6 +6,8 @@ import './NewSpot.css'
 import "../SpotById/spotById.css"
 import { dispatchMapTitle } from "../../store/mapTitle"
 import MapController from "../MapController/MapController"
+import castle from "./castleBackground.jpg"
+import noImage from "./NoImageSelected.png"
 
 // import { useDispatch } from 'react-router-dom';
 
@@ -47,7 +49,7 @@ export default function SpotNew() {
     return (
         <>
             <div id='spacer'></div>
-            <div className="newSpotWrapper">
+            <div className="newSpotWrapper" style={{backgroundImage: `url(${castle})`}}>
 
                 <div className="newSpot" >
 
@@ -103,7 +105,7 @@ export default function SpotNew() {
                             </input>
 
                         </div>
-                        <div className="imageContainer" style={{ backgroundImage: `url(${mainPic})` }}></div>
+                        <div className="imageContainer" style={{ backgroundImage: `url(${mainPic || noImage})` }}></div>
 
                         <div className="newSpot--element flexIt">
                             <label htmlFor="allowsFamiliar">Allow Familiars?:</label>

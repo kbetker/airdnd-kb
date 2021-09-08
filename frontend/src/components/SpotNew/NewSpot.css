@@ -5,6 +5,9 @@
     /* background-repeat: repeat; */
     display: grid;
     grid-template-columns: 1fr 834px;
+    height: 93vh;
+    background-size: contain;
+    background-repeat: no-repeat;
     /* background-color: red; */
 }
 
@@ -24,6 +27,8 @@
 .newSpotForm{
     display: flex;
     flex-direction: column;
+    align-self: flex-start;
+    margin-top: 30px;
     justify-content: space-evenly;
     width: 400px;
     height: 500px;
