@@ -88,19 +88,23 @@ export default function SpotsByTag() {
             <div className="spotWrapper" >
 
                 <div className="spot">
-
+                    <div style={{height: "30px"}}></div>
                     { spotsByTag.spots && spotsByTag?.spots.map((e) =>
                         <Link to={`/spot/${e.Spot?.id}`} onMouseOver={()=> dispatch(dispatchCoordinates({ "X": e.Spot?.coordinateX, "Y": e.Spot?.coordinateY })) } key={e.id}>
                             <div id={`list-${e.id}`} className="list">
 
-                                <img src={e.Spot?.mainPic} className="spotImage" alt="Main Pic"></img>
+                                <div className="mainPicContainter">
+                                <div className="mainPicBackground" style={{backgroundImage: `url(${e.Spot?.mainPic})`}}></div>
+                                <div className="mainPicForeground" style={{backgroundImage: `url(${e.Spot?.mainPic})`}}></div>
+                                </div>
+                                    {/* <img src={e.Spot?.mainPic} className="spotImage" alt="Main Pic"></img> */}
 
                                 <div className="spotContent">
                                     <div className="top">
                                         <h2>{e.Spot?.title}</h2>
                                         <h3>{e.Spot?.location}</h3>
                                         <hr className="spotHr"></hr>
-                                        <p>{e.Spot?.description}</p>
+                                        <div className="description"><p>{e.Spot?.description}</p></div>
                                     </div>
 
                                     <div className="bottom">
@@ -125,19 +129,9 @@ export default function SpotsByTag() {
                     )}
 
                 </div>
+           {/* <div style={{width: "800px", height: "400px", backgroundColor: "red"}}>wut</div> */}
                             <MapController  />
-                {/* <div className="map-sbt">
 
-                    { spotsByTag.spots  && spotsByTag?.spots.map((e) =>
-                        <Link to={`/spot/${e.Spot?.id}`} key={`${e.id}`}>
-                            <div id={`mapLoc-${e.id}`} className="locOnMap-sbt" style={{ top: e.Spot?.coordinateY, left: e.Spot?.coordinateX }}>
-                                {e.Spot?.title}
-                            </div>
-                        </Link>
-                    )}
-                    <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
-
-                </div> */}
             </div>
         </>
     )

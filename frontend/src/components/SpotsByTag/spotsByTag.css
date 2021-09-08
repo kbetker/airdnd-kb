@@ -2,7 +2,7 @@
     /* margin: 190px 0; */
     background-repeat: repeat;
     display: grid;
-    grid-template-columns: 1fr 934px;
+    grid-template-columns: 1fr 800px;
     /* background-color: red; */
 }
 .map-sbt{
@@ -23,19 +23,9 @@
 .mapContainer{
     width: 2800px;
     height: 2800px;
-    background-color: black;
+    /* background-color: #b1a587; */
 }
-.target{
-    width: 20px;
-    height: 20px;
-    border: 2px solid red;
-    z-index: 999999;
-    position: fixed;
-    top: 250px;
-    left: 340px;
-    border-radius: 99px;
-    pointer-events: none;
-}
+
 
 .locOnMap-sbt{
     background-color: white;
@@ -63,9 +53,15 @@
     transition: all .55s ease-in-out;
     margin: 0 0 20px 20px;
     padding: 15px;
-    border-bottom-left-radius: 35px;
-    border-top-left-radius: 35px;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
     border: 1px solid rgb(175, 175, 175);
+    max-width: 900px;
+}
+.description{
+    height: 250px;
+    margin-bottom: 10px;
+    overflow: auto;
 }
 .list:hover,.list--hover {
     background-color: rgb(236, 224, 206);
@@ -74,7 +70,7 @@
 
 .spotImage{
     width: 400px;
-    border-radius: 25px;
+    border-radius: 5px;
     border: 1px solid rgb(136, 136, 136);
 }
 .locationDot{
@@ -94,6 +90,7 @@ transition: all 0.3s ease-in-out;
 .spotContent{
     margin-left: 25px;
     font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
     color: black;
     width: 100%;
     flex-direction: column;
@@ -102,12 +99,125 @@ transition: all 0.3s ease-in-out;
     justify-content: space-between;
     /* height: 300px */
 }
+.mainPicContainter{
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.mainPicBackground{
+    width: 350px;
+    height: 350px;
+    border-radius: 15px;
+    border: 1px solid rgb(136, 136, 136);
+    filter: blur(2px) brightness(0.6);
+    background-size: 900px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.mainPicForeground{
+    width: 345px;
+    height: 345px;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    filter: drop-shadow( 0 0  8px #000000);
+}
+
+.bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width:1440px) {
+    .spotContent{
+        font-size: 14px;
+    }
+    .mainPicContainter{
+        width: 275px;
+        height: 350px;
+    }
+
+    .mainPicBackground{
+        width: 275px;
+        height: 350px;
+        background-size: 900px;
+
+    }
+    .mainPicForeground{
+        width: 270px;
+        height: 345px;
+    }
+
+}
+
+@media screen and (max-width:1330px) {
+    .bottom{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+}
+
+
+@media screen and (max-width:1250px) {
+    .mainPicContainter{
+        width: 200px;
+        height: 350px;
+
+    }
+    .mainPicBackground{
+        width: 200px;
+        height: 350px;
+        background-size: 900px;
+
+    }
+    .mainPicForeground{
+        width: 195px;
+        height: 345px;
+    }
+}
+
+@media screen and (max-width:1175px) {
+    .mainPicContainter{
+        width: 100%;
+        height: 350px;
+
+    }
+    .mainPicBackground{
+        width: 100%;
+        height: 350px;
+        background-size: 900px;
+
+    }
+    .mainPicForeground{
+        width: 195px;
+        height: 345px;
+    }
+
+    .description{
+        height: 50px;
+        /* width: 100%; */
+        margin-bottom: 10px;
+        overflow: auto;
+    }
+
+    .list{
+        flex-direction: column;
+        margin: 0 4px;
+    }
+}
+
 hr{
     color: rgb(161, 161, 161);
     /* width: 150px; */
     align-self: flex-start;
-}
-.bottom{
-    display: flex;
-    justify-content: space-between;
 }

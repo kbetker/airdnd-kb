@@ -1,5 +1,5 @@
 #spacer{
-    height: 190px;
+    height: 60px;
     background-color: white;
     z-index: 10;
 }
@@ -10,11 +10,49 @@
 .spotWrapper{
     /* margin: 190px 0; */
     background-repeat: repeat;
+    display: flex;
+    justify-content: space-between;
     display: grid;
-    grid-template-columns: 1fr 834px;
+    grid-template-columns: 1fr 800px;
     /* background-color: red; */
+
 }
 
+.spotById{
+    /* background-color: green; */
+    max-width: 1000px;
+}
+
+.mainPicContainterSingleSpot{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.mainPicBackgroundSingleSpot{
+    width: 100%;
+    height: 350px;
+    border-radius: 15px;
+    border: 1px solid rgb(136, 136, 136);
+    filter: blur(2px) brightness(0.6);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.mainPicForegroundSingleSpot{
+    width: 95%;
+    height: 97%;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    filter: drop-shadow( 0 0  8px #000000);
+}
 
 
 .spotTitle{
@@ -257,15 +295,32 @@
 .map{
     /* margin-top: 190px; */
     position: fixed;
-    top: 240px;
+    top: 140px;
     right: 50px;
     height: 500px;
     width: 700px;
-    background-color: black;
+    /* background-color: #b1a587; */
     border: solid 3px black;
     box-sizing: border-box;
     overflow: hidden;
+    background-repeat: repeat-x;
+    animation: animatedClouds 60s linear infinite;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    /* background-image: url("https://cdn.vox-cdn.com/thumbor/BOeJJw_17HVPXGwQsSYtn0kBvec=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15800428/20150428-cloud-computing.0.1537161120.jpg"); */
 }
+
+@keyframes animatedClouds {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -700px 0;
+    }
+  }
+
+
 .swordCoastMap{
     transition: all 0.3s linear;
     box-sizing: border-box;
@@ -286,6 +341,7 @@
     border: 3px solid rgb(0, 0, 0);
     /* box-shadow: 0 3px 10px 5px inset rgb(0, 0, 0); */
     box-sizing: border-box;
+    margin-top: 30px;
 
 }
 .controlElement{
@@ -383,4 +439,70 @@
     color: black;
     font-style: italic;
     margin-left: 20px;
+}
+
+@media screen and (max-width: 1440px) {
+    .spotById{
+        /* background-color: rgb(41, 184, 41); */
+        width: 80%;
+    }
+
+    .mainPicContainterSingleSpot{
+        width: 100%;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+    }
+
+    .mainPicBackgroundSingleSpot{
+        width: 100%;
+        height: 350px;
+        border-radius: 15px;
+        border: 1px solid rgb(136, 136, 136);
+        filter: blur(2px) brightness(0.6);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .mainPicForegroundSingleSpot{
+        width: 95%;
+        height: 97%;
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        background-repeat: no-repeat;
+        border-radius: 15px;
+        filter: drop-shadow( 0 0  8px #000000);
+    }
+    .reviewsStats{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0fr;
+        /* background-color: red; */
+        width: 100%;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .cleanlinessReview,.valueReview{
+        margin-left: 20px;
+        padding: 15px;
+    }
+
+    .locationReview,.overallReview{
+        margin-left: 20px;
+        padding: 15px;
+    }
+    .location-price-book{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+        margin: 30px 10px 40px 10px;
+    }
+    .spotById--price--book{
+        margin-left: 20px;
+    }
+
 }

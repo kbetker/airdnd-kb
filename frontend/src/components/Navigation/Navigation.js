@@ -84,8 +84,8 @@ function Navigation(){
         } ;
     };
     window.onscroll = function() {scrollFunction()};
-
-    })
+        if(currentPage){scrollFunction()}
+    }, [currentPage])
 
     function logOut(e){
         return dispatch(logout())

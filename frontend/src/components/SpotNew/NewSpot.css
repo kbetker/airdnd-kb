@@ -1,8 +1,13 @@
 .newSpotWrapper{
+    /* display: flex;
+    justify-content: space-between; */
     /* margin: 190px 0; */
-    background-repeat: repeat;
+    /* background-repeat: repeat; */
     display: grid;
     grid-template-columns: 1fr 834px;
+    height: 93vh;
+    background-size: contain;
+    background-repeat: no-repeat;
     /* background-color: red; */
 }
 
@@ -15,20 +20,42 @@
  align-items: center;
  justify-content: center;
 }
+.submitButton{
+    height: 30px;
+}
 
 .newSpotForm{
     display: flex;
     flex-direction: column;
+    align-self: flex-start;
+    margin-top: 30px;
     justify-content: space-evenly;
-    width: 500px;
+    width: 400px;
     height: 500px;
     background-color: rgb(231, 231, 231);
     padding: 20px;
-    border-radius: 25px;
+    border-radius: 10px;
     border: 1px solid rgb(199, 199, 199);
 }
 .newSpot--element{
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 400px;
+}
+
+.flexIt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.imageContainer{
+    width: 400px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(122, 122, 122);
+    box-shadow: 0 0 20px black inset;
 }

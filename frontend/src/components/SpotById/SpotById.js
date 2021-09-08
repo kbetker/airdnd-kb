@@ -185,7 +185,7 @@ export default function SpotById() {
             <div className="spotWrapper">
 
                 <div className="spotById">
-
+                    <div style={{height: "30px"}}></div>
                     <div className="spotTitle">
                         <h1 className="spotById--title">{singleSpot.title}</h1>
                         <div>
@@ -196,10 +196,15 @@ export default function SpotById() {
 
 
                     <div className="spotById--pics">
-                        <div className="leftPicDiv">
+                        {/* <div className="leftPicDiv">
                             <img src={singleSpot.mainPic} className="leftPic" alt="main view"></img>
+                        </div> */}
+
+                        <div className="mainPicContainterSingleSpot">
+                                <div className="mainPicBackgroundSingleSpot" style={{backgroundImage: `url(${singleSpot.mainPic})`}}></div>
+                                <div className="mainPicForegroundSingleSpot" style={{backgroundImage: `url(${singleSpot.mainPic})`}}></div>
                         </div>
-                        <div className="rightPics">
+                        {/* <div className="rightPics">
                             <div className="upperLeft">
                                 <img src={singleSpot.Pics[0]?.picUrl ? singleSpot.Pics[0].picUrl : '/images/morePhotosComingB.jpg'} className="upLeftPic" alt="up left pic"></img>
                             </div>
@@ -215,7 +220,7 @@ export default function SpotById() {
                             <div className="lowerRight">
                                 <img src={singleSpot.Pics[3] ? singleSpot.Pics[3].picUrl : '/images/morePhotosComingB.jpg'} className="lowRightPic" alt="low right pic"></img>
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
 
@@ -400,10 +405,6 @@ export default function SpotById() {
 
 
                 <MapController  />
-                {/* <div className="map">
-                    <div id="locOnMap" style={{ top: singleSpot.coordinateY, left: singleSpot.coordinateX }}>{singleSpot.title}</div>
-                    <img src="/images/swordCoastMap.jpg" className="swordCoastMap" alt="sword coast map"></img>
-                </div> */}
 
             </div>
         </>

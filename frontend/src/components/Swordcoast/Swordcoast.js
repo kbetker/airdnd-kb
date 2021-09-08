@@ -97,7 +97,7 @@ function Swordcoast({ props }) {
 
 
 
-      <img src="/images/swordCoast2800faded.jpg" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
+      <img src="/images/swordCoast2800.gif" ref={getXY} className="swordCoastMap" alt="sword coast map" ></img>
 
       {(currentPage === "new" || currentPage === "edit") &&
 
