@@ -194,12 +194,13 @@
 
 .menuOptions{
     width: 150px;
-    height: 200px;
+    padding: 20px 0;
+    /* height: 200px; */
     background-color: white;
     position: relative;
     top: -65px;
     right: -180px;
-    border-radius: 25px;
+    border-radius: 15px;
     transition: all .55s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -217,8 +218,9 @@
     font-family: Helvetica, Arial,  sans-serif;
     /* width: 130px;
     height: 35px; */
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px;
+    cursor: pointer;
 }
 .menu--element:hover{
     background-color: rgb(216, 216, 216);

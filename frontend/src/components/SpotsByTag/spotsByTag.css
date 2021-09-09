@@ -106,7 +106,9 @@ transition: all 0.3s ease-in-out;
     justify-content: center;
     align-items: center;
     position: relative;
-
+    border: solid 1px rgb(255, 0, 0);
+    border-radius: 15px;
+    box-shadow: 0 0 30px black inset;
 }
 
 .mainPicBackground{
@@ -114,7 +116,8 @@ transition: all 0.3s ease-in-out;
     height: 350px;
     border-radius: 15px;
     border: 1px solid rgb(136, 136, 136);
-    filter: blur(2px) brightness(0.6);
+    filter: blur(2px) brightness(2);
+    opacity: 0.3;
     background-size: 900px;
     background-repeat: no-repeat;
     background-position: center;
@@ -127,7 +130,8 @@ transition: all 0.3s ease-in-out;
     position: absolute;
     background-repeat: no-repeat;
     border-radius: 15px;
-    filter: drop-shadow( 0 0  8px #000000);
+    /* filter: drop-shadow( 0 0  8px #000000); */
+    box-shadow: 0 0 10px rgb(255, 255, 255) inset;
 }
 
 .bottom{
@@ -189,18 +193,18 @@ transition: all 0.3s ease-in-out;
 @media screen and (max-width:1175px) {
     .mainPicContainter{
         width: 100%;
-        height: 350px;
+        height: 250px;
 
     }
     .mainPicBackground{
         width: 100%;
-        height: 350px;
+        height: 250px;
         background-size: 900px;
 
     }
     .mainPicForeground{
-        width: 195px;
-        height: 345px;
+        width: 100%;
+        height: 245px;
     }
 
     .description{

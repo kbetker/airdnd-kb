@@ -30,8 +30,8 @@ export default function SpotNew() {
     const payload = {
         title,
         location,
-        coordinateX: coordinates.X,
-        coordinateY: coordinates.Y,
+        coordinateX: Math.round(coordinates.X),
+        coordinateY: Math.round(coordinates.Y),
         price,
         description,
         mainPic,
@@ -41,7 +41,6 @@ export default function SpotNew() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(payload)
         let createSpot = await dispatch(postCreatedSpot(payload))
         history.push(`/spot/${createSpot.newSpot.id}`)
     }

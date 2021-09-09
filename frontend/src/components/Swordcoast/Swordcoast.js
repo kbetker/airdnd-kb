@@ -44,6 +44,7 @@ function Swordcoast({ props }) {
       setCoordinateY(spot?.coordinateY)
       setTitle(spot?.title)
     }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [spot])
 
   useEffect(() => {
@@ -60,6 +61,7 @@ function Swordcoast({ props }) {
         return [mapDiv.x, mapDiv.y];
       }
     }
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapControl])
 
   useEffect(() => {
@@ -110,7 +112,7 @@ function Swordcoast({ props }) {
           zIndex: "10",
         }
         }>{title ? title : titleWhenEmpty}
-          <img className="locationDot" src="/images/locationDot.png" style={{
+          <img className="locationDot" src="/images/locationDot.png" alt="" style={{
             width: `${mapControl.fontSize}px`,
             height: `${mapControl.fontSize}px`,
             bottom: `${mapControl.dotOffset}px`,
@@ -137,7 +139,7 @@ function Swordcoast({ props }) {
             height: `${mapControl.fontSize}px`,
             bottom: `${mapControl.dotOffset}px`,
             left: `${mapControl.dotOffset}px`,
-          }}></img>
+          }} alt=""></img>
         </div>
       }
 
@@ -162,7 +164,7 @@ function Swordcoast({ props }) {
             height: `${mapControl.fontSize}px`,
             bottom: `${mapControl.dotOffset}px`,
             left: `${mapControl.dotOffset}px`,
-          }}></img>
+          }} alt=""></img>
         </div>
 
       )}
