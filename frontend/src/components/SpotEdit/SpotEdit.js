@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { postCreatedSpot } from '../../store/spot'
 import { useHistory } from 'react-router-dom'
 import '../SpotNew/NewSpot.css'
 import "../SpotById/spotById.css"
@@ -51,8 +50,8 @@ export default function SpotNew() {
     const payload = {
         title,
         location,
-        coordinateX: coordinates.X,
-        coordinateY: coordinates.Y,
+        coordinateX: Math.round(coordinates.X),
+        coordinateY: Math.round(coordinates.Y),
         price,
         description,
         mainPic,

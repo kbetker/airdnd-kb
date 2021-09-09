@@ -14,7 +14,6 @@ export default function FetchAllTest(){
     const all = useSelector(state => state.fetch.list);
     if(!all){return null;}
 
-    console.log("Fetching all data and then some: ", all[0].Pics[0].picUrl)
     return(
       <div>
           {all.map((element) =>

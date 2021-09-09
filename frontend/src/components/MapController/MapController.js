@@ -7,8 +7,10 @@ import { dispatchMapControl } from "../../store/mapControl"
 import { initialState } from "../../store/mapControl"
 import { dispatchCoordinates } from "../../store/locCoordinates"
 import { useParams } from "react-router"
-import clouds from "./clouds700x700.jpg"
-import clouds2 from "./clouds2.png"
+import clouds from "./map_CloudForeGround.png"
+import clouds2 from "./map_cloudBackground.png"
+import galaxy from "./map_GalaxyBackground.jpg"
+
 
 
 
@@ -64,6 +66,7 @@ function MapController() {
         if(id && currentPage !== "new"){
             dispatch(dispatchCoordinates({ "X": spot?.coordinateX, "Y": spot?.coordinateY }))
         }
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [spot])
 
     function adjustMap(arr) {
@@ -191,8 +194,10 @@ function MapController() {
 
         </div>
         {/* style={{ overflow: "hidden" }} */}
-            <div className="secondClouds" style={{backgroundImage: `url(${clouds})`}}>
-        <div className="map" style={{backgroundImage: `url(${clouds2})`}}>
+            <div  className="galaxy" style={{backgroundImage: `url(${galaxy})`}}>
+            <div  className="secondClouds" style={{backgroundImage: `url(${clouds2})`}}>
+
+        <div className="map" style={{backgroundImage: `url(${clouds})`}}>
             <div style={{
                 position: "relative",
                 left: `${mapControl.mapX}px`,
@@ -204,6 +209,7 @@ function MapController() {
 
                 <Swordcoast />
 
+            </div>
             </div>
         </div>
         </div>

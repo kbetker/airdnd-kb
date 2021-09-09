@@ -99,7 +99,6 @@ export const fetchspotsByTag = (tag) => async (dispatch) => {
             return newState;
         case DELETE_SPOT:
             newState = Object.assign({}, state);
-            console.log("WTFWTFW", newState, action, "WTFWTFWTFW")
             let newArr = newState.spots.filter(el => el.id !== parseInt(action.spot.id))
             newState.spots = newArr
             // newState.newSpot = action.newSpot;

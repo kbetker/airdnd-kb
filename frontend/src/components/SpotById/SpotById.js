@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { fetchSpotById } from '../../store/spot'
@@ -8,7 +8,7 @@ import { deleteReviewThunk } from '../../store/review'
 import { bookSpot } from '../../store/booking';
 import './spotById.css'
 import MapController from '../MapController/MapController';
-import { dispatchCoordinates } from '../../store/locCoordinates';
+// import { dispatchCoordinates } from '../../store/locCoordinates';
 
 export default function SpotById() {
     const { id } = useParams();
@@ -54,7 +54,7 @@ export default function SpotById() {
 
         setTotalCost(cost)
 
-
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[startDate, endDate])
 
     //fetches the spot by id
@@ -191,6 +191,9 @@ export default function SpotById() {
             numGuests: parseInt(numGuests)
         };
         let data = dispatch(bookSpot(bookingPayload))
+        if(data.errors){
+            alert(data.errors)
+        }
         history.push(`/userPage`)
     }
 
@@ -219,6 +222,7 @@ export default function SpotById() {
                                 <div className="mainPicBackgroundSingleSpot" style={{backgroundImage: `url(${singleSpot.mainPic})`}}></div>
                                 <div className="mainPicForegroundSingleSpot" style={{backgroundImage: `url(${singleSpot.mainPic})`}}></div>
                         </div>
+
                     </div>
 
 
@@ -257,10 +261,16 @@ export default function SpotById() {
                         </>
                     }
 
+                    <div className="spotById--description">
+                            {singleSpot.description}
+                    </div>
+
                     <div className="location-price-book">
                         <div className="spotById--location">
                             <h2 className="loc"> Location: {singleSpot.location} </h2>
                         </div>
+
+
 
                         <div className="spotById--price--book">
                             <h2 className="loc">{singleSpot.price} (gp) / night</h2>
@@ -268,6 +278,7 @@ export default function SpotById() {
                         </div>
 
                     </div>
+
 
                     <div className="tags">Tags: {singleSpot.Tags.map((e) => <Link to={`/spots/${e.tag}`} key={e.id}> {e.tag} </Link>)}</div>
 

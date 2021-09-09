@@ -1,0 +1,162 @@
+.userPage{
+    margin-top: 60px;
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 20px;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+.mainPicContainter-Booking{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: solid 1px rgb(255, 0, 0);
+    border-radius: 15px;
+    box-shadow: 0 0 30px black inset;
+}
+
+.mainPicBackground-Booking{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    border: 1px solid rgb(136, 136, 136);
+    filter: blur(2px) brightness(2);
+    opacity: 0.3;
+    /* background-size: 900px; */
+    background-repeat: no-repeat;
+    background-position: center;
+    /* position: absolute; */
+}
+.mainPicForeground-Booking{
+    width: 145px;
+    height: 145px;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    /* filter: drop-shadow( 0 0  8px #000000); */
+    box-shadow: 0 0 10px rgb(255, 255, 255) inset;
+}
+.myBookedSpots{
+    display: flex;
+    width: 98%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: solid 1px rgb(182, 24, 24);
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.377);
+    box-shadow: 0 0 8px rgb(112, 23, 23) inset;
+}
+.bookedSpot{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 430px;
+    height: 220px;
+    background-color: rgb(233, 231, 227);
+    margin: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    border: solid 1px grey;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.466) inset;
+}
+
+.mySpots{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 330px;
+    height: 190px;
+    background-color: rgb(233, 231, 227);
+    margin: 5px;
+    padding: 8px;
+    border-radius: 15px;
+    border: solid 1px grey;
+    box-shadow: 0 0 8px rgb(112, 23, 23) inset;
+}
+
+.bookedSpotTitle{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.userPage > h2 {
+    margin: 25px 10px;
+    /* color: white; */
+}
+
+.bookedSpotsTop{
+    /* height: 30px; */
+}
+
+.bookedSpotsMiddle{
+    display: flex;
+    justify-content: space-between;
+    /* height: 140px; */
+}
+
+.bookedSpotsLeft{
+}
+
+.bookedSpotsRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 250px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.mySpotsRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 150px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.bookedSpotsBottom{
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+}
+
+
+.editBookingButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 20px;
+    background-color: rgb(202, 202, 202);
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid 1px black;
+}
+.editBookingButton:hover{
+    background-color: rgb(255, 255, 255);
+
+}
+.bookedSpotInput{
+    width: 130px;
+    height: 20px;
+}
+.bookedSpotsRightElement{
+    display: flex;
+    height: 20px;
+    justify-content: space-between;
+}
+.deleteBooking{
+    background-color: rgb(148, 44, 44);
+    color: white;
+}
+.deleteBooking:hover{
+    background-color: rgb(182, 78, 78);
+}
