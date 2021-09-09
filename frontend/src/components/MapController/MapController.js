@@ -8,6 +8,8 @@ import { initialState } from "../../store/mapControl"
 import { dispatchCoordinates } from "../../store/locCoordinates"
 import { useParams } from "react-router"
 import clouds from "./clouds700x700.jpg"
+import clouds2 from "./clouds2.png"
+
 
 
 function MapController() {
@@ -189,7 +191,8 @@ function MapController() {
 
         </div>
         {/* style={{ overflow: "hidden" }} */}
-        <div className="map" style={{backgroundImage: `url(${clouds})`}} >
+            <div className="secondClouds" style={{backgroundImage: `url(${clouds})`}}>
+        <div className="map" style={{backgroundImage: `url(${clouds2})`}}>
             <div style={{
                 position: "relative",
                 left: `${mapControl.mapX}px`,
@@ -202,7 +205,7 @@ function MapController() {
                 <Swordcoast />
 
             </div>
-
+        </div>
         </div>
 
 
