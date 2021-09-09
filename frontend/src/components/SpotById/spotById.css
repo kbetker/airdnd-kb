@@ -335,11 +335,24 @@
     box-sizing: border-box;
     overflow: hidden;
     background-repeat: repeat-x;
-    animation: animatedClouds 60s linear infinite;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    animation: animatedClouds2 70s linear infinite;
+
 
     /* background-image: url("https://cdn.vox-cdn.com/thumbor/BOeJJw_17HVPXGwQsSYtn0kBvec=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15800428/20150428-cloud-computing.0.1537161120.jpg"); */
+}
+
+.secondClouds{
+    position: fixed;
+    top: 140px;
+    right: 50px;
+    height: 600px;
+    width: 700px;
+    height: 600px;
+    width: 700px;
+    animation: animatedClouds 140s linear infinite;
+
 }
 
 @keyframes animatedClouds {
@@ -348,6 +361,15 @@
     }
     to {
       background-position: -700px 0;
+    }
+  }
+
+  @keyframes animatedClouds2 {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -600px 0;
     }
   }
 
