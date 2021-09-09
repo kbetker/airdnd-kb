@@ -9,7 +9,12 @@ import MapController from "../MapController/MapController"
 import { fetchSpotById } from "../../store/spot"
 import { useParams } from 'react-router';
 import { editSpot } from "../../store/spot"
-import castle from "../SpotNew/NoImageSelected.png"
+import castle from "../SpotNew/castleBackground.jpg"
+import noImage from "../SpotNew/NoImageSelected.png"
+
+
+
+
 
 // import { useDispatch } from 'react-router-dom';
 
@@ -120,7 +125,7 @@ export default function SpotNew() {
                             </input>
 
                         </div>
-                        <div className="imageContainer" style={{ backgroundImage: `url(${mainPic})` }}></div>
+                        <div className="imageContainer" style={{ backgroundImage: `url(${mainPic || noImage})` }}></div>
 
                         <div className="newSpot--element flexIt">
                             <label htmlFor="allowsFamiliar">Allow Familiars?:</label>

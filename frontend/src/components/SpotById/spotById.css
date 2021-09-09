@@ -3,9 +3,41 @@
     background-color: white;
     z-index: 10;
 }
+.bookingFormContainer{
+    width: 95%;
+    margin: 0 auto;
+    border: solid 1px grey;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    background-color: rgb(240, 237, 232);
+}
+.bookingForm{
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 21px;
+    width: 400px;
+    margin: 0 auto;
+    /* border: solid 1px grey; */
+    padding: 15px;
+    border-radius: 10px;
 
+}
 
-
+.bookingFormElement{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+.bookingButton{
+    font-size: 21px;
+    height: 34px;
+    border-radius: 10px;
+    margin: 5px;
+}
+.bookingInput{
+    width: 175px;
+}
 
 .spotWrapper{
     /* margin: 190px 0; */
@@ -241,11 +273,10 @@
     width: 80%;
     margin: 20px auto;
     padding: 15px;
-    border-radius: 35px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 250px;
     border: 1px solid rgb(148, 148, 148);
     font-family: Helvetica, Arial, sans-serif;
 }
@@ -297,7 +328,7 @@
     position: fixed;
     top: 140px;
     right: 50px;
-    height: 500px;
+    height: 600px;
     width: 700px;
     /* background-color: #b1a587; */
     border: solid 3px black;
@@ -422,6 +453,10 @@
     transform: translate(0, -100%);
 
 }
+.reviewToggle{
+    cursor: pointer;
+}
+
 .formFields{
     display: flex;
     flex-direction: column;
@@ -456,6 +491,7 @@
         position: relative;
 
     }
+
 
     .mainPicBackgroundSingleSpot{
         width: 100%;
