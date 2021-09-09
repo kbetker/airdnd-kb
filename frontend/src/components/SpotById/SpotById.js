@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { fetchSpotById } from '../../store/spot'
@@ -38,6 +38,9 @@ export default function SpotById() {
     const [numGuests, setNumGuests] = useState(0)
     const [totalCost, setTotalCost] = useState(0)
 
+    const [addReview, setAddReview] = useState(false)
+    const [sortedReview, setSortedReview] = useState([])
+
     useEffect(()=>{
         let date1 = new Date(startDate)
         let date2 = new Date(endDate)
@@ -67,6 +70,20 @@ export default function SpotById() {
 
     }, [])
 
+        useEffect(()=>{
+            let sorted = singleSpot?.Reviews.sort((a, b) => {
+                if(a.createdAt < b.createdAt){
+                    return 1
+                }
+                if(a.createdAt > b.createdAt){
+                   return -1
+                }
+                return 0
+            })
+            setSortedReview(sorted)
+            // console.log(sortedReview.current)
+        }, [singleSpot])
+
 
     if (!singleSpot) { return null }
 
@@ -86,7 +103,8 @@ export default function SpotById() {
     async function reviewSubmit(e) {
         e.preventDefault()
         await dispatch(postReview(payload));
-        history.push(`/spot/${parseInt(id)}`)
+        setAddReview(false)
+        // history.push(`/spot/${parseInt(id)}`)
     }
 
     // deletes review
@@ -173,6 +191,7 @@ export default function SpotById() {
             numGuests: parseInt(numGuests)
         };
         let data = dispatch(bookSpot(bookingPayload))
+        history.push(`/userPage`)
     }
 
     // getXY.addEventListener("mousedown", (e)=>{
@@ -196,32 +215,10 @@ export default function SpotById() {
 
 
                     <div className="spotById--pics">
-                        {/* <div className="leftPicDiv">
-                            <img src={singleSpot.mainPic} className="leftPic" alt="main view"></img>
-                        </div> */}
-
                         <div className="mainPicContainterSingleSpot">
                                 <div className="mainPicBackgroundSingleSpot" style={{backgroundImage: `url(${singleSpot.mainPic})`}}></div>
                                 <div className="mainPicForegroundSingleSpot" style={{backgroundImage: `url(${singleSpot.mainPic})`}}></div>
                         </div>
-                        {/* <div className="rightPics">
-                            <div className="upperLeft">
-                                <img src={singleSpot.Pics[0]?.picUrl ? singleSpot.Pics[0].picUrl : '/images/morePhotosComingB.jpg'} className="upLeftPic" alt="up left pic"></img>
-                            </div>
-
-                            <div className="upperRight">
-                                <img src={singleSpot.Pics[1] ? singleSpot.Pics[1].picUrl : '/images/morePhotosComingB.jpg'} className="upRightPic" alt="up right pic"></img>
-                            </div>
-
-                            <div className="lowerLeft">
-                                <img src={singleSpot.Pics[2] ? singleSpot.Pics[2].picUrl : '/images/morePhotosComingB.jpg'} className="lowLeftPic" alt="low left pic"></img>
-                            </div>
-
-                            <div className="lowerRight">
-                                <img src={singleSpot.Pics[3] ? singleSpot.Pics[3].picUrl : '/images/morePhotosComingB.jpg'} className="lowRightPic" alt="low right pic"></img>
-                            </div>
-                        </div> */}
-
                     </div>
 
 
@@ -230,14 +227,31 @@ export default function SpotById() {
                             {/* id	hostId	bookerId	startDate	endDate	spotId	numGuests	createdAt	updatedAt */}
 
                             <div className="divHR"></div>
-                            <form onSubmit={(e) => handleBooking(e)}>
-                                <input type="date" onChange={(e) => setStartDate(e.target.value)} value={startDate}></input>
-                                <input type="date" onChange={(e) => setEndDate(e.target.value)} value={endDate}></input>
-                                <input type="number" onChange={(e) => setNumGuests(e.target.value)} value={numGuests}></input>
-                                <div>{totalCost}</div>
-                                <button type="submit">Submit</button>
-                                <button onClick={(e) => toggleBookSpot()}>Cancel</button>
+                                <div className="bookingFormContainer">
+                            <form onSubmit={(e) => handleBooking(e)} className="bookingForm">
+                                <h2>Book Spot</h2>
+                                <div className="bookingFormElement">
+                                    <div>Star Date:</div>
+                                    <input type="date" onChange={(e) => setStartDate(e.target.value)} value={startDate} className="bookingInput"></input>
+                                </div>
+
+                                <div className="bookingFormElement">
+                                    <div>End Date:</div>
+                                    <input type="date" onChange={(e) => setEndDate(e.target.value)} value={endDate} className="bookingInput"></input>
+                                </div>
+
+                                <div className="bookingFormElement">
+                                    <div>Number of Guests:</div>
+                                <input type="number" onChange={(e) => setNumGuests(e.target.value)} value={numGuests} className="bookingInput"></input>
+                                </div>
+                                <div className="bookingFormElement">
+                                <div>Total Cost:</div>
+                                <div>{totalCost}&#40;sp&#41;</div>
+                                </div>
+                                <button type="submit" className="bookingButton">Submit</button>
+                                <button className="bookingButton" onClick={(e) => toggleBookSpot()}>Cancel</button>
                             </form>
+                            </div>
                             <div className="divHR"></div>
 
                         </>
@@ -332,7 +346,46 @@ export default function SpotById() {
 
                     <div className="reviews">
 
-                        {singleSpot.Reviews.map((e) =>
+                    {user &&
+                            <div className="reviewDiv">
+                                {addReview
+                                    ? <div className="reviewToggle" onClick={() => setAddReview(false)}><h2>Add Review: -</h2></div>
+                                    : <div className="reviewToggle" onClick={() => setAddReview(true)}><h2>Add Review: +</h2></div>
+                                    }
+
+                                    {addReview &&
+                                <form onSubmit={(e) => reviewSubmit(e)} className="formFields">
+
+                                    <div className="form--element">
+                                        <label htmlFor="body">Review</label>
+                                        <textarea id="body" onChange={(e) => setBody(e.target.value)} value={body}></textarea>
+                                    </div>
+
+                                    <div className="form--element">
+                                        <label htmlFor="cleanReview">Cleanliness</label>
+                                        <input type="number" id="cleanReview" onChange={(e) => setCleanReview(e.target.value)} value={cleanReview}></input>
+                                    </div>
+
+                                    <div className="form--element">
+                                        <label htmlFor="locationReview">Location</label>
+                                        <input type="number" id="locationReview" onChange={(e) => setLocationReview(e.target.value)} value={locationReview}></input>
+                                    </div>
+
+                                    <div className="form--element">
+                                        <label htmlFor="valueReview">Value</label>
+                                        <input type="number" id="valueReview" onChange={(e) => setValueReview(e.target.value)} value={valueReview}></input>
+                                    </div>
+
+                                    <button type="submit">Submit</button>
+                                </form>
+}
+                            </div>
+                        }
+
+
+
+
+                        {sortedReview?.map((e) =>
                             <div key={e.id} className="reviewDiv">
 
                                 <div className="nameAndIcon">
@@ -366,35 +419,7 @@ export default function SpotById() {
                         )}
 
 
-                        {user &&
-                            <div className="reviewDiv">
-                                <form onSubmit={(e) => reviewSubmit(e)} className="formFields">
-                                    <h2>Add Review:</h2>
-                                    <div className="form--element">
-                                        <label htmlFor="body">Review</label>
-                                        <textarea id="body" onChange={(e) => setBody(e.target.value)} value={body}></textarea>
-                                    </div>
 
-                                    <div className="form--element">
-                                        <label htmlFor="cleanReview">Cleanliness</label>
-                                        <input type="number" id="cleanReview" onChange={(e) => setCleanReview(e.target.value)} value={cleanReview}></input>
-                                    </div>
-
-                                    <div className="form--element">
-                                        <label htmlFor="locationReview">Location</label>
-                                        <input type="number" id="locationReview" onChange={(e) => setLocationReview(e.target.value)} value={locationReview}></input>
-                                    </div>
-
-                                    <div className="form--element">
-                                        <label htmlFor="valueReview">Value</label>
-                                        <input type="number" id="valueReview" onChange={(e) => setValueReview(e.target.value)} value={valueReview}></input>
-                                    </div>
-
-                                    <button type="submit">Submit</button>
-
-                                </form>
-                            </div>
-                        }
 
 
                     </div>

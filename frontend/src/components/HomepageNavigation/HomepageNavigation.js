@@ -22,11 +22,8 @@ function HomepageNavigation(){
 
             <div id="exploreNearby">
 
-                    <div className="nearbyDiv"><h1>Explore Nearby</h1></div>
-                    <div className="nearbyDiv"></div>
-                    <div className="nearbyDiv"></div>
-                    <div className="nearbyDiv"></div>
-
+                    <div className="nearbyDiv" style={{marginLeft: "20px"}}><h1>Explore Nearby</h1></div>
+                    <div className="exploreContainer">
                    <Link to='/spot/1' className="nearbyDiv">
 
                         <img src="/images/homepage/neverWinter.jpg" className="nearbyPic" alt="Neverwinter"></img>
@@ -106,32 +103,33 @@ function HomepageNavigation(){
                             </div>
 
                     </Link>
+                    </div>
 
             </div>
 
             <div id="liveAnywhere">
-                <div className="liveAnywhere--element"><h1>Live Anywhere</h1></div><div className="liveAnywhere--element"></div><div></div><div></div>
+                <div className="liveAnywhere--element"><h1>Live Anywhere</h1></div><div className="liveAnywhere--element"></div>
+                <div className="liveAnywhereElements">
+                    <Link to="/spots/Forest" className="liveAnywhere--element">
+                        <img src="/images/homepage/outdoorExperience.jpg" className="liveAnywhereImg" alt="Outdoor Experiences"></img>
+                        <h2>Outdoor Experiences</h2>
+                    </Link>
 
-                <Link to="/spots/Forest" className="liveAnywhere--element">
-                    <img src="/images/homepage/outdoorExperience.jpg" className="liveAnywhereImg" alt="Outdoor Experiences"></img>
-                    <h2>Outdoor Experiences</h2>
-                </Link>
+                    <Link to="/spots/Sewers" className="liveAnywhere--element">
+                        <img src="/images/homepage/uniqueStays.jpg" className="liveAnywhereImg" alt="Unique Stays"></img>
+                        <h2>Unique Stays</h2>
+                    </Link>
 
-                <Link to="/spots/Sewers" className="liveAnywhere--element">
-                    <img src="/images/homepage/uniqueStays.jpg" className="liveAnywhereImg" alt="Unique Stays"></img>
-                    <h2>Unique Stays</h2>
-                </Link>
+                    <Link to="/spots/Tundra" className="liveAnywhere--element">
+                        <img src="/images/homepage/entireHouse.jpg" className="liveAnywhereImg" alt="Entire House"></img>
+                        <h2>Entire House</h2>
+                    </Link>
 
-                <Link to="/spots/Tundra" className="liveAnywhere--element">
-                    <img src="/images/homepage/entireHouse.jpg" className="liveAnywhereImg" alt="Entire House"></img>
-                    <h2>Entire House</h2>
-                </Link>
-
-                <Link to="/spots/Badlands" className="liveAnywhere--element">
-                    <img src="/images/homepage/takesFamiliars.jpg" className="liveAnywhereImg" alt="Takes Famliars"></img>
-                    <h2>Takes Famliars</h2>
-                </Link>
-
+                    <Link to="/spots/Badlands" className="liveAnywhere--element">
+                        <img src="/images/homepage/takesFamiliars.jpg" className="liveAnywhereImg" alt="Takes Famliars"></img>
+                        <h2>Takes Famliars</h2>
+                    </Link>
+                </div>
 
 
             </div>

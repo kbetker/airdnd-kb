@@ -54,7 +54,7 @@ function MapController() {
 
     useEffect(()=>{
         dispatch(dispatchMapControl(initialState))
-        dispatch(dispatchCoordinates({ "X": 350, "Y": 250 }))
+        dispatch(dispatchCoordinates({ "X": 350, "Y": 300 }))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [spots])
 
@@ -90,7 +90,7 @@ function MapController() {
             }
 
             else if (key === "mapY" && direction.current === "zoomIn") {
-                let zoomInValY = newObj.minMapY - (coordinates.Y * newObj.scale) + 250;
+                let zoomInValY = newObj.minMapY - (coordinates.Y * newObj.scale) + 300;
                 newObj[key] = zoomInValY
             }
 
@@ -105,7 +105,7 @@ function MapController() {
                 if (newObj.scale === 1) {
                     newObj[key] = newObj.minMapY
                 } else {
-                    newObj[key] = newObj.minMapY - (coordinates.Y * newObj.scale) + 250;
+                    newObj[key] = newObj.minMapY - (coordinates.Y * newObj.scale) + 300;
                 }
             }
 
@@ -114,7 +114,7 @@ function MapController() {
             }
 
             else if (key === "mapY" && direction.current === "panToView") {
-                let zoomInValY = newObj.minMapY - (coordinates.Y * newObj.scale) + 250;
+                let zoomInValY = newObj.minMapY - (coordinates.Y * newObj.scale) + 300;
                 newObj[key] = zoomInValY
             }
 
