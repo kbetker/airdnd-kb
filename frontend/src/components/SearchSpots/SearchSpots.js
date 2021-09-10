@@ -16,12 +16,10 @@ function SearchSpots() {
 
 
     useEffect(() => {
-        console.log(title, "===============================================================")
         dispatch(searchSpotsByTitle(title))
     }, [dispatch, title])
 
     const spotsByTag = useSelector(state => state.spots)
-    console.log(spotsByTag)
     // scrolls to top of page
     useEffect(() => {
        const topDiv = document.getElementById('spacer')
