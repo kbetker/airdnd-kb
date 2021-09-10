@@ -52,7 +52,7 @@ export default function SpotById() {
         let days = hours / 24
         let cost = singleSpot?.price * days || 0
 
-        setTotalCost(cost)
+        setTotalCost(cost.toFixed(2))
 
          // eslint-disable-next-line react-hooks/exhaustive-deps
     },[startDate, endDate])
