@@ -19,6 +19,11 @@
 /* .swordCoastMap{
     width: 934px;
 } */
+.noResults{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    margin-left: 20px;
+}
 
 .mapContainer{
     width: 2800px;

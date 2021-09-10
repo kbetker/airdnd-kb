@@ -92,7 +92,9 @@ function SearchSpots() {
                 <div className="spot">
                     <div style={{height: "30px"}}></div>
 
+                    {spotsByTag?.spots.length === 0 && <div className="noResults">Sorry. We found no results for: "{title}"</div>}
                     { spotsByTag.spots && spotsByTag?.spots.map((e) =>
+
                         <Link to={`/spot/${e.id}`} onMouseOver={()=> dispatch(dispatchCoordinates({ "X": e.coordinateX, "Y": e.coordinateY })) } key={e.id}>
                             <div id={`list-${e.id}`} className="list">
 
