@@ -19,7 +19,7 @@ export default function SpotNew() {
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
     const [mainPic, setMainPic] = useState('');
-    const [allowsFamiliar, setAllowsFamiliar] = useState(false);
+    const [allowsFamiliar, setAllowsFamiliar] = useState(true);
 
 
     const userId = useSelector(state => state.session.user)

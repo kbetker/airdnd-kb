@@ -24,6 +24,11 @@ function UserPage() {
     const history = useHistory()
     const [totalCost, setTotalCost] = useState(0)
 
+  useEffect(() => {
+        if (!user) {
+            history.push("/")
+        }
+    })
 
 
     function getTotal(start, end, price) {
@@ -45,18 +50,14 @@ function UserPage() {
 
 
 
-    useEffect(() => {
-        dispatch(getBookedSpots(user.id))
-        dispatch(fetchMySpots(user.id))
-
-    }, [dispatch, user.id])
-
 
     useEffect(() => {
-        if (!user) {
-            history.push("/")
-        }
-    })
+        dispatch(getBookedSpots(user?.id))
+        dispatch(fetchMySpots(user?.id))
+
+    }, [dispatch])
+
+
 
     function handleDelete(id) {
         let data = dispatch(deleteBooking(id))
@@ -97,11 +98,13 @@ function UserPage() {
 
             <h2>My Booked Spots</h2>
             <div className="myBookedSpots">
+            {bookedSpots?.length === 0 && <div className="noSpots">You do not have any Spots booked</div>}
+
                 {bookedSpots?.map((el) =>
                     <form onSubmit={(e) => handleSubmit(e, el.id)} className="bookedSpot" key={`${el.id}-bookedSpot`}>
 
                         <div className="bookedSpotsTop">
-                            <div className="bookedSpotTitle">{el.Spot.title} - id#: {user.id}SKT0{el.id}</div>
+                            <div className="bookedSpotTitle">{el.Spot.title} - id#: {user?.id}SKT0{el.id}</div>
                         </div>
 
 
@@ -162,6 +165,7 @@ function UserPage() {
 
             <h2>My Spots</h2>
             <div className="myBookedSpots">
+                {mySpots?.length === 0 && <div className="noSpots">You do not have any Spots listed</div>}
                 {mySpots?.map((el) =>
 
                     <div className="mySpots" key={`${el.id}-MySpot`}>
@@ -179,9 +183,9 @@ function UserPage() {
                             </div>
 
                             <div className="mySpotsRight">
-                                {user.id === el.ownerId && <button className="editBookingButton" onClick={() => history.push(`/spot/${el.id}/edit`)}>Edit</button>}
+                                {user?.id === el.ownerId && <button className="editBookingButton" onClick={() => history.push(`/spot/${el.id}/edit`)}>Edit</button>}
                                 <button className="editBookingButton" onClick={() => history.push(`/spot/${el.id}`)}>Go to Spot</button>
-                                {user.id === el.ownerId && <button className="editBookingButton deleteBooking" onClick={() => handleSpotDelete(el.id)}>Delete</button>}
+                                {user?.id === el.ownerId && <button className="editBookingButton deleteBooking" onClick={() => handleSpotDelete(el.id)}>Delete</button>}
                             </div>
 
                         </div>
@@ -199,8 +203,8 @@ function UserPage() {
                     // <div style={{ margin: "10px", padding: "10px" }} key={`${el.id}-MySpot`}>
                     //     Name: {el.title} Price: {el.price}
                     //     <img src={el.mainPic} style={{ width: "250px" }} alt=''></img>
-                    //     {user.id === el.ownerId && <button onClick={() => history.push(`/spot/${el.id}/edit`)}>Edit</button>}
-                    //     {user.id === el.ownerId && <button onClick={() => handleSpotDelete(el.id)}>Delete</button>}
+                    //     {user?.id === el.ownerId && <button onClick={() => history.push(`/spot/${el.id}/edit`)}>Edit</button>}
+                    //     {user?.id === el.ownerId && <button onClick={() => handleSpotDelete(el.id)}>Delete</button>}
                     // </div>
 
                 )}
