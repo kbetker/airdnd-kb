@@ -5,8 +5,15 @@ const LOAD_ByTag = 'session/LOAD_ByTag';
 const LOAD_ByTitle = 'session/LOAD_ByTitle';
 const LOAD_MYSPOTS = 'session/LOAD_MYSPOTS';
 const DELETE_SPOT = 'session/DELETE_SPOT';
+const LOAD_SEARCH = 'session/LOAD_SEARCH';
 
 
+export const loadBySearch = ( spots ) => {
+    return {
+        type: LOAD_SEARCH,
+        spots
+    };
+};
 
 
 export const loadSpotsByTag = ( spots ) => {
@@ -75,7 +82,7 @@ export const fetchspotsByTag = (tag) => async (dispatch) => {
       const response = await fetch(`/api/spots/search/${title}`);
     if(response.ok){
         const spots = await response.json();
-        dispatch(loadSpotsByTag(spots));
+        dispatch(loadBySearch(spots));
     };
   };
 
@@ -92,6 +99,10 @@ export const fetchspotsByTag = (tag) => async (dispatch) => {
         case LOAD_ByTitle:
             newState = Object.assign({}, state);
             newState= action.spots;
+            return newState;
+        case LOAD_SEARCH:
+            newState = Object.assign({}, state);
+            newState = action.spots;
             return newState;
         case LOAD_MYSPOTS:
             newState = Object.assign({}, state);
