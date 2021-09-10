@@ -22,7 +22,6 @@ function Swordcoast({ props }) {
   const spots = useSelector(state => state.spots.spots)
   const spot = useSelector(state => state.spot.spot)
   const currentPage = window.document.URL.substring(window.document.URL.lastIndexOf('/') + 1)
-  console.log(currentPage)
   // useEffect(()=>{
   //   spots = props.spots
   // }, [])
@@ -149,16 +148,16 @@ function Swordcoast({ props }) {
         <div id={`mapLoc-${el.id}`}
           className="locOnMap-sbt"
           draggable="true"
-          onClick={(e) => dispatch(dispatchCoordinates({ "X": el.Spot.coordinateX, "Y": el.Spot.coordinateY }))}
+          onClick={(e) => dispatch(dispatchCoordinates({ "X": el.Spot?.coordinateX || el.coordinateX, "Y": el.Spot?.coordinateY || el.coordinateY }))}
           key={`loc-${el.id}`} style={{
-            top: el.Spot?.coordinateY,
-            left: el.Spot?.coordinateX,
+            top: el.Spot?.coordinateY || el.coordinateY,
+            left: el.Spot?.coordinateX || el.coordinateX,
             fontSize: `${mapControl.fontSize}px`,
             padding: `${mapControl.padding}px`,
             boxShadow: `${mapControl.shadowX}px ${mapControl.shadowY}px ${mapControl.shadowBlur}px rgba(0, 0, 0, 0.6)`,
             zIndex: "1000",
           }
-          }>{el.Spot?.title}
+          }>{el.Spot?.title || el.title}
           <img className="locationDot" src="/images/locationDot.png" style={{
             width: `${mapControl.fontSize}px`,
             height: `${mapControl.fontSize}px`,

@@ -74,7 +74,7 @@ function UserPage() {
         };
 
         const data = await dispatch(editTheBooking(id, payload))
-        console.log(data)
+        // console.log(data)
         setEditBooking('')
     }
     function handleEdit(targetBooking, start, end, numGuests) {

@@ -25,17 +25,17 @@ const router = express.Router();
     router.get('/search/:title', async(req, res) => {
         const title = req.params.title
         titleUpperCase = title.charAt(0).toUpperCase() + title.slice(1);
-        const spotsByTitle = await Spot.findAll({
+        const spots = await Spot.findAll({
           where: {
             [Op.or]: [
               { title: {[Op.startsWith]: titleUpperCase} },
               { title: {[Op.regexp]: title} },
               { title: {[Op.substring]: title} }
             ]
-          }
-          // include: [{model: Pic}, {model: Review}, {model: Tag}]
+          },
+          include: [{model: Pic}, {model: Review}, {model: Tag}]
         })
-        res.json({spotsByTitle})
+        res.json({spots})
       });
 
       router.get('/myspots/:id', async(req, res) => {

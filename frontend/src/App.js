@@ -13,6 +13,7 @@ import UserPage from "./components/UserPage/UserPage";
 import FourOhFour from './components/FourOhFour'
 import * as sessionActions from "./store/session";
 import SpotEdit from "./components/SpotEdit";
+import SearchSpots from "./components/SearchSpots";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,11 @@ function App() {
         <Route path="/signup">
           <Navigation />
           <SignupFormPage />
+        </Route>
+
+        <Route path="/spots/search/:title">
+          <Navigation />
+          <SearchSpots />
         </Route>
 
         <Route path="/login">
@@ -61,10 +67,6 @@ function App() {
           <SpotsByTag />
         </Route>
 
-        <Route path="/spots/search/:title">
-          <Navigation />
-          <SpotsByTag />
-        </Route>
 
         <Route path="/userpage">
           <Navigation />

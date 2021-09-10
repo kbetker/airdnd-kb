@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 // import ProfileButton from './ProfileButton'
 import './navigation.css';
@@ -15,7 +15,8 @@ function Navigation() {
     const profPic = sessionUser?.profilePic
     const [searchWord, setSearchWord] = useState("")
     const dispatch = useDispatch();
-    const menuTimeOut = useRef()
+    const menuTimeOut = useRef();
+    const history = useHistory()
 
     function demoLogin(credential, password) {
         return dispatch(sessionActions.login({ credential, password }));
@@ -101,9 +102,12 @@ function Navigation() {
     }
 
 
-    function handleSearch(e) {
+    async function handleSearch(e) {
         e.preventDefault()
-        dispatch(searchSpotsByTitle(searchWord))
+        // console.log(searchWord, "+_!+_!+_!+_!+_!+_!+_!+_!+_!+_!+_!+_!+_+!_!+_!+_!+_!+_!+!_+!_+!+!+_!+_!+_!+_!+_!+_!+_!+_!+_")
+        // await dispatch(searchSpotsByTitle(searchWord))
+
+        history.push(`/spots/search/${searchWord}`)
 
     }
 
