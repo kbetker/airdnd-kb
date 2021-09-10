@@ -21,9 +21,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kbetker/kbsolor/issues"
-  },
-  "homepage": "https://github.com/kbetker/kbsolor#readme",
-  "dependencies": {
-    "sequelize-cli": "^6.2.0"
   }
 }
