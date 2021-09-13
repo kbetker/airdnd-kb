@@ -145,9 +145,9 @@
     height: 66px;
     width: 66px;
     z-index: 5;
-    filter: invert();
     transition: all .25s ease-in-out;
 }
+
 
 .theImage--resize{
     height: 46px;

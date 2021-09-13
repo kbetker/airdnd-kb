@@ -81,7 +81,7 @@ useEffect(()=>{
           <div className="reviewerProfilePic" >
               <div className='profileImg'>
                   <div className="profileCircle" style={{ backgroundColor: profileBackgroundColor }}>
-                      <img src={`images/profile/${profilePic}`} className="theImage" alt="profilePic"></img>
+                      <div className="hueRotate"><img src={`images/profile/${profilePic}`} className="theImage" alt="profilePic"></img></div>
                       <img src="/images/profile/aProfileRing.png" className="theRing" alt="profileRing"></img>
 
                   </div>
