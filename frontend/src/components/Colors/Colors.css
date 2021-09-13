@@ -1,0 +1,26 @@
+.colorsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: -260px;
+    border: solid 2px rgb(173, 173, 173);
+    box-shadow: 3px 3px 10px black;
+}
+.color-columnsTop,.color-columnsBottom{
+    display: flex;
+}
+
+.color-column{
+    display: flex;
+    flex-direction: column;
+}
+.color{
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+}
+.color:hover{
+    border: solid 1px white;
+    box-shadow: 0 0 3px black inset;
+}

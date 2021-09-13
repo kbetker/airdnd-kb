@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { fetchspotsByTag } from '../../store/spots'
+// import { fetchspotsByTag } from '../../store/spots'
 import { Link } from 'react-router-dom'
 import './spotsByTag.css'
 import '../SpotNew/NewSpot.css'
