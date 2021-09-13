@@ -53,9 +53,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       default: 'black',
     },
-    profileForegroundColor:{
-      type: DataTypes.STRING,
-      default: 'white',
+    profileForegroundWhite:{
+      type: DataTypes.BOOLEAN,
+      default: true,
     },
 
   },

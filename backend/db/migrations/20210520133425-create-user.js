@@ -43,7 +43,7 @@ module.exports = {
         type: Sequelize.STRING,
         default: 'black',
       },
-      profileForegroundColor: {
+      profileForegroundWhite: {
         type: Sequelize.STRING,
         default: 'white',
       },
