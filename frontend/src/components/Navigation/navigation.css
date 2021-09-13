@@ -160,7 +160,16 @@
     /* background-color: rgb(133, 133, 133); */
     border-radius: 66px;
     z-index: 2;
+    /* top:10px; */
     transition: all .25s ease-in-out;
+}
+.reviewerProfilePic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
 }
 
 .profileCircle--resize{
@@ -172,7 +181,8 @@
     width: 66px;
     z-index: 15;
     position: relative;
-    top: -72px;
+    top: -75px;
+    left: -2px;
     right: 0px;
     transition: all .25s ease-in-out;
     /* right: 60px; */

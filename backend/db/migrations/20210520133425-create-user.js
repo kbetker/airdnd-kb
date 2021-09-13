@@ -44,8 +44,8 @@ module.exports = {
         default: 'black',
       },
       profileForegroundWhite: {
-        type: Sequelize.STRING,
-        default: 'white',
+        type: Sequelize.BOOLEAN,
+        default: true,
       },
       createdAt: {
         allowNull: false,

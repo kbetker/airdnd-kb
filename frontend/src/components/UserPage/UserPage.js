@@ -7,7 +7,7 @@ import { deleteBooking } from '../../store/booking';
 import { editTheBooking } from '../../store/booking';
 import { deleteMySpot } from '../../store/spots';
 import noImage from "../SpotNew/NoImageSelected.png"
-import paperTexture from "./paperTexture.jpg"
+// import paperTexture from "./paperTexture.jpg"
 import castle from "./castle.jpg"
 import "./UserPage.css"
 
@@ -42,7 +42,7 @@ function UserPage() {
         let days = hours / 24
         let cost = price * days || 0
 
-        return { "days": days, "cost": cost }
+        return { "days": days, "cost": cost.toFixed(2) }
 
     }
 

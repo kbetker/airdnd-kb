@@ -11,6 +11,7 @@
     border-radius: 20px;
     border: 3px solid rgb(116, 116, 116);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
+    position: relative;
 }
 #password,#credential{
     width: 250px;
@@ -30,6 +31,18 @@
 .input--element{
     width: 250px;
 }
+.profileBackgroundColor{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(226, 226, 226);
+    padding: 3px;
+    border-radius: 6px;
+    border: solid 1px grey;
+}
+.profileBackgroundColor:hover{
+    background-color: rgb(255, 255, 255);
+}
 .selectProfileDiv{
     width: 250px;
     position: relative;
@@ -48,14 +61,40 @@
     background-color: white;
     position: absolute;
     left: 340px;
-    bottom: -200px;
+    bottom: 0px;
     border-radius: 15px;
 }
+.white,.black{
+    cursor: pointer;
+    box-sizing: border-box;
+    border: gold 2px solid;
+    width: 66px;
+    height: 66px;
+    display: inline-block;
+    margin: 2px;
+
+}
+.white:hover,.black:hover{
+    opacity: 0.5;
+}
+
+.white{
+    box-shadow: 0 0 8px black inset;
+}
+.black{
+    box-shadow: 0 0 8px rgb(255, 255, 255) inset;
+
+}
+
 .profPic{
     width: 70px;
     height: 70px;
     /* background-color: red; */
     display: inline-block;
+    cursor: pointer;
     /* border-radius: 95px; */
     /* border: 1px solid black; */
+}
+.profPic:hover{
+    filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.507)) invert() brightness(0.3);
 }

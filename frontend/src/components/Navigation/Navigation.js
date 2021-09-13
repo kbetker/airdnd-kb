@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import './navigation.css';
 import { logout } from '../../store/session'
 import * as sessionActions from '../../store/session'
-import { searchSpotsByTitle } from '../../store/spots';
+// import { searchSpotsByTitle } from '../../store/spots';
 
 
 function Navigation() {
     const currentPage = window.document.URL.substring(window.document.URL.lastIndexOf('/') + 1)
     const sessionUser = useSelector(state => state.session.user);
-    const bg = sessionUser?.profileBackgroundColor
+    const bg =  sessionUser?.profileBackgroundColor
+    const white = sessionUser?.profileForegroundWhite || null
     const profPic = sessionUser?.profilePic
     const [searchWord, setSearchWord] = useState("")
     const dispatch = useDispatch();
@@ -21,7 +22,6 @@ function Navigation() {
     function demoLogin(credential, password) {
         return dispatch(sessionActions.login({ credential, password }));
     }
-
     useEffect(() => {
 
         const profileDropDown = document.getElementById('profileMenu');
@@ -104,7 +104,6 @@ function Navigation() {
 
     async function handleSearch(e) {
         e.preventDefault()
-        // console.log(searchWord, "+_!+_!+_!+_!+_!+_!+_!+_!+_!+_!+_!+_!+_+!_!+_!+_!+_!+_!+!_+!_+!+!+_!+_!+_!+_!+_!+_!+_!+_!+_")
         // await dispatch(searchSpotsByTitle(searchWord))
 
         history.push(`/spots/search/${searchWord}`)
@@ -145,7 +144,10 @@ function Navigation() {
                                     <img src="/images/menuImage.png" className="menuIcon" alt="menu icon"></img>
                                     <div className='profileImg'>
                                         <div className="profileCircle" style={{ backgroundColor: bg }}>
-                                            <img src={`/images/profile/${profPic}`} className="theImage" alt="profileImage"></img>
+                                            <img src={`/images/profile/${profPic}`} className="theImage" alt="profileImage" style={
+                                                 white &&{filter: "invert()"}
+                                            }
+                                            ></img>
                                             <img src="/images/profile/aProfileRing.png" className="theRing" alt="ringImage"></img>
                                             <div className="menuOptions" style={{ height: '95px' }}>
                                                 <NavLink to={'/spot/new'} className="menu--element">List your spot!</NavLink>
@@ -165,7 +167,7 @@ function Navigation() {
                                     <img src="/images/menuImage.png" className="menuIcon" alt="menu icon logged out"></img>
                                     <div className='profileImg' alt="logged out profile">
                                         <div className="profileCircle" style={{ backgroundColor: '#777777' }}>
-                                            <img src="/images/profile/profile-default.png" className="theImage" alt="default profile"></img>
+                                            <img src="/images/profile/profile-default.png" className="theImage" alt="default profile" style={{filter: "invert()"}}></img>
                                             <img src="/images/profile/aProfileRing.png" className="theRing" style={{ opacity: '0' }} alt="default ring"></img>
                                             <div className="menuOptions">
                                                 <NavLink to={'/login'} className="menu--element">Log In</NavLink>
