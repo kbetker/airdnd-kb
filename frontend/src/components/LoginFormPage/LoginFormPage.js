@@ -27,8 +27,6 @@ export function LoginFormPage(){
 
     return(
         <div id="loginWrapper" style={{backgroundImage: 'url(/images/loginBackground.jpg)'}}>
-        {/* <div id="spacer"></div> */}
-
                     <form onSubmit={(e) => handleSubmit(e)} id="wtf">
                     <div id="credentialDiv">
                         <ul>
